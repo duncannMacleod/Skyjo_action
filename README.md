@@ -1,4 +1,4 @@
-# Syjo_action
+# Skyjo_action
 le jeu quoi
 
 Materiel :

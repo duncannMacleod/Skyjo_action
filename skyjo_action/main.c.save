@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include"initialisation.h"
+
+
 
 
 int main()

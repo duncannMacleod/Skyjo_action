@@ -5,3 +5,7 @@
 *.depend
 *.o
 *.exe
+skyjo_action/skyjo_action.layout
+skyjo_action/skyjo_action.depend
+skyjo_action/obj/Debug/initialisation.o
+skyjo_action/obj/Debug/affichage.o

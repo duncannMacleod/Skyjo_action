@@ -41,6 +41,6 @@ struct pioche
                 //c-a-d, nombre retrouve sa config initiale, et les defausses sont mises à zéro
 };
 
-typedef struct pioche S_pioche;
+typedef struct pioche S_pioche; //attention, il n'y aura pas de tableau de S_pioche, juste une variable
 
 #endif // DECLARATION_H_INCLUDED

@@ -24,8 +24,11 @@ void Positionner_Curseur(int x, int y)
 
 int afficher_menu_bienvenue ()
 {
-        char menu[5][86]= {"      2 joueurs                                                                      ","      3 joueurs                                                                      ","      4 joueurs                                                                      ",
-                           "                                                                                     ","      Quitter                                                                        ",
+        char menu[5][86]= {"      2 joueurs                                                                      ",
+                           "      3 joueurs                                                                      ",
+                           "      4 joueurs                                                                      ",
+                           "                                                                                     ",
+                           "      Quitter                                                                        ",
                            };
     int choix=0; // numéro de l'option choisie dans le menu
     int frappe=0; //permet de stocker le code de la touche clavier

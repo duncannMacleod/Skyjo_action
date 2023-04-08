@@ -14,11 +14,11 @@
 
 struct joueur
 {
-                char deck_nombre [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //prenant de -2 à 13 + pas de carte->30
-                char deck_nombre_cache [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //0 si carte caché, 1 si carte visible
-                char deck_action[CARTE_JOUEUR_ACTION_NB]; //prenant de 14 à 22
+                int deck_nombre [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //prenant de -2 à 13 + pas de carte->30
+                int deck_nombre_cache [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //0 si carte caché, 1 si carte visible
+                int deck_action[CARTE_JOUEUR_ACTION_NB]; //prenant de 14 à 22
                 char prenom [DIM_STR]; //nom du joueur
-                char score; // 0 à 255
+                int score;
 
 
 };
@@ -27,15 +27,15 @@ typedef struct joueur S_joueur
 
 struct pioche
 {
-                char nombre[CARTE_PIOCHE_NOMBRE_NB]; //tableau de la pioche des nombres à remplir et à "mélanger"
-                char nombre_defausse[CARTE_PIOCHE_NOMBRE_NB]; //prévoir de refaire la pioche nombre quand celle ci est épuisé.
-                char nombre_defausse_dessous[9]; //il ne peut avoir qu'au maximum 9 cartes sous la pioche par manche.
-                char nombre_nb; //dans l'absolu pas besoin, a discuter
+                int nombre[CARTE_PIOCHE_NOMBRE_NB]; //tableau de la pioche des nombres à remplir et à "mélanger"
+                int nombre_defausse[CARTE_PIOCHE_NOMBRE_NB]; //prévoir de refaire la pioche nombre quand celle ci est épuisé.
+                int nombre_defausse_dessous[9]; //il ne peut avoir qu'au maximum 9 cartes sous la pioche par manche.
+                int nombre_nb; //dans l'absolu pas besoin, a discuter
 
 
-                char action[CARTE_PIOCHE_ACTION_NB]; //tableau de la pioche des actions à remplir et à "mélanger"
-                char action_visible[CARTE_PIOCHE_ACTION_FACE_VISIBLE]; //les 4 cartes acrtions présentées
-                char action_nb; //dans l'absolu pas besoin, à discuter
+                int action[CARTE_PIOCHE_ACTION_NB]; //tableau de la pioche des actions à remplir et à "mélanger"
+                int action_visible[CARTE_PIOCHE_ACTION_FACE_VISIBLE]; //les 4 cartes acrtions présentées
+                int action_nb; //dans l'absolu pas besoin, à discuter
 
 
 

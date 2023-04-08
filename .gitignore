@@ -1,3 +1,7 @@
-
+*.h.save
+*.c.save
+*.layout.save
 *.layout
-*.layout
+*.depend
+*.o
+*.exe

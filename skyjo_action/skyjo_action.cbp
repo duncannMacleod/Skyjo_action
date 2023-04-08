@@ -40,6 +40,9 @@
 		</Unit>
 		<Unit filename="cartes_actions.h" />
 		<Unit filename="declaration.h" />
+		<Unit filename="deroulement_tour.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="deroulement_tour.h" />
 		<Unit filename="detection_skyjo.c">
 			<Option compilerVar="CC" />

@@ -5,6 +5,8 @@
 #include <conio.h>
 
 #include "affichage.h"
+#include "declaration.h"
+#include "suivi_score.h"
 
 
 void color (int couleurDuTexte, int couleurDuFond)
@@ -142,33 +144,33 @@ void afficher_plateau_vide (int nb_j)
         printf(" |                                                                                    |\n");
         if(nb_j==2)
         {
-            printf(" |                                                    Score: 1er-                     |\n");
-            printf(" |       Votre Jeu:                                          2nd-                     |\n");
+            printf(" |                                                  Score: 1er-                       |\n");
+            printf(" |       Votre Jeu:                                        2nd-                       |\n");
             printf(" |                                                                                    |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |                                                                                    |\n");
         }
         else if (nb_j==3)
         {
-            printf(" |                                                    Score: 1er-                     |\n");
-            printf(" |       Votre Jeu:                                          2nd-                     |\n");
-            printf(" |                                                           3me-                     |\n");
+            printf(" |                                                  Score: 1er-                       |\n");
+            printf(" |       Votre Jeu:                                        2nd-                       |\n");
+            printf(" |                                                         3me-                       |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |                                                                                    |\n");
         }
         else if (nb_j==4)
         {
-            printf(" |                                                    Score: 1er-                     |\n");
-            printf(" |       Votre Jeu:                                          2nd-                     |\n");
-            printf(" |                                                           3me-                     |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                              4me-                     |\n");
+            printf(" |                                                  Score: 1er-                       |\n");
+            printf(" |       Votre Jeu:                                        2nd-                       |\n");
+            printf(" |                                                         3me-                       |\n");
+            printf(" |          [  ] [  ] [  ] [  ]                            4me-                       |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
             printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |                                                                                    |\n");
 
 
         }
@@ -184,3 +186,45 @@ void afficher_plateau_vide (int nb_j)
 
 
 }
+
+void afficher_actualiser_joueur (int nb_j, S_joueur jr) //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
+{
+
+
+	int i;
+	int j;
+
+	Positionner_Curseur(12,3);
+	printf(" Joueur %d",nb_j+1);
+
+	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
+        {
+            for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
+            {
+                Positionner_Curseur(12+j*5,9+i-1);
+				if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
+                    printf("[%-2d] ",jr.deck_nombre[i][j]);
+                else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
+                    printf("[%-2s] ","X");
+                else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
+                    printf("     ");
+
+
+
+            }
+
+        }
+}
+void afficher_actualiser_score (int nb_j, S_joueur jr[])
+{
+    tri_score(nb_j,jr);
+    for (int i=0;i<nb_j;i++)
+    {
+        Positionner_Curseur(64,5+i);
+        printf("%.10s à %-3dpts","mathieutajgqsyrefhdfgdfgfggdfggbtrghrt",12);
+
+    }
+//jr[i].prenom
+//jr[i].score
+}
+

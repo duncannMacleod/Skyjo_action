@@ -1,19 +1,29 @@
 # depslib dependency file v1.0
-1680974399 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.c
+1680989068 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<string.h>
 	<conio.h>
 	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
 
-1680953884 c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.h
+1680987580 c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.h
+	"declaration.h"
 
 1680870896 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\cartes_actions.c
 
-1680870712 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\detection_skyjo.c
+1680979786 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\detection_skyjo.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"declaration.h"
+	"affichage.h"
 
-1680974323 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.c
+1680984710 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -22,9 +32,7 @@
 	"initialisation.h"
 	"declaration.h"
 
-1680870760 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\suivi_score.c
-
-1680953928 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\main.c
+1680987519 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\suivi_score.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -32,11 +40,26 @@
 	<conio.h>
 	"affichage.h"
 	"declaration.h"
+	"suivi_score.h"
+
+1680989165 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
 
 1680975824 c:\users\dunca\documents\github\skyjo_action\skyjo_action\declaration.h
 
 1680966852 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
 
-1680974314 c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.h
+1680977010 c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.h
+	"declaration.h"
+
+1680987403 c:\users\dunca\documents\github\skyjo_action\skyjo_action\suivi_score.h
 	"declaration.h"
 

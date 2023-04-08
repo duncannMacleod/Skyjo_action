@@ -18,7 +18,7 @@ struct joueur
                 int deck_nombre_cache [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //0 si carte caché, 1 si carte visible
                 int deck_action[CARTE_JOUEUR_ACTION_NB]; //prenant de 14 à 22
                 char prenom [DIM_STR]; //nom du joueur
-                char score;
+                int score;
 };
 typedef struct joueur S_joueur
 

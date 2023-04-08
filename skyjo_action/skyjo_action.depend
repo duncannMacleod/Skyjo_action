@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1680958217 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"affichage.h"
+
+1680953884 c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.h
+
+1680870896 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\cartes_actions.c
+
+1680870712 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\detection_skyjo.c
+
+1680876836 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.c
+
+1680870760 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\suivi_score.c
+
+1680953928 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"affichage.h"
+	"declaration.h"
+
+1680953542 c:\users\dunca\documents\github\skyjo_action\skyjo_action\declaration.h
+

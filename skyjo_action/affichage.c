@@ -178,16 +178,85 @@ void afficher_plateau_vide (int nb_j)
         printf(" |                                                                                    |\n");
         printf(" | Défausse des cartes nombres: [  ]                                                  |\n");
         printf(" |                                                                                    |\n");
-        printf(" | Cartes actions:  [           ] [            ] [            ] [            ]        |\n");
+        printf(" | Cartes actions:[              ] [              ] [              ] [              ] |\n");
         printf(" |                                                                                    |\n");
-        printf(" | Défausse des cartes actions: [            ]                                        |\n");
+        printf(" | Défausse des cartes actions: [              ]                                      |\n");
         printf(" |                                                                                    |\n");
         printf(" ______________________________________________________________________________________\n");
 
 
 }
 
-void afficher_actualiser_joueur (int nb_j, S_joueur jr) //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
+
+void afficher_plateau_des_autres(int nb_j)
+{
+    system("cls");
+        printf(" ________         Skyjo Action     ___________     Créé par les Boudet          _______\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        if(nb_j==2)
+        {
+            printf(" |                                                                                    |\n");
+            printf(" |        Jeu de:                                                                     |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+        }
+        if(nb_j==3)
+        {
+            printf(" |                                                                                    |\n");
+            printf(" |        Jeu de:                         Jeu de:                                     |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |                                                                                    |\n");
+        }
+        if(nb_j==4)
+        {
+            printf(" |                                                                                    |\n");
+            printf(" |        Jeu de:                         Jeu de:                                     |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |        Jeu de:                                                                     |\n");
+            printf(" |                                                                                    |\n");
+            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+            printf(" |                                                                                    |\n");
+
+        }
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" ______________________________________________________________________________________\n");
+
+}
+
+
+
+
+
+
+void afficher_actualiser_joueur (int no_j, S_joueur jr) //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
 {
 
 
@@ -195,7 +264,7 @@ void afficher_actualiser_joueur (int nb_j, S_joueur jr) //actualise les cartes d
 	int j;
 
 	Positionner_Curseur(12,3);
-	printf(" Joueur %d",nb_j+1);
+	printf(" Joueur %d",no_j+1);
 
 	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
         {
@@ -235,4 +304,57 @@ void afficher_actualiser_defausse_nombre (S_pioche p,int a2)
         printf("[%-2.2d]",p.nombre_defausse[a2]);
 }
 
-void afficher_actualiser_ (S_pioche p,int a2)
+void afficher_actualiser_pioche_action (S_pioche p)
+{
+    for(int i=0;i<CARTE_PIOCHE_ACTION_FACE_VISIBLE;i++)
+    {
+        Positionner_Curseur(19+17*i,16);
+        if(p.action_visible[i]==14)
+            printf("Force à Jeter");
+        if(p.action_visible[i]==15)
+            printf("Bouge tes C");
+        if(p.action_visible[i]==16)
+            printf("2 Tours supp");
+        if(p.action_visible[i]==17)
+            printf("Pioche 3 C.");
+        if(p.action_visible[i]==18)
+            printf("Look 1 L ou C");
+        if(p.action_visible[i]==19)
+            printf("Def + 1 tour");
+        if(p.action_visible[i]==20)
+            printf("Rejoue la C.AC");
+        if(p.action_visible[i]==21)
+            printf("Vole C.ACT");
+        if(p.action_visible[i]==22)
+            printf("Echange de C.");
+    }
+}
+
+
+void afficher_actualiser_defausse_action (S_pioche p,int b2)
+{
+    Positionner_Curseur(33,18);
+    if (p.action_defausse[b2]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
+    {
+        Positionner_Curseur(32,18);
+        printf("                ");
+    }
+    else if(p.action_defausse[b2]==14)
+        printf("Force à Jeter");
+    else if(p.action_defausse[b2]==15)
+        printf("Bouge tes C");
+    else if(p.action_defausse[b2]==16)
+        printf("2 Tours supp");
+    else if(p.action_defausse[b2]==17)
+        printf("Pioche 3 C.");
+    else if(p.action_defausse[b2]==18)
+        printf("Look 1 L ou C");
+    else if(p.action_defausse[b2]==19)
+        printf("Def + 1 tour");
+    else if(p.action_defausse[b2]==20)
+        printf("Rejoue la C.AC");
+    else if(p.action_defausse[b2]==21)
+        printf("Vole C.ACT");
+    else if(p.action_defausse[b2]==22)
+        printf("Echange de C.");
+}

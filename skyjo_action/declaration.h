@@ -33,6 +33,7 @@ struct pioche
 
                 int action[CARTE_PIOCHE_ACTION_NB]; //tableau de la pioche des actions à remplir et à "mélanger"
                 int action_visible[CARTE_PIOCHE_ACTION_FACE_VISIBLE]; //les 4 cartes acrtions présentées
+                int action_defausse[CARTE_PIOCHE_ACTION_NB];
 
 
 

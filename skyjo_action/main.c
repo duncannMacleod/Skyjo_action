@@ -30,11 +30,16 @@ int main()
     S_joueur jr[nb_joueurs];
     S_pioche p;
     afficher_plateau_vide(nb_joueurs);
-    //initialisation_defausse_nombre(&p);
-    //afficher_actualiser_defausse_nombre(p,a2);
+
+    Positionner_Curseur(0,25);
 
     system("PAUSE");
 
+    afficher_plateau_des_autres(nb_joueurs);
+
+    Positionner_Curseur(0,25);
+
+    system("PAUSE");
 
 
 

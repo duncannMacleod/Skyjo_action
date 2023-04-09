@@ -3,19 +3,19 @@
  |                                                                                    |
  |  Tour de:                                                                          |
  |                                                                                    |
- |                                                    Score: 1er-                     |
- |       Votre Jeu:                                          2nd-                     |
+ |                                                  Score: 1er-                       |
+ |       Votre Jeu:                                        2nd-                       |
+ |                                                         3me-                       |
+ |          [  ] [  ] [  ] [  ]                            4me-                       |
+ |          [  ] [  ] [  ] [  ]                                                       |
+ |          [  ] [  ] [  ] [  ]                                                       |
  |                                                                                    |
- |          [  ] [  ] [  ] [  ]                                                       |
- |          [  ] [  ] [  ] [  ]                                                       |
- |          [  ] [  ] [  ] [  ]                                                       |
- |          [  ] [  ] [  ] [  ]                                                       |
  |                                                                                    |
  |                                                                                    |
  | Défausse des cartes nombres: [  ]                                                  |
  |                                                                                    |
- | Cartes actions:  [           ] [            ] [            ] [            ]        |
+ | Cartes actions:[              ] [              ] [              ] [              ] |
  |                                                                                    |
- | Défausse des cartes actions: [            ]                                        |
+ | Défausse des cartes actions: [              ]                                      |
  |                                                                                    |
  ______________________________________________________________________________________

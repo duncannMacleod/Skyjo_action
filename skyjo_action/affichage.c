@@ -221,10 +221,18 @@ void afficher_actualiser_score (int nb_j, S_joueur jr[])
     for (int i=0;i<nb_j;i++)
     {
         Positionner_Curseur(64,5+i);
-        printf("%.10s à %-3dpts","mathieutajgqsyrefhdfgdfgfggdfggbtrghrt",12);
+        printf("%.10s à %-3dpts",jr[i].prenom,jr[i].score);
 
     }
-//jr[i].prenom
-//jr[i].score
 }
 
+void afficher_actualiser_defausse_nombre (S_pioche p,int a2)
+{
+    Positionner_Curseur(32,14);
+    if (p.nombre_defausse[a2]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
+        printf("    ");
+    else
+        printf("[%-2.2d]",p.nombre_defausse[a2]);
+}
+
+void afficher_actualiser_ (S_pioche p,int a2)

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1680989068 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.c
+1681030594 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -9,7 +9,7 @@
 	"declaration.h"
 	"suivi_score.h"
 
-1680987580 c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.h
+1681030565 c:\users\dunca\documents\github\skyjo_action\skyjo_action\affichage.h
 	"declaration.h"
 
 1680870896 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\cartes_actions.c
@@ -23,7 +23,7 @@
 	"declaration.h"
 	"affichage.h"
 
-1680984710 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.c
+1681032651 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -42,7 +42,7 @@
 	"declaration.h"
 	"suivi_score.h"
 
-1680989165 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\main.c
+1681030978 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -52,12 +52,13 @@
 	"affichage.h"
 	"declaration.h"
 	"suivi_score.h"
+	"initialisation.h"
 
-1680975824 c:\users\dunca\documents\github\skyjo_action\skyjo_action\declaration.h
+1681027109 c:\users\dunca\documents\github\skyjo_action\skyjo_action\declaration.h
 
 1680966852 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
 
-1680977010 c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.h
+1681030464 c:\users\dunca\documents\github\skyjo_action\skyjo_action\initialisation.h
 	"declaration.h"
 
 1680987403 c:\users\dunca\documents\github\skyjo_action\skyjo_action\suivi_score.h

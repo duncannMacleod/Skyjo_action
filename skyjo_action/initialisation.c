@@ -7,7 +7,7 @@
 #include "initialisation.h"
 #include "declaration.h"
 
-void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p)
+void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p,int *a)
 {
     //on va commencer par demander les prénoms des joueurs
     for(int i=0;i<nb_j;i++)
@@ -19,7 +19,7 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p)
 
     int n;
     int i,j;
-    int a=129; //depart de la dernière case du tab des S_cartes nombre
+
 
     for(n=0; n<nb_j; n++)
     {
@@ -28,8 +28,8 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p)
         {
             for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
             {
-                jr[n].deck_nombre[i][j]=p.nombre[a];
-                a--;
+                jr[n].deck_nombre[i][j]=p.nombre[*a];
+                (*a)--;
             }
 
         }
@@ -63,4 +63,25 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p)
         //initialisation du score
         jr[n].score=0;
     }
+}
+
+
+
+
+
+
+
+void initialisation_pioche_carte_action(int *b, S_pioche *p)
+{
+    for(int i=0; i<3;i++)
+    {
+        p->action_visible[i]=p->action[*b];
+        (*b)--;
+    }
+}
+
+
+void initialisation_defausse_nombre(S_pioche *p)
+{
+    p->nombre_defausse[0]=30;//initilise juste la première carte de la défausse, pour ne pas faire bugger l'affichage
 }

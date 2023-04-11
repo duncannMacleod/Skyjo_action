@@ -21,14 +21,15 @@ int main()
     nb_joueurs= afficher_menu_bienvenue();
     if (nb_joueurs==0)
         return 0;
-    int a=129; //depart de la dernière case du tab des pioche.nombre
-    int a2=0;  //depart de la première case du tab des pioche.nombre_defausse
-    int b=26;  //depar à la dernière case du tab de pioche.action
-    int b2=0;  //depart à la première case du tab de pioche.action_def
 
 
     S_joueur jr[nb_joueurs];
     S_pioche p;
+
+    p.nombre_nb=130;
+    p.action_nb=27;
+
+
     afficher_plateau_vide(nb_joueurs);
 
     Positionner_Curseur(0,25);

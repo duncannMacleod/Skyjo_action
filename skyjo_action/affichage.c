@@ -286,8 +286,9 @@ void afficher_actualiser_joueur (int no_j, S_joueur jr) //actualise les cartes d
 }
 void afficher_actualiser_score (int nb_j, S_joueur jr[])
 {
+    int i;
     tri_score(nb_j,jr);
-    for (int i=0;i<nb_j;i++)
+    for (i=0;i<nb_j;i++)
     {
         Positionner_Curseur(64,5+i);
         printf("%.10s à %-3dpts",jr[i].prenom,jr[i].score);
@@ -306,7 +307,8 @@ void afficher_actualiser_defausse_nombre (S_pioche p,int a2)
 
 void afficher_actualiser_pioche_action (S_pioche p)
 {
-    for(int i=0;i<CARTE_PIOCHE_ACTION_FACE_VISIBLE;i++)
+    int i;
+    for(i=0;i<CARTE_PIOCHE_ACTION_FACE_VISIBLE;i++)
     {
         Positionner_Curseur(19+17*i,16);
         if(p.action_visible[i]==14)

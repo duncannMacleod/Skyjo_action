@@ -7,18 +7,21 @@
 #include "initialisation.h"
 #include "declaration.h"
 
-void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p,int *a)
+void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int *a)
 {
+    int n;
+    int i,j;
+
+
     //on va commencer par demander les prénoms des joueurs
-    for(int i=0;i<nb_j;i++)
+    for(i=0;i<nb_j;i++)
     {
         printf("entrez le prénom du joueur %d:",nb_j-1);
         scanf("%s",jr[i].prenom);
     }
 
 
-    int n;
-    int i,j;
+
 
 
     for(n=0; n<nb_j; n++)
@@ -28,8 +31,8 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p,int *a)
         {
             for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
             {
-                jr[n].deck_nombre[i][j]=p.nombre[*a];
-                (*a)--;
+                jr[n].deck_nombre[i][j]=p->nombre[p->nombre_nb-1];
+                p->nombre_nb--;
             }
 
         }
@@ -71,12 +74,13 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche p,int *a)
 
 
 
-void initialisation_pioche_carte_action(int *b, S_pioche *p)
+void initialisation_pioche_carte_action( S_pioche *p)
 {
-    for(int i=0; i<3;i++)
+    int i;
+    for(i=0; i<3;i++)
     {
-        p->action_visible[i]=p->action[*b];
-        (*b)--;
+        p->action_visible[i]=p->action[(p->action_nb)-1];
+        p->action_nb--;
     }
 }
 

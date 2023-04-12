@@ -1,24 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <windows.h>
 #include <string.h>
 #include <conio.h>
 
 #include "initialisation.h"
 #include "declaration.h"
+#include "affichage.h"
 
-void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int *a)
+void initialisation_generale (S_joueur jr[], S_pioche *p, int nb_j,int x,int y)
+{
+    initalisation_nb_cartes(p);
+
+    //initialisation_carte_nombre(p);
+    //initialisation_carte_action(p);
+    initialisation_pioche_carte_action(p);
+    initialisation_defausse_action(p);
+    initialisation_defausse_nombre(p);
+
+    creation_profil_joueur(nb_j,jr,p,x,y);
+
+
+
+}
+
+
+
+
+void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
 {
     int n;
     int i,j;
 
 
+
     //on va commencer par demander les prénoms des joueurs
-    for(i=0;i<nb_j;i++)
+    for(i=0; i<nb_j; i++)
     {
-        printf("entrez le prénom du joueur %d:",nb_j-1);
-        scanf("%s",jr[i].prenom);
+        Positionner_Curseur(x,y+i);
+        printf("Veuillez entrez le prénom du joueur %d (max 10 caractères):",i+1); //conversationnel
+        do{
+            gets(jr[i].prenom); //l'utilisateur entre som prémon
+        } while (strlen(jr[i].prenom)>10);
+
+        jr[i].joueur_no=i+1; //le numéro du joueur prend la valeur de i+1 ex Joueur(1)->i=0+1
+
     }
+    Positionner_Curseur(x,y+nb_j);
 
 
 
@@ -31,8 +60,9 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int *a)
         {
             for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
             {
-                jr[n].deck_nombre[i][j]=p->nombre[p->nombre_nb-1];
-                p->nombre_nb--;
+                jr[n].deck_nombre[i][j]=p->nombre[p->nombre_nb-1];  //prend une carte du paquet et la place dans le jeu du joueur
+                p->nombre[p->nombre_nb-1]=30;                        //par sécurité, l'emplacement ou la carte a été prise récrécrit pour insinuer  "pas de carte"
+                p->nombre_nb--;                                     //enlève 1 au nombre de cartes.
             }
 
         }
@@ -70,14 +100,18 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int *a)
 
 
 
-
+void initalisation_nb_cartes(S_pioche *p) //initialise le nombre de cartes dans les paquets
+{
+    p->nombre_nb=130;
+    p->action_nb=27;
+}
 
 
 
 void initialisation_pioche_carte_action( S_pioche *p)
 {
     int i;
-    for(i=0; i<3;i++)
+    for(i=0; i<3; i++)
     {
         p->action_visible[i]=p->action[(p->action_nb)-1];
         p->action_nb--;
@@ -88,4 +122,9 @@ void initialisation_pioche_carte_action( S_pioche *p)
 void initialisation_defausse_nombre(S_pioche *p)
 {
     p->nombre_defausse[0]=30;//initilise juste la première carte de la défausse, pour ne pas faire bugger l'affichage
+}
+void initialisation_defausse_action(S_pioche *p)
+{
+
+    p->action_defausse[0]=30;//initilise juste la première carte de la défausse, pour ne pas faire bugger l'affichage
 }

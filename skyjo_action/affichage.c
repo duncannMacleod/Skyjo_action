@@ -8,6 +8,13 @@
 #include "declaration.h"
 #include "suivi_score.h"
 
+void plein_ecran()
+{
+    keybd_event(VK_MENU,0x38,0,0); //Appuie sur ALT
+    keybd_event(VK_RETURN,0x1c,0,0); //Appuie ENTREE
+    keybd_event(VK_RETURN,0x1c,KEYEVENTF_KEYUP,0); // Relache ENTREE
+    keybd_event(VK_MENU,0x38,KEYEVENTF_KEYUP,0); //Relache ALT
+}
 
 void color (int couleurDuTexte, int couleurDuFond)
 {
@@ -134,6 +141,39 @@ int afficher_menu_bienvenue ()
 
     return 0;
 }
+
+void afficher_boite_dialogue()
+{
+        Positionner_Curseur(0,21);
+        printf(" ___________________________      Boite de dialogue     _______________________________\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" ______________________________________________________________________________________\n");
+        Positionner_Curseur(3,23);
+
+}
+
+
+
+
+
+
 void afficher_plateau_vide (int nb_j)
 {
         system("cls");
@@ -256,7 +296,7 @@ void afficher_plateau_des_autres(int nb_j)
 
 
 
-void afficher_actualiser_joueur (int no_j, S_joueur jr) //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
+void afficher_actualiser_joueur (S_joueur jr) //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
 {
 
 
@@ -264,7 +304,7 @@ void afficher_actualiser_joueur (int no_j, S_joueur jr) //actualise les cartes d
 	int j;
 
 	Positionner_Curseur(12,3);
-	printf(" Joueur %d",no_j+1);
+	printf("%s",jr.prenom); //affiche le prénom du joueur
 
 	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
         {
@@ -291,7 +331,8 @@ void afficher_actualiser_score (int nb_j, S_joueur jr[])
     for (i=0;i<nb_j;i++)
     {
         Positionner_Curseur(64,5+i);
-        printf("%.10s à %-3dpts",jr[i].prenom,jr[i].score);
+        puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
+        printf("%avec %-3dpts",jr[i].score); //affiche le score
 
     }
 }

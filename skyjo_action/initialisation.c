@@ -18,6 +18,7 @@ void initialisation_generale (S_joueur jr[], S_pioche *p, int nb_j,int x,int y)
     initialisation_pioche_carte_action(p);
     initialisation_defausse_action(p);
     initialisation_defausse_nombre(p);
+    initialisation_score(nb_j,jr);
 
     creation_profil_joueur(nb_j,jr,p,x,y);
 
@@ -38,9 +39,14 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
     //on va commencer par demander les prénoms des joueurs
     for(i=0; i<nb_j; i++)
     {
-        Positionner_Curseur(x,y+i);
-        printf("Veuillez entrez le prénom du joueur %d (max 10 caractères):",i+1); //conversationnel
+
+
         do{
+
+            Positionner_Curseur(x,y+i);
+            printf("                                                                          ");
+            Positionner_Curseur(x,y+i);
+            printf("Veuillez entrez le prénom du joueur %d (max 10 caractères):",i+1); //conversationnel
             gets(jr[i].prenom); //l'utilisateur entre som prémon
         } while (strlen(jr[i].prenom)>10);
 
@@ -127,4 +133,11 @@ void initialisation_defausse_action(S_pioche *p)
 {
 
     p->action_defausse[0]=30;//initilise juste la première carte de la défausse, pour ne pas faire bugger l'affichage
+}
+
+void initialisation_score(int nb_j,S_joueur jr[])
+{
+    int i;
+    for(i=0;i<nb_j;i++)
+        jr[i].score=5;
 }

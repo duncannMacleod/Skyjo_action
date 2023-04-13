@@ -230,6 +230,7 @@ void afficher_plateau_vide (int nb_j)
 
 void afficher_plateau_des_autres(int nb_j)
 {
+    Positionner_Curseur(0,0);
     system("cls");
         printf(" ________         Skyjo Action     ___________     Créé par les Boudet          _______\n");
         printf(" |                                                                                    |\n");
@@ -296,21 +297,21 @@ void afficher_plateau_des_autres(int nb_j)
 
 
 
-void afficher_actualiser_joueur (S_joueur jr) //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
+void afficher_actualiser_joueur (S_joueur jr,int x,int y) //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
 {
 
 
 	int i;
 	int j;
 
-	Positionner_Curseur(12,3);
+	Positionner_Curseur(x,y);
 	printf("%s",jr.prenom); //affiche le prénom du joueur
 
 	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
         {
             for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
             {
-                Positionner_Curseur(12+j*5,9+i-1);
+                Positionner_Curseur(x+j*5,y+i+5);
 				if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
                     printf("[%-2d] ",jr.deck_nombre[i][j]);
                 else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
@@ -327,23 +328,24 @@ void afficher_actualiser_joueur (S_joueur jr) //actualise les cartes du joueur, 
 void afficher_actualiser_score (int nb_j, S_joueur jr[])
 {
     int i;
-    tri_score(nb_j,jr);
+    //tri_score(nb_j,jr);
     for (i=0;i<nb_j;i++)
     {
         Positionner_Curseur(64,5+i);
         puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
-        printf("%avec %-3dpts",jr[i].score); //affiche le score
+        Positionner_Curseur(65+strlen(jr[i].prenom),5+i);
+        printf("avec %d pts",jr[i].score); //affiche le score
 
     }
 }
 
-void afficher_actualiser_defausse_nombre (S_pioche p,int a2)
+void afficher_actualiser_defausse_nombre (S_pioche p)
 {
     Positionner_Curseur(32,14);
-    if (p.nombre_defausse[a2]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
+    if (p.nombre_defausse[CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
         printf("    ");
     else
-        printf("[%-2.2d]",p.nombre_defausse[a2]);
+        printf("[%-2.2d]",p.nombre_defausse[CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la dernière carte nombre dans la pioche
 }
 
 void afficher_actualiser_pioche_action (S_pioche p)
@@ -374,30 +376,42 @@ void afficher_actualiser_pioche_action (S_pioche p)
 }
 
 
-void afficher_actualiser_defausse_action (S_pioche p,int b2)
+void afficher_actualiser_defausse_action (S_pioche p)
 {
     Positionner_Curseur(33,18);
-    if (p.action_defausse[b2]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
+    if (p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
     {
         Positionner_Curseur(32,18);
-        printf("                ");
+        printf("                ");//n'imprime rien
     }
-    else if(p.action_defausse[b2]==14)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==14) //CARTE_PIOCHE_ACTION_NB-p.action_nb définit le rang de la dernière carte jouée
         printf("Force à Jeter");
-    else if(p.action_defausse[b2]==15)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==15)
         printf("Bouge tes C");
-    else if(p.action_defausse[b2]==16)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==16)
         printf("2 Tours supp");
-    else if(p.action_defausse[b2]==17)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==17)
         printf("Pioche 3 C.");
-    else if(p.action_defausse[b2]==18)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==18)
         printf("Look 1 L ou C");
-    else if(p.action_defausse[b2]==19)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==19)
         printf("Def + 1 tour");
-    else if(p.action_defausse[b2]==20)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==20)
         printf("Rejoue la C.AC");
-    else if(p.action_defausse[b2]==21)
-        printf("Vole C.ACT");
-    else if(p.action_defausse[b2]==22)
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==21)
+        printf("Vole C.AC");
+    else if(p.action_defausse[CARTE_PIOCHE_ACTION_NB-p.action_nb]==22)
         printf("Echange de C.");
 }
+
+
+
+
+void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_j)
+{
+    afficher_plateau_des_autres(nb_j);
+}
+
+
+
+

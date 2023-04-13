@@ -305,7 +305,7 @@ void afficher_actualiser_joueur (S_joueur jr,int x,int y) //actualise les cartes
 	int j;
 
 	Positionner_Curseur(x,y);
-	printf("%s",jr.prenom); //affiche le prénom du joueur
+	puts(jr.prenom); //affiche le prénom du joueur
 
 	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
         {
@@ -335,6 +335,7 @@ void afficher_actualiser_score (int nb_j, S_joueur jr[])
         puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
         Positionner_Curseur(65+strlen(jr[i].prenom),5+i);
         printf("avec %d pts",jr[i].score); //affiche le score
+
 
     }
 }

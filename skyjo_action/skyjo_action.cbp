@@ -40,6 +40,10 @@
 		</Unit>
 		<Unit filename="cartes_actions.h" />
 		<Unit filename="declaration.h" />
+		<Unit filename="deplacements_cartes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="deplacements_cartes.h" />
 		<Unit filename="deroulement_tour.c">
 			<Option compilerVar="CC" />
 		</Unit>

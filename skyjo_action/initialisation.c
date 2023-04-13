@@ -23,7 +23,6 @@ void initialisation_generale (S_joueur jr[], S_pioche *p, int nb_j,int x,int y)
     creation_profil_joueur(nb_j,jr,p,x,y);
 
 
-
 }
 
 
@@ -99,8 +98,6 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
 
         jr[n].deck_nombre_cache[rd_l2][rd_c2]=1; //on retourne la seconde carte
 
-        //initialisation du score
-        jr[n].score=0;
     }
 }
 
@@ -139,5 +136,6 @@ void initialisation_score(int nb_j,S_joueur jr[])
 {
     int i;
     for(i=0;i<nb_j;i++)
-        jr[i].score=5;
+       jr[i].score=5;
+    jr[1].score=8;
 }

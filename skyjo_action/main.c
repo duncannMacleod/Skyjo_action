@@ -18,7 +18,7 @@ int main()
 {
     srand(time(NULL));
     SetConsoleOutputCP(1252); //permet d'afficher les accents
-    //plein_ecran();
+    plein_ecran();
     int nb_joueurs,i;
     nb_joueurs= afficher_menu_bienvenue();
     if (nb_joueurs==0)

@@ -9,6 +9,7 @@
 #include "deroulement_tour.h"
 #include "declaration.h"
 #include "affichage.h"
+#include "deplacements_cartes.h"
 
 void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
 {
@@ -21,7 +22,7 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
     do
     {
         afficher_plateau_vide(nb_jr);
-        afficher_actualiser_joueur(jr[no_jr],12,3); //affiche le prenom du joueur, et ces cartes.
+        afficher_actualiser_joueur(jr[no_jr-1],12,3); //affiche le prenom du joueur, et ces cartes.
         afficher_boite_dialogue();  //permet de réinitiliser la boite de dialogue, enlevant les anciens messages
         afficher_actualiser_score(nb_jr,jr);
         afficher_actualiser_defausse_action(*p);
@@ -53,8 +54,7 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
 
         case 'N':
             if (action==0)
-                //piocher_carte_nombre();
-                printf("pas encore codé");
+                piocher_carte_nombre(jr,no_jr,nb_jr,*p,3,23);
             else if (action>0)
                 printf("vous avez déja joué");
             cpt++;
@@ -113,19 +113,109 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
 void regarder_jeu_des_autres(S_joueur jr[],int no_jr,int nb_jr, int x,int y)
 {
 
-    int cpt=0,c;
+    int cpt,c;
     char rep;
     afficher_actualiser_jeu_des_autres(jr,no_jr,nb_jr);
-    afficher_boite_dialogue();
-    Positionner_Curseur(x,y);
-    printf("Voici le jeu des autres joureurs, pour revenir, entrez R."); cpt++;
-    Positionner_Curseur(x,y+cpt);
-    do{
+
+    do
+    {
+        cpt=0;
+        afficher_boite_dialogue();
+        Positionner_Curseur(x,y);
+        printf("Voici le jeu des autres joureurs, pour revenir, entrez R.");
+        cpt++;
+        Positionner_Curseur(x,y+cpt);
         printf("Réponse:");
         scanf("%c",&rep);
         while ((c = getchar()) != '\n' && c != EOF);
         toupper(rep);
-    }while(rep!='R');
+    }
+    while(rep!='R');
 
+
+}
+void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
+{
+    char choix,c;
+    do
+    {
+
+        int cpt=0;
+
+        afficher_boite_dialogue();
+        printf("Piocher une carte nombre: ");
+        cpt+=2;Positionner_Curseur(x,y+cpt);
+        printf("Piocher une carte de la pioche P ou piocher une carte de la défausse D");
+        cpt+=2;Positionner_Curseur(x,y+cpt);
+        printf("Réponse:");
+        scanf("%c",&choix);
+        while ((c = getchar()) != '\n' && c != EOF);
+        Positionner_Curseur(x,y+cpt);
+        switch(toupper(choix))
+        {
+        case 'P'://piocher une carte de la pioche (cachée)
+            // void recup_carte_nombre_pioche
+            choix=1;
+            break;
+
+
+        case 'D'://piocher une carte de la défausse (visible)
+            // void recup_carte_nombre_défausse
+            choix=1;
+            break;
+        default:
+            choix=0;
+            cpt++; Positionner_Curseur(x,y+cpt);
+            printf("choix incorrect, veuillez recommencer");
+            cpt++; Positionner_Curseur(x,y+cpt);
+            system("pause");
+            break;
+        }
+
+    }
+    while (choix==0);
+
+}
+
+void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
+{
+    char choix,c;
+    do
+    {
+
+        int cpt=0;
+
+        afficher_boite_dialogue();
+        printf("Piocher une carte action: ");
+        cpt+=2;Positionner_Curseur(x,y+cpt);
+        printf("Piocher une carte des 4 présentés P. ou piocher une carte de la défausse D.");
+        cpt+=2;Positionner_Curseur(x,y+cpt);
+        printf("Réponse:");
+        scanf("%c",&choix);
+        while ((c = getchar()) != '\n' && c != EOF);
+        Positionner_Curseur(x,y+cpt);
+        switch(toupper(choix))
+        {
+        case 'P'://piocher une carte parmis les 4 présentés
+            // int recup_carte_defausse
+            choix=1;
+            break;
+
+
+        case 'D'://piocher une carte de la défausse
+            // int recup_carte_defausse
+            choix=1;
+            break;
+        default:
+            choix=0;
+            cpt++; Positionner_Curseur(x,y+cpt);
+            printf("choix incorrect, veuillez recommencer");
+            cpt++; Positionner_Curseur(x,y+cpt);
+            system("pause");
+            break;
+        }
+
+    }
+    while (choix==0);
 
 }

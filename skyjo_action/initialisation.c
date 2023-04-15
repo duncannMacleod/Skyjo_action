@@ -33,8 +33,6 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
     int n;
     int i,j;
 
-
-
     //on va commencer par demander les prénoms des joueurs
     for(i=0; i<nb_j; i++)
     {
@@ -52,10 +50,6 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
         jr[i].joueur_no=i+1; //le numéro du joueur prend la valeur de i+1 ex Joueur(1)->i=0+1
 
     }
-    Positionner_Curseur(x,y+nb_j);
-
-
-
 
 
     for(n=0; n<nb_j; n++)
@@ -136,6 +130,5 @@ void initialisation_score(int nb_j,S_joueur jr[])
 {
     int i;
     for(i=0;i<nb_j;i++)
-       jr[i].score=5;
-    jr[1].score=8;
+       jr[i].score=0;
 }

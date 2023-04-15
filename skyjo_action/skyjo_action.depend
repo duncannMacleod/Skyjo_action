@@ -146,3 +146,88 @@
 
 1681392538 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
 
+1681574664 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+
+1681574841 c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.h
+	"declaration.h"
+
+1681546062 c:\users\duncan\documents\github\skyjo_action\skyjo_action\declaration.h
+
+1681546062 c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.h
+	"declaration.h"
+
+1681546062 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\cartes_actions.c
+
+1681546062 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
+
+1681574702 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"deroulement_tour.h"
+	"declaration.h"
+	"affichage.h"
+	"deplacements_cartes.h"
+
+1681546062 c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.h
+	"declaration.h"
+
+1681546062 c:\users\duncan\documents\github\skyjo_action\skyjo_action\deplacements_cartes.h
+
+1681546062 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\detection_skyjo.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"declaration.h"
+	"affichage.h"
+
+1681574614 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"initialisation.h"
+	"declaration.h"
+	"affichage.h"
+
+1681546062 c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.h
+	"declaration.h"
+
+1681546062 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+	"initialisation.h"
+	"deroulement_tour.h"
+
+1681546062 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+

@@ -11,7 +11,9 @@ void afficher_plateau_des_autres(int nb_j);        //pour savoir quelles sont le
 void afficher_actualiser_joueur (S_joueur jr,int x,int y);        //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
 void afficher_actualiser_score (int nb_j, S_joueur jr[]);       //à acctualiser quand le score change ou que tour change
 void afficher_actualiser_pioche_action (S_pioche p);
-void afficher_actualiser_jeu_des_autres(S_joueur jr[], int no_observateur,int nb_jr);
+void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_j);
+
+
 
 
 void afficher_actualiser_defausse_action (S_pioche p);

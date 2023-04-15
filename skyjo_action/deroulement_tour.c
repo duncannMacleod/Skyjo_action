@@ -112,25 +112,12 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
 
 void regarder_jeu_des_autres(S_joueur jr[],int no_jr,int nb_jr, int x,int y)
 {
-
-    int cpt,c;
-    char rep;
     afficher_actualiser_jeu_des_autres(jr,no_jr,nb_jr);
-
-    do
-    {
-        cpt=0;
-        afficher_boite_dialogue();
-        Positionner_Curseur(x,y);
-        printf("Voici le jeu des autres joureurs, pour revenir, entrez R.");
-        cpt++;
-        Positionner_Curseur(x,y+cpt);
-        printf("Réponse:");
-        scanf("%c",&rep);
-        while ((c = getchar()) != '\n' && c != EOF);
-        toupper(rep);
-    }
-    while(rep!='R');
+    afficher_boite_dialogue();
+    Positionner_Curseur(x,y);
+    printf("Voici le jeu des autres joureurs");
+    Positionner_Curseur(x,y+2);
+    system("pause");
 
 
 }
@@ -177,7 +164,7 @@ void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x,
 
 }
 
-void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
+void piocher_carte_action(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
 {
     char choix,c;
     do

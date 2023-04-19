@@ -14,7 +14,7 @@
 
 struct joueur
 {
-                int joueur_no;
+                int joueur_no; //numéro du joueur (de 1 à 4), facilitant la récupération d'information.
 
                 int deck_nombre [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //prenant de -2 à 13 + pas de carte->30
                 int deck_nombre_cache [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //0 si carte caché, 1 si carte visible

@@ -99,7 +99,7 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
 
 void initalisation_nb_cartes(S_pioche *p) //initialise le nombre de cartes dans les paquets
 {
-    p->nombre_nb=130;
+    p->nombre_nb=120;
     p->action_nb=27;
 }
 

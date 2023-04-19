@@ -141,7 +141,7 @@ void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x,
         switch(toupper(choix))
         {
         case 'P'://piocher une carte de la pioche (cachée)
-            // void recup_carte_nombre_pioche
+            recup_carte_nombre_pioche(&jr[no_jr-1],p,x,y);
             choix=1;
             break;
 

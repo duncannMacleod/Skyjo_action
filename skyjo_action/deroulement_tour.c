@@ -26,7 +26,7 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
         afficher_boite_dialogue();  //permet de réinitiliser la boite de dialogue, enlevant les anciens messages
         afficher_actualiser_score(nb_jr,jr);
         afficher_actualiser_defausse_action(*p);
-        afficher_actualiser_defausse_nombre(*p);
+        afficher_actualiser_defausse_nombre(*p,nb_jr);
         afficher_actualiser_pioche_action(*p);
 
 
@@ -99,7 +99,7 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
         default:
             cpt++;
             choix=0;
-            printf("choix incorrect, veuillez recommencer");
+            printf("choix incorrect, veuillez recommencer 0");
             Positionner_Curseur(x,y+cpt);
             system("pause");
             break;

@@ -21,3 +21,14 @@ void tri_score(int nb_j, S_joueur jr[])
     qsort(jr,nb_j,sizeof(S_joueur),fonct_compare_score);
 }
 
+int test_fin_partie(S_joueur jr[],int nb_jr)
+{
+    int i;
+    for(i=0;i<nb_jr;i++)
+    {
+        if(jr[i].score>=100)
+            return i+1;
+    }
+    return 0;
+}
+

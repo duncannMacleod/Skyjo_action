@@ -13,7 +13,7 @@ void initialisation_generale (S_joueur jr[], S_pioche *p, int nb_j,int x,int y)
 {
     initalisation_nb_cartes(p);
 
-    //initialisation_carte_nombre(p);
+    initialisation_carte_nombre(p);
     //initialisation_carte_action(p);
     initialisation_pioche_carte_action(p);
     initialisation_defausse_action(p);
@@ -25,7 +25,12 @@ void initialisation_generale (S_joueur jr[], S_pioche *p, int nb_j,int x,int y)
 
 }
 
-
+void initialisation_carte_nombre(S_pioche*p)
+{
+    int i;
+    for(i=0;i<p->nombre_nb;i++)
+        p->nombre[i]=5;
+}
 
 
 void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
@@ -100,6 +105,7 @@ void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y)
 void initalisation_nb_cartes(S_pioche *p) //initialise le nombre de cartes dans les paquets
 {
     p->nombre_nb=120;
+    p->nombre_defausse_nb=0;
     p->action_nb=27;
 }
 

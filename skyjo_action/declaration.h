@@ -19,6 +19,7 @@ struct joueur
                 int deck_nombre [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //prenant de -2 à 13 + pas de carte->30
                 int deck_nombre_cache [CARTE_JOUEUR_NOMBRE_L][CARTE_JOUEUR_NOMBRE_C]; //0 si carte caché, 1 si carte visible
                 int deck_action[CARTE_PIOCHE_ACTION_NB]; //le joueur n'a pas de limite de carte action, il peux donc prendre les 27 cartes actions
+                int nb_action; //nombre de carte action dans le jeu du joueur.
                 char prenom [DIM_STR]; //nom du joueur
                 int score; //score du joueur
 };
@@ -30,6 +31,7 @@ struct pioche
                 int nombre[CARTE_PIOCHE_NOMBRE_NB]; //tableau de la pioche des nombres à remplir et à "mélanger"
                 int nombre_nb;
                 int nombre_defausse[CARTE_PIOCHE_NOMBRE_NB]; //prévoir de refaire la pioche nombre quand celle ci est épuisé.
+                int nombre_defausse_nb;
                 int nombre_defausse_dessous[9]; //il ne peut avoir qu'au maximum 9 cartes sous la pioche par manche.
 
 

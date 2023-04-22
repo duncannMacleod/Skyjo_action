@@ -19,7 +19,7 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
 
     int carte_pioche=p->nombre[p->nombre_nb-1]; //la variable carte pioché prend la valeur de la première carte sur le paquet
     p->nombre[p->nombre_nb-1]=30; //supprime la carte du paquet
-    p->action_nb--; //enlève un au nombre de cartes
+    p->nombre_nb--; //enlève un au nombre de cartes
 
     do
     {
@@ -41,11 +41,12 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
             printf("entrez les coordonnées de la nouvelle place pour la carte (ligne  espace colonne), ");
             cpt+=1;Positionner_Curseur(x,y+cpt);
             do{
-                printf("Attention, ligne de 0 à 2 et colonne de 0 à 3:");
+                printf("Attention, ligne de 1 à 3 et colonne de 1 à 4:");
                 scanf("%d %d",&ligne,&colonne);
-            }while(ligne>2||ligne<0||colonne>3||colonne<0);
-
-            p->nombre_defausse[CARTE_PIOCHE_NOMBRE_NB-p->nombre_nb]=jr->deck_nombre[ligne][colonne]; //écrit la valeur de la carte jetée dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
+                ligne--; colonne--;
+            }while(ligne>3||ligne<0||colonne>4||colonne<0);
+            p->nombre_defausse_nb++;
+            p->nombre_defausse[p->nombre_defausse_nb]=jr->deck_nombre[ligne][colonne]; //écrit la valeur de la carte jetée dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
 
 
             carte_pioche=jr->deck_nombre[ligne][colonne];//pose la carte de la pioche dans le jeu
@@ -55,9 +56,10 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
             break;
 
 
-        case 'J'://jete la carte dans la défausse
+        case 'D'://jete la carte dans la défausse
 
-            p->nombre_defausse[(CARTE_PIOCHE_NOMBRE_NB)-(p->nombre_nb)]=carte_pioche; //écrit la valeur de la carte pioché dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
+            p->nombre_defausse_nb++;
+            p->nombre_defausse[p->nombre_defausse_nb]=carte_pioche; //écrit la valeur de la carte pioché dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
             choix=1;
             break;
         default:

@@ -7,9 +7,7 @@
 void initialisation_generale (S_joueur jr[], S_pioche *p, int nb_j,int x,int y); //reprend tout les progammes en séquence
 void initalisation_nb_cartes(S_pioche *p); //initialise le nombre de cartes dans les paquets
 
-
-
-void initialisation_carte_nombre(S_pioche carte);//ici, il n'y a pas "tableau" cartes, carte comme variable est juste suffisant
+void initialisation_carte_nombre(S_pioche *p);//ici, il n'y a pas "tableau" cartes, carte comme variable est juste suffisant
 void initialisation_carte_action(S_pioche carte);
 
 

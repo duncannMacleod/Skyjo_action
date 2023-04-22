@@ -325,6 +325,34 @@ void afficher_actualiser_joueur (S_joueur jr,int x,int y) //actualise les cartes
 
         }
 }
+
+void afficher_actualiser_joueur_vision (S_joueur jr,int x,int y)
+{
+    int i, j;
+
+	Positionner_Curseur(x,y);
+	puts(jr.prenom); //affiche le prénom du joueur
+
+	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
+        {
+            for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
+            {
+                Positionner_Curseur(x+j*5-5,y+i+2);
+				if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
+                    printf("[%-2d] ",jr.deck_nombre[i][j]);
+                else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
+                    printf("[%-2s] ","X");
+                else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
+                    printf("     ");
+
+
+
+            }
+
+        }
+}
+
+
 void afficher_actualiser_score (int nb_j, S_joueur jr[])
 {
     int i;
@@ -340,13 +368,13 @@ void afficher_actualiser_score (int nb_j, S_joueur jr[])
     }
 }
 
-void afficher_actualiser_defausse_nombre (S_pioche p)
+void afficher_actualiser_defausse_nombre (S_pioche p,int nb_jr)
 {
     Positionner_Curseur(32,14);
-    if (p.nombre_defausse[CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
+    if (p.nombre_defausse[p.nombre_defausse_nb]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
         printf("    ");
     else
-        printf("[%-2.2d]",p.nombre_defausse[CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la dernière carte nombre dans la pioche
+        printf("[%-2.2d]",p.nombre_defausse[12*nb_jr-p.nombre_nb]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la dernière carte nombre dans la pioche
 }
 
 void afficher_actualiser_pioche_action (S_pioche p)
@@ -410,7 +438,23 @@ void afficher_actualiser_defausse_action (S_pioche p)
 
 void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_j)
 {
+    int i,cpt=0;
     afficher_plateau_des_autres(nb_j);
+
+    for(i=0;i<nb_j;i++)
+    {
+        if(i!=no_observateur-1)
+        {
+            cpt++;
+            if(cpt==1)
+                afficher_actualiser_joueur_vision (jr[i],17,6);
+            if(cpt==2)
+                afficher_actualiser_joueur_vision (jr[i],49,6);
+            if(cpt==3)
+                afficher_actualiser_joueur_vision (jr[i],17,12);
+
+        }
+    }
 }
 
 

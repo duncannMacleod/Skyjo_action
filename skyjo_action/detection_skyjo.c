@@ -5,50 +5,43 @@
 #include <conio.h>
 
 
-#include "declaration.h"
 #include "affichage.h"
+#include "declaration.h"
+#include "suivi_score.h"
+#include "initialisation.h"
+#include "deroulement_tour.h"
+#include "detection_skyjo.h"
 
 
-int choix_skyjo (int x, int y) //si le joueur fait un skyjo sur son jeu, il peut chosir quoi faire
+void detection_skyjo (int nb_jr, S_joueur jr[])
 {
-    char choix;
-    int cpt,c;
 
-    do
+
+    int i,k;
+
+
+    for(i=0;i<nb_jr;i++)
     {
-        cpt=0;
-        Positionner_Curseur(x,y);
-        printf("Bonne nouvelle! Vous venez de faire un Skyjo! Que voulez vous faire ?");
-        cpt++; Positionner_Curseur(x,y+cpt);
-        printf(" Supprimer les cartes S, Garder les cartes G");
-        cpt++; Positionner_Curseur(x,y+cpt);
-
-        printf("Réponse:");
-        scanf("%c",&choix);
-        while ((c = getchar()) != '\n' && c != EOF);
-        switch(toupper(choix))
+        for(k=0;k<3;k++)
         {
-        case 'G':
-            return 0;
-            break;
-
-
-        case 'S':
-            return 1;
-            break;
-
-        default:
-            printf("choix incorrect, veuillez recommencer");
-            system("PAUSE");
-                choix=0;
-                break;
-
+            if((jr[i].deck_nombre[k][0])==(jr[i].deck_nombre[k][1])&&(jr[i].deck_nombre[k][1])==(jr[i].deck_nombre[k][2])&&(jr[i].deck_nombre[k][2])==(jr[i].deck_nombre[k][3])&&jr[i].deck_nombre_cache[k][0]==1&&jr[i].deck_nombre_cache[k][1]==1&&jr[i].deck_nombre_cache[k][2]==1&&jr[i].deck_nombre_cache[k][3]==1)
+            {
+                jr[i].deck_nombre[k][0]=30; jr[i].deck_nombre[k][1]=30; jr[i].deck_nombre[k][2]=30; jr[i].deck_nombre[k][3]=30;
+                jr[i].deck_nombre_cache[k][0]=-1; jr[i].deck_nombre_cache[k][1]=-1; jr[i].deck_nombre_cache[k][2]=-1; jr[i].deck_nombre_cache[k][3]=-1;
+                jr[i].nb_skyjo_ligne++;
+            }
+        }
+        for(k=0;k<4;k++)
+        {
+            if((jr[i].deck_nombre[0][k])==(jr[i].deck_nombre[1][k])&&(jr[i].deck_nombre[1][k])==(jr[i].deck_nombre[2][k])&&jr[i].deck_nombre_cache[0][k]==1&&jr[i].deck_nombre_cache[1][k]==1&&jr[i].deck_nombre_cache[2][k]==1)
+            {
+                jr[i].deck_nombre_cache[0][k]=30; jr[i].deck_nombre_cache[1][k]=30; jr[i].deck_nombre_cache[2][k]=30;
+                jr[i].deck_nombre_cache[0][k]=-1; jr[i].deck_nombre_cache[1][k]=-1; jr[i].deck_nombre_cache[2][k]=-1;
+                jr[i].nb_skyjo_colonne++;
+            }
         }
     }
-    while (choix==0);
-    return 0;
-
-}//choix garder->1; choix supprimer->0;
+}
 
 
 

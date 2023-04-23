@@ -4,6 +4,8 @@
 #include "declaration.h"
 
 void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y);  //s'occupe de déplacer la carte du dessus de la pioche vers le jeu du joueur et la retourne.
+void recup_carte_nombre_defausse(S_joueur *jr,S_pioche *p,int x,int y);
+
 
 
 #endif // DEPLACEMENTS_CARTES_H_INCLUDED

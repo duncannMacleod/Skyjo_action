@@ -10,6 +10,7 @@
 #include "suivi_score.h"
 #include "initialisation.h"
 #include "deroulement_tour.h"
+#include "detection_skyjo.h"
 
 
 
@@ -18,7 +19,7 @@ int main()
 {
     srand(time(NULL));
     SetConsoleOutputCP(1252); //permet d'afficher les accents
-    //plein_ecran();
+    plein_ecran();
     int nb_joueurs,i;
     nb_joueurs= afficher_menu_bienvenue();
     if (nb_joueurs==0)
@@ -33,11 +34,18 @@ int main()
 
     afficher_plateau_vide(nb_joueurs);
     afficher_boite_dialogue();
-    initialisation_generale (jr,&p,nb_joueurs,3,23);
-    do{
-    for(i=1;i<nb_joueurs+1;i++)
-        initalisation_debut_tour (jr,i,nb_joueurs,&p,3,23);
-    }while(test_fin_partie(jr,nb_joueurs)==0);
+    initialisation_profil (jr,&p,nb_joueurs,3,23);
+    do
+    {
+        initialisation_manche(jr,&p,nb_joueurs,3,23);
+        do
+        {
+            for(i=1; i<nb_joueurs+1; i++)
+                debut_tour (jr,i,nb_joueurs,&p,3,23);
+        }
+        while(test_fin_manche(jr,nb_joueurs)==0);
+    }
+    while(test_fin_partie(jr,nb_joueurs)==0);
 
 
 

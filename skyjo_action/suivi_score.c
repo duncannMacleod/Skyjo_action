@@ -16,9 +16,9 @@ int fonct_compare_score(const void *a, const void *b)//fonction servant à faire 
 }
 
 
-void tri_score(int nb_j, S_joueur jr[])
+void tri_score(int nb_jr, S_joueur jr[])
 {
-    qsort(jr,nb_j,sizeof(S_joueur),fonct_compare_score);
+    qsort(jr,nb_jr,sizeof(S_joueur),fonct_compare_score);
 }
 
 int test_fin_partie(S_joueur jr[],int nb_jr)
@@ -32,3 +32,24 @@ int test_fin_partie(S_joueur jr[],int nb_jr)
     return 0;
 }
 
+void comptage_score(S_joueur jr[],int nb_jr)
+{
+    int i,somme,a,b;
+    for(i=0;i<nb_jr;i++)
+    {
+        somme=0;
+        for(a=0; a<3; a++)
+            for(b=0; b<4; b++)
+            {
+                if(jr[i].deck_nombre[a][b]!=30&&jr[i].deck_nombre[a][b]!=13)
+                    somme+=jr[i].deck_nombre[a][b];
+                somme+=(10*jr[i].nb_skyjo_colonne+15*jr[i].nb_skyjo_ligne);
+            }
+
+    }
+}
+
+int test_fin_manche(S_joueur jr[],int nb_jr) //renvoie le numéro du joueur qui a gagné
+{
+    return 0;
+}

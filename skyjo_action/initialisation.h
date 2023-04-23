@@ -4,16 +4,27 @@
 
 #include "declaration.h"
 
-void initialisation_generale (S_joueur jr[], S_pioche *p, int nb_j,int x,int y); //reprend tout les progammes en séquence
+void initialisation_profil (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y); //initialise les profils+les parametres initaux restant les memes suivant les manches
+void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y); //(ré)initialise le jeu pour une nouvelle manche
+
 void initalisation_nb_cartes(S_pioche *p); //initialise le nombre de cartes dans les paquets
 
 void initialisation_carte_nombre(S_pioche *p);//ici, il n'y a pas "tableau" cartes, carte comme variable est juste suffisant
-void initialisation_carte_action(S_pioche carte);
+void melanger_paquet_nombre(S_pioche*p);
+
+void initialisation_carte_action(S_pioche*p);
+void melanger_paquet_action(S_pioche*p);
 
 
+void initalisation_joueur_deck(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y); //initialise les decks des joueurs
 
-void creation_profil_joueur(int nb_j, S_joueur jr[], S_pioche *p,int x, int y); //j'ai choisi jr car sinon sa fout la merde dans les boucles
-void initialisation_score(int nb_j,S_joueur jr[]);
+
+void creation_profil_joueur(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y); //j'ai choisi jr car "j" fout la merde dans les boucles
+void initalisation_nb_etoile(S_joueur jr[],int nb_jr);
+void initalisation_nb_skyjo(S_joueur jr[],int nb_jr);
+
+
+void initialisation_score(int nb_jr,S_joueur jr[]);
 void initialisation_pioche_carte_action( S_pioche *p); //positionne les 4 cartes actions
 void initialisation_defausse_nombre(S_pioche *p);
 void initialisation_defausse_action(S_pioche *p);

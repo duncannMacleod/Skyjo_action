@@ -4,21 +4,23 @@
 #include "declaration.h"
 
 int afficher_menu_bienvenue ();                             //affiche le premier menu, affiché quand on lance le jeu.
-void afficher_plateau_vide (int nb_j);                     //affiche le squelette du plateau de jeu, identique pour chaque joueur
+void afficher_plateau_vide (int nb_jr);                     //affiche le squelette du plateau de jeu, identique pour chaque joueur
 void afficher_boite_dialogue();
-void afficher_plateau_des_autres(int nb_j);        //pour savoir quelles sont les cartes des autres
+void afficher_plateau_des_autres(int nb_jr);        //pour savoir quelles sont les cartes des autres
 
 void afficher_actualiser_joueur (S_joueur jr,int x,int y);        //actualise les cartes du joueur, à faire à chaque modif de son jeu, ou bien à chaque changement de joueur
+void surligner_etoile(S_joueur jr,int x,int y);
+
 void afficher_actualiser_joueur_vision (S_joueur jr,int x,int y); //quasiment la même mais l'affichage est adapté pour "voir le jeu des autres"
-void afficher_actualiser_score (int nb_j, S_joueur jr[]);       //à acctualiser quand le score change ou que tour change
+void afficher_actualiser_score (int nb_jr, S_joueur jr[]);       //à acctualiser quand le score change ou que tour change
 void afficher_actualiser_pioche_action (S_pioche p);
-void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_j);
+void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_jr);
 
 
 
 
 void afficher_actualiser_defausse_action (S_pioche p);
-void afficher_actualiser_defausse_nombre (S_pioche p, int nb_jr);  ///attention jr et jr[] pas la m chose //à acutualiser à chaque "piochage" de carte
+void afficher_actualiser_defausse_nombre (S_pioche p);  ///attention jr et jr[] pas la m chose //à acutualiser à chaque "piochage" de carte
 
 
 

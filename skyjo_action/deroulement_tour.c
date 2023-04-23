@@ -10,8 +10,9 @@
 #include "declaration.h"
 #include "affichage.h"
 #include "deplacements_cartes.h"
+#include "detection_skyjo.h"
 
-void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
+void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
 {
     char choix,c;
     int cpt;
@@ -21,13 +22,15 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
 
     do
     {
+        detection_skyjo(nb_jr,jr);
         afficher_plateau_vide(nb_jr);
         afficher_actualiser_joueur(jr[no_jr-1],12,3); //affiche le prenom du joueur, et ces cartes.
         afficher_boite_dialogue();  //permet de réinitiliser la boite de dialogue, enlevant les anciens messages
         afficher_actualiser_score(nb_jr,jr);
         afficher_actualiser_defausse_action(*p);
-        afficher_actualiser_defausse_nombre(*p,nb_jr);
+        afficher_actualiser_defausse_nombre(*p);
         afficher_actualiser_pioche_action(*p);
+
 
 
         cpt=0;
@@ -38,7 +41,7 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
         cpt+=2; Positionner_Curseur(x,y+cpt);
         printf("Voir le jeu des autres V, Piocher une carte nombre N, Piocher une carte Action A");
         cpt++;Positionner_Curseur(x,y+cpt);
-        printf("et jouer une carte action J, Terminer son tour T.");
+        printf("et jouer une carte action J, Affecter un nbr à une étoile E, Terminer son tour T.");
         cpt+=2;Positionner_Curseur(x,y+cpt);
         printf("Réponse:");
         scanf("%c",&choix);
@@ -52,12 +55,13 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
             break;
 
 
+
         case 'N':
             if (action==0)
-                piocher_carte_nombre(jr,no_jr,nb_jr,*p,3,23);
+                piocher_carte_nombre(jr,no_jr,nb_jr,p,3,23);
             else if (action>0)
                 printf("vous avez déja joué");
-            cpt++;
+            cpt+=2;
             Positionner_Curseur(x,y+cpt);
             system("pause");
 
@@ -91,6 +95,14 @@ void initalisation_debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, i
             choix=0;
             break;
 
+        case 'E':
+
+            atribuer_nbr_etoile(&jr[no_jr-1],p,x,y);
+            cpt++;
+            Positionner_Curseur(x,y+cpt);
+            system("pause");
+            choix=0;
+            break;
         case 'T': //terminer son tour.
 
             break;
@@ -147,7 +159,10 @@ void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x,
 
 
         case 'D'://piocher une carte de la défausse (visible)
-            // void recup_carte_nombre_défausse
+            if(p->nombre_defausse_nb==0)
+                printf("il n'y a pas de carte dans la défausse");
+            else
+                recup_carte_nombre_defausse(&jr[no_jr-1],p,x,y);
             choix=1;
             break;
         default:
@@ -205,4 +220,38 @@ void piocher_carte_action(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x,
     }
     while (choix==0);
 
+}
+
+void atribuer_nbr_etoile(S_joueur *jr,S_pioche *p, int x, int y)
+{
+
+    int cpt=0,ligne,colonne,reponse;
+
+    afficher_boite_dialogue();
+    Positionner_Curseur(x,y);
+    printf("Quelle est la coordonnée de l'étoile? (ligne 1à3 esp. colonne 1à4)");
+    cpt++;
+    Positionner_Curseur(x,y+cpt);
+    printf("Réponse:");
+    scanf("%d %d",&ligne,&colonne);
+    if(jr->deck_nombre[ligne-1][colonne-1]==13)
+    {
+        cpt+=2;
+        Positionner_Curseur(x,y+cpt);
+        printf("étoile trouvée, par quel nb. la remplacer?");
+        cpt++;
+        Positionner_Curseur(x,y+cpt);
+        printf("Réponse");
+        scanf("%d",&reponse);
+        jr->deck_nombre[ligne-1][colonne-1]=reponse;
+        jr->nb_etoile++;
+        jr->pos_etoile->ligne=ligne-1;
+        jr->pos_etoile->colonne=colonne-1;
+    }
+    else
+    {
+        cpt+=2;
+        Positionner_Curseur(x,y+cpt);
+        printf("Erreur, étoile non trouvé");
+    }
 }

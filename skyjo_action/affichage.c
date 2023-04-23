@@ -386,7 +386,7 @@ void afficher_actualiser_defausse_nombre (S_pioche p)
     else if (p.nombre_defausse[p.nombre_defausse_nb-1]==13)
         printf("[**]",p.nombre_defausse[p.nombre_defausse_nb-1]);
     else
-        printf("[%-2.2d]",p.nombre_defausse[p.nombre_defausse_nb-1]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la dernière carte nombre dans la pioche
+        printf("[%-2d]",p.nombre_defausse[p.nombre_defausse_nb-1]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la dernière carte nombre dans la pioche
 }
 
 void afficher_actualiser_pioche_action (S_pioche p)

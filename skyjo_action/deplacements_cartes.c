@@ -13,7 +13,8 @@
 
 void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
 {
-    int cpt,ligne=0,colonne=0,reponse;
+    int cpt,ligne=0,colonne=0,reponse,etoile_recuperee=0;
+;
     char choix,c;
 
 
@@ -26,10 +27,15 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
         cpt=0;
         afficher_boite_dialogue();
         Positionner_Curseur(x,y);
-        printf("vous venez de piocher une carte étoile, quelle est la valeur que vous voulez lui donner?");
+        printf("vous venez de piocher une carte étoile,");
+        printf("quelle est la valeur que vous voulez lui donner?");
         cpt+=2;
-        printf("Réponse:"); scanf("%d",&reponse);
+        Positionner_Curseur(x,y+cpt);
+        printf("Réponse:");
+        scanf("%d",&reponse);
         carte_pioche=reponse;
+        etoile_recuperee=1;
+
     }
 
     do
@@ -39,25 +45,40 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
         Positionner_Curseur(x,y);
         printf("Vous avez pioché une carte %d! Que voulez vous faire? ",carte_pioche);
 
-        cpt+=1;Positionner_Curseur(x,y+cpt);
+        cpt+=1;
+        Positionner_Curseur(x,y+cpt);
         printf("La Placer P, ou la jeter dans la Défausse D");
-        cpt+=2;Positionner_Curseur(x,y+cpt);
+        cpt+=2;
+        Positionner_Curseur(x,y+cpt);
         printf("Réponse:");
         scanf("%c",&choix);
         while ((c = getchar()) != '\n' && c != EOF);
-        cpt+=2;Positionner_Curseur(x,y+cpt);
+        cpt+=2;
+        Positionner_Curseur(x,y+cpt);
         switch(toupper(choix))
         {
         case 'P'://place la carte dans le jeu
             printf("entrez les coordonnées de la nouvelle place pour la carte (ligne  espace colonne), ");
-            cpt+=1;Positionner_Curseur(x,y+cpt);
-            do{
+            cpt+=1;
+            Positionner_Curseur(x,y+cpt);
+            do
+            {
                 Positionner_Curseur(x,y+cpt);
                 printf("Attention, ligne de 1 à 3 et colonne de 1 à 4:              ");
                 Positionner_Curseur(x+46,y+cpt);
                 scanf("%d %d",&ligne,&colonne);
-                ligne--; colonne--;
-            }while(ligne>3||ligne<0||colonne>4||colonne<0);
+                ligne--;
+                colonne--;
+            }
+            while(ligne>3||ligne<0||colonne>4||colonne<0);
+            if(etoile_presente(&jr,colonne,ligne)==1)//si la carte qui va etre jeté est une ancienne carte étoile, elle reprend son état initial "13"
+                jr->deck_nombre[ligne][colonne]=13;
+            if(etoile_recuperee==1)
+            {
+                jr->nb_etoile++;
+                jr->pos_etoile[jr->nb_etoile-1].ligne=ligne;
+                jr->pos_etoile[jr->nb_etoile-1].colonne=colonne;
+            }
             p->nombre_defausse_nb++;
             p->nombre_defausse[p->nombre_defausse_nb-1]=jr->deck_nombre[ligne][colonne]; //écrit la valeur de la carte jetée dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
 
@@ -65,21 +86,25 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
             jr->deck_nombre[ligne][colonne]=carte_pioche;//pose la carte de la pioche dans le jeu
             jr->deck_nombre_cache[ligne][colonne]=1; //retourne la carte tout juste déposé (l'état précédant de la case n'est pas pris en compte)
 
+
             choix=1;
             break;
 
 
         case 'D'://jete la carte dans la défausse
             printf("vous devez tout de même rerourner une carte. entrez les coordonées pour la carte");
-            cpt+=1;Positionner_Curseur(x,y+cpt);
-            do{
+            cpt+=1;
+            Positionner_Curseur(x,y+cpt);
+            do
+            {
                 Positionner_Curseur(x,y+cpt);
                 printf("Attention, ligne de 1 à 3 et colonne de 1 à 4:              ");
                 Positionner_Curseur(x+46,y+cpt);
                 scanf("%d %d",&ligne,&colonne);
                 ligne--;
                 colonne--;
-            } while(ligne>3||ligne<0||colonne>4||colonne<0);
+            }
+            while(ligne>3||ligne<0||colonne>4||colonne<0);
             if(jr->deck_nombre[ligne][colonne]==13)
             {
                 cpt=0;
@@ -94,9 +119,9 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
                 printf("Réponse:");
                 scanf("%d",&reponse);
                 jr->deck_nombre[ligne][colonne]=reponse;
-                jr->pos_etoile->ligne=ligne;
-                jr->pos_etoile->colonne=colonne;
-
+                jr->nb_etoile++;
+                jr->pos_etoile[jr->nb_etoile-1].ligne=ligne;
+                jr->pos_etoile[jr->nb_etoile-1].colonne=colonne;
             }
             jr->deck_nombre_cache[ligne][colonne]=1;
             p->nombre_defausse_nb++;
@@ -105,22 +130,25 @@ void recup_carte_nombre_pioche(S_joueur *jr,S_pioche *p,int x,int y)
             break;
         default:
             choix=0;
-            cpt++; Positionner_Curseur(x,y+cpt);
+            cpt++;
+            Positionner_Curseur(x,y+cpt);
             printf("choix incorrect, veuillez recommencer");
-            cpt++; Positionner_Curseur(x,y+cpt);
+            cpt++;
+            Positionner_Curseur(x,y+cpt);
             system("pause");
             break;
         }
 
 
-    }while (choix==0);
+    }
+    while (choix==0);
 
 
 }
 
 void recup_carte_nombre_defausse(S_joueur *jr,S_pioche *p,int x,int y)
 {
-    int cpt,carte_pioche,ligne,colonne,reponse;
+    int cpt,carte_pioche,ligne,colonne,reponse,etoile_recuperee=0;
     carte_pioche=p->nombre_defausse[p->nombre_defausse_nb-1];
 
     p->nombre_defausse_nb--;
@@ -133,17 +161,22 @@ void recup_carte_nombre_defausse(S_joueur *jr,S_pioche *p,int x,int y)
         cpt=0;
         afficher_boite_dialogue();
         Positionner_Curseur(x,y);
-        printf("vous venez de récupérer une carte étoile, quelle est la valeur que vous voulez lui donner?");
-        cpt+=2;
-        printf("Réponse:"); scanf("%d",&reponse);
+        printf("vous venez de récupérer une carte étoile,");
+        cpt++;
+        Positionner_Curseur(x,y+cpt);
+        printf(" quelle est la valeur que vous voulez lui donner?");
+        printf("Réponse:");
+        scanf("%d",&reponse);
         carte_pioche=reponse;
+        etoile_recuperee=1;
     }
 
     cpt=0;
     afficher_boite_dialogue();
     Positionner_Curseur(x,y);
     printf("Vous avez récupéré une carte %d! Que voulez vous faire ",carte_pioche);
-    cpt+=2; Positionner_Curseur(x,y+cpt);
+    cpt+=2;
+    Positionner_Curseur(x,y+cpt);
     printf("entrez les coordonnées de la nouvelle place pour la carte (ligne  espace colonne), ");
     cpt+=1;
     Positionner_Curseur(x,y+cpt);
@@ -157,10 +190,30 @@ void recup_carte_nombre_defausse(S_joueur *jr,S_pioche *p,int x,int y)
         colonne--;
     }
     while(ligne>3||ligne<0||colonne>4||colonne<0);
+    if(etoile_recuperee==1)
+    {
+        jr->nb_etoile++;
+        jr->pos_etoile[jr->nb_etoile-1].ligne=ligne;
+        jr->pos_etoile[jr->nb_etoile-1].colonne=colonne;
+    }
+
+
+    if(jr->pos_etoile->colonne==colonne&&jr->pos_etoile->ligne==ligne)//si la carte qui va etre jeté est une ancienne carte étoile, elle reprend son état initial "13"
+        jr->deck_nombre[ligne][colonne]=13;
+
     p->nombre_defausse_nb++;
     p->nombre_defausse[p->nombre_defausse_nb-1]=jr->deck_nombre[ligne][colonne]; //écrit la valeur de la carte jetée dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
 
 
     jr->deck_nombre[ligne][colonne]=carte_pioche;//pose la carte de la pioche dans le jeu
     jr->deck_nombre_cache[ligne][colonne]=1; //retourne la carte tout juste déposé (l'état précédant de la case n'est pas pris en compte)
+}
+int etoile_presente(S_joueur jr,int ligne, int colonne)
+{
+    int i;
+    for(i=0; i<jr.nb_etoile; i++)
+        if(jr.pos_etoile[i].ligne==ligne&&jr.pos_etoile[i].colonne==colonne)
+            return 1;
+
+    return 0;
 }

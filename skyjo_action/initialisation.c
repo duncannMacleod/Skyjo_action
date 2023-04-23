@@ -10,7 +10,7 @@
 #include "declaration.h"
 #include "affichage.h"
 
-void initialisation_profil (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y)
+void initialisation_profil (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) //ces variables doivent être initialisés qu'une seule fois
 {
 
     initialisation_score(nb_jr,jr);
@@ -19,33 +19,33 @@ void initialisation_profil (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y)
 
 }
 
-void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y)
+void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) //ces variables doivent etre initialisés à chaque debut de manche
 {
 
-    initalisation_nb_cartes(p);
+    initalisation_nb_cartes(p); //I. des variables références des paquets ex: nombre_nb
 
-    initialisation_carte_nombre(p);
-    melanger_paquet_nombre(p);
+    initialisation_carte_nombre(p); //I. les valeurs des cartes dans le paquet des nombres
+    melanger_paquet_nombre(p);//mélange le paquet des nombres
 
-    initialisation_carte_action(p);
-    melanger_paquet_action(p);
+    initialisation_carte_action(p); //I. les valeurs des cartes dans le paquet des cartes actions
+    melanger_paquet_action(p);//melange les cartes actions
 
-    initalisation_nb_cartes(p);
+    initalisation_nb_cartes(p);//pour éviter des bugs, les valeurs de référence sont de nouveau initialsées 
 
 
-    initalisation_joueur_deck(nb_jr,jr,p,x,y);
+    initalisation_joueur_deck(nb_jr,jr,p,x,y); //les cartes nombres et actions sont distribuées aux joueurs
 
     //initialisation_carte_action(p);
-    initialisation_pioche_carte_action(p);
-    initialisation_defausse_action(p);
-    initialisation_defausse_nombre(p);
-    initalisation_nb_etoile(jr,nb_jr);
-    initalisation_nb_skyjo(jr,nb_jr);
+    initialisation_pioche_carte_action(p); // les 4 cartes actions sont présentés
+    initialisation_defausse_action(p);//la defausse des cartes action est initialisé (pour rendre l'affichage plus joli)
+    initialisation_defausse_nombre(p);//on place une carte face montrée pour faire la défausse des cartes nombre
+    initalisation_nb_etoile(jr,nb_jr);//I. de tous variables relatives aux étoiles
+    initalisation_nb_skyjo(jr,nb_jr);//idem
 
 }
 
 
-void initialisation_carte_nombre(S_pioche*p)
+void initialisation_carte_nombre(S_pioche*p) //crée le paquet de carte nombre non mélangé
 {
     int i,cpt=0;
     for(i=0;i<3;i++)
@@ -114,7 +114,7 @@ void initialisation_carte_nombre(S_pioche*p)
     }
 }
 
-void initialisation_carte_action(S_pioche*p)
+void initialisation_carte_action(S_pioche*p) //crée le paquet de carte action non mélangé
 {
     int i,cpt=0;
     for(i=0;i<3;i++)
@@ -159,7 +159,7 @@ void initialisation_carte_action(S_pioche*p)
 
 
 
-void melanger_paquet_nombre(S_pioche*p)
+void melanger_paquet_nombre(S_pioche*p) //utilise l'algorithme de Fisher-Yates pour mélanger les cartes nombre
 {
     int i,j,tampon;
     for(i=p->nombre_nb;i >= 1; i--)
@@ -171,7 +171,7 @@ void melanger_paquet_nombre(S_pioche*p)
     }
 }
 
-void melanger_paquet_action(S_pioche*p)
+void melanger_paquet_action(S_pioche*p) //utilise l'algorithme de Fisher-Yates pour mélanger les cartes nombre
 {
     int i,j,tampon;
     for(i=p->action_nb;i >= 1; i--)
@@ -183,7 +183,7 @@ void melanger_paquet_action(S_pioche*p)
     }
 }
 
-void creation_profil_joueur(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y)
+void creation_profil_joueur(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y) //les données relative au joueur (ce programme n'est pas très peuplé, car les autres fonctions d'I. doivent etre réutilisé apres chaque manche. Celle ci n'est ulitisé qu'une seule fois
 {
     int i;
 
@@ -195,11 +195,11 @@ void creation_profil_joueur(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y)
         do{
 
             Positionner_Curseur(x,y+i);
-            printf("                                                                          ");
+            printf("                                                                          ");//permet d'éffacer la ligne ou l'on va écrire le message (utlise si on a rentré un nom de plus de 10 caractères
             Positionner_Curseur(x,y+i);
             printf("Veuillez entrez le prénom du joueur %d (max 10 caractères):",i+1); //conversationnel
             gets(jr[i].prenom); //l'utilisateur entre som prémon
-        } while (strlen(jr[i].prenom)>10);
+        } while (strlen(jr[i].prenom)>10); //pas plus de 10 car sinon le nom+score dépasserai la boite de dialogue
 
         jr[i].joueur_no=i+1; //le numéro du joueur prend la valeur de i+1 ex Joueur(1)->i=0+1
 
@@ -257,10 +257,10 @@ void initalisation_joueur_deck(int nb_jr, S_joueur jr[], S_pioche *p,int x, int 
 
 void initalisation_nb_cartes(S_pioche *p) //initialise le nombre de cartes dans les paquets
 {
-    p->nombre_nb=CARTE_PIOCHE_NOMBRE_NB;
+    p->nombre_nb=CARTE_PIOCHE_NOMBRE_NB; //120
     p->nombre_defausse_nb=0;
     p->nombre_defausse_dessous_nb=0;
-    p->action_nb=CARTE_PIOCHE_ACTION_NB;
+    p->action_nb=CARTE_PIOCHE_ACTION_NB; //27
     p->action_defausse_nb=0;
 }
 
@@ -268,16 +268,16 @@ void initalisation_nb_etoile(S_joueur jr[],int nb_jr)
 {
     int i;
     for(i=0;i<nb_jr;i++)
-        jr[i].nb_etoile=0;
+        jr[i].nb_etoile=0; //I. à zéro le nombre d'étoile du joueur
 }
 
-void initialisation_pioche_carte_action( S_pioche *p)
+void initialisation_pioche_carte_action( S_pioche *p)//I. la pioche des cartes
 {
     int i;
-    for(i=0; i<CARTE_PIOCHE_ACTION_FACE_VISIBLE; i++)
+    for(i=0; i<CARTE_PIOCHE_ACTION_FACE_VISIBLE; i++) //effectue 4 fois la manipulation
     {
-        p->action_visible[i]=p->action[(p->action_nb)-1];
-        p->action_nb--;
+        p->action_visible[i]=p->action[(p->action_nb)-1];//dispose une carte de la pioche d'action dans la i eme case du tableau des cartes visibles (que 4 cases) 
+        p->action_nb--; //retire un du compteur des cartes actions
     }
 }
 
@@ -298,7 +298,7 @@ void initialisation_score(int nb_jr,S_joueur jr[])
 {
     int i;
     for(i=0;i<nb_jr;i++)
-       jr[i].score=0;
+       jr[i].score=0; //initialise les scores des joueurs à 0
 }
 
 void initalisation_nb_skyjo(S_joueur jr[],int nb_jr)
@@ -306,7 +306,7 @@ void initalisation_nb_skyjo(S_joueur jr[],int nb_jr)
     int i;
     for(i=0;i<nb_jr;i++)
     {
-        jr[i].nb_skyjo_ligne=0;
-        jr[i].nb_skyjo_colonne=0;
+        jr[i].nb_skyjo_ligne=0; //I. les compteurs de skyjo a 0
+        jr[i].nb_skyjo_colonne=0;//idem
     }
 }

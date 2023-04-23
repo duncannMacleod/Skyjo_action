@@ -52,5 +52,17 @@ void comptage_score(S_joueur jr[],int nb_jr) //prend en compte les règles du sky
 
 int test_fin_manche(S_joueur jr[],int nb_jr) //renvoie le numéro du joueur qui a gagné la manche
 {
+    int i,a,b,cpt;
+    for(i=0;i<nb_jr;i++)
+    {
+        cpt=0;
+        for(a=0;a<CARTE_JOUEUR_NOMBRE_C;a++)
+            for(b=0;b<CARTE_JOUEUR_NOMBRE_L;b++)
+                if(jr[i].deck_nombre_cache[a][b]==1)
+                    cpt++;
+        if(cpt==15)
+        return 1;
+    }
+
     return 0;
 }

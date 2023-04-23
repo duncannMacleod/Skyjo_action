@@ -179,7 +179,7 @@
 	"initialisation.h"
 	"deroulement_tour.h"
 
-1682278536 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
+1682278721 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -226,7 +226,7 @@
 1682243186 c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.h
 	"declaration.h"
 
-1682253615 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\main.c
+1682289163 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -240,7 +240,7 @@
 	"deroulement_tour.h"
 	"detection_skyjo.h"
 
-1682272488 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.c
+1682289369 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

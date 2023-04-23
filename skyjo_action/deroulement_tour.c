@@ -41,7 +41,9 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         cpt+=2; Positionner_Curseur(x,y+cpt);
         printf("Voir le jeu des autres V, Piocher une carte nombre N, Piocher une carte Action A");
         cpt++;Positionner_Curseur(x,y+cpt);
-        printf("et jouer une carte action J, Affecter un nbr à une étoile E, Terminer son tour T.");
+        printf("jouer une carte action J, Affecter un nbr à une étoile E, Terminer son tour T");
+        cpt++;Positionner_Curseur(x,y+cpt);
+        printf("et se débarasser d'une carte action D.");
         cpt+=2;Positionner_Curseur(x,y+cpt);
         printf("Réponse:"); //fin conversationnel
         scanf("%c",&choix);

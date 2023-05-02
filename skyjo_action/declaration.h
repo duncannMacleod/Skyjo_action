@@ -38,6 +38,7 @@ struct joueur
                 int nb_coups;
 
                 int init_fin_manche;
+                int score_manche;
 
 
 };

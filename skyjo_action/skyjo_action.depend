@@ -146,7 +146,7 @@
 
 1681392538 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
 
-1682976117 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.c
+1682976479 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -159,9 +159,9 @@
 1682976096 c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.h
 	"declaration.h"
 
-1682973720 c:\users\duncan\documents\github\skyjo_action\skyjo_action\declaration.h
+1683048694 c:\users\duncan\documents\github\skyjo_action\skyjo_action\declaration.h
 
-1682976443 c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.h
+1683048778 c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.h
 	"declaration.h"
 
 1682699450 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\cartes_actions.c

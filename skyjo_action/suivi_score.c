@@ -32,9 +32,9 @@ int test_fin_partie(S_joueur jr[],int nb_jr) //si un joueur a plus de 100 pts, l
     return 0;
 }
 
-int* comptage_score(S_joueur jr[],int nb_jr) //prend en compte les règles du skyjo pour compter les points de chaque participant
+void comptage_score(S_joueur jr[],int nb_jr) //prend en compte les règles du skyjo pour compter les points de chaque participant
 {
-    int i,somme,a,b,score_manche[nb_jr];
+    int i,somme,a,b;
     for(i=0;i<nb_jr;i++)
     {
         somme=0;
@@ -46,12 +46,11 @@ int* comptage_score(S_joueur jr[],int nb_jr) //prend en compte les règles du sky
             }
 		somme-=(10*jr[i].nb_skyjo_colonne+15*jr[i].nb_skyjo_ligne); //on soustrait a la somme globlale les bonus de skyjo (-10 pour une colonne et -15 pour une linge)
 		somme+=(10*jr[i].nb_action); //incrémente 10 par nombre de carte action dans le jeu du joueur.
-		score_manche[i]=somme;
+		jr[i].score_manche=somme;
 		jr[i].score+=somme; //on incrémente la somme au score du joueur.
 
 
     }
-    return score_manche;
 }
 
 int test_fin_manche(S_joueur jr[],int nb_jr) //renvoie le numéro du joueur qui a gagné la manche
@@ -74,9 +73,9 @@ int test_fin_manche(S_joueur jr[],int nb_jr) //renvoie le numéro du joueur qui a
 S_joueur test_init_jr(S_joueur jr[],int nb_jr)
 {
     int no_jr_init=test_fin_manche(jr,nb_jr),i;
-    int score_manche[nb_jr]=comptage_score(jr,nb_jr);
     for(i=0;i<nb_jr;i++)//boucle pour tout les joueurs
         if(i!=no_jr_init) //sauf le joueur ayant initié la fin de tour
-            if(score_manche[no_jr_init-1]<=score_manche[i])//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
+            if(jr[no_jr_init-1].score_manche<=jr[i].score_manche)//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
                 jr[no_jr_init-1].init_fin_manche=-1;
+    return jr[no_jr_init-1];
 }

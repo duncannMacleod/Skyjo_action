@@ -9,6 +9,7 @@
 #include "initialisation.h"
 #include "declaration.h"
 #include "affichage.h"
+#include "suivi_score.h"
 
 void initialisation_profil (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) //ces variables doivent être initialisés qu'une seule fois
 {
@@ -17,6 +18,17 @@ void initialisation_profil (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
     creation_profil_joueur(nb_jr,jr,p,x,y);
 
 
+}
+
+void regularisation(S_pioche *p)
+{
+    int i;
+    for(i=0;i<p->nombre_nb;i++)
+        if(p->nombre[i]==120)
+            p->nombre[i]=0;
+    for(i=0;i<p->action_nb;i++)
+        if(p->action[i]==27)
+            p->action[i]=14;
 }
 
 void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) //ces variables doivent etre initialisés à chaque debut de manche
@@ -30,8 +42,8 @@ void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
     initialisation_carte_action(p); //I. les valeurs des cartes dans le paquet des cartes actions
     melanger_paquet_action(p);//melange les cartes actions
 
-    initalisation_nb_cartes(p);//pour éviter des bugs, les valeurs de référence sont de nouveau initialsées 
-
+    initalisation_nb_cartes(p);//pour éviter des bugs, les valeurs de référence sont de nouveau initialsées
+    regularisation(p);
 
     initalisation_joueur_deck(nb_jr,jr,p,x,y); //les cartes nombres et actions sont distribuées aux joueurs
 
@@ -41,6 +53,9 @@ void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
     initialisation_defausse_nombre(p);//on place une carte face montrée pour faire la défausse des cartes nombre
     initalisation_nb_etoile(jr,nb_jr);//I. de tous variables relatives aux étoiles
     initalisation_nb_skyjo(jr,nb_jr);//idem
+    initialisation_deck_nb_action(jr,nb_jr);
+
+
 
 }
 
@@ -50,7 +65,7 @@ void initialisation_carte_nombre(S_pioche*p) //crée le paquet de carte nombre no
     int i,cpt=0;
     for(i=0;i<3;i++)
     {
-        p->nombre[cpt]=-2;cpt++;
+        p->nombre[cpt]=13;cpt++; //-2
     }
     for(i=0;i<11;i++)
     {
@@ -276,7 +291,7 @@ void initialisation_pioche_carte_action( S_pioche *p)//I. la pioche des cartes
     int i;
     for(i=0; i<CARTE_PIOCHE_ACTION_FACE_VISIBLE; i++) //effectue 4 fois la manipulation
     {
-        p->action_visible[i]=p->action[(p->action_nb)-1];//dispose une carte de la pioche d'action dans la i eme case du tableau des cartes visibles (que 4 cases) 
+        p->action_visible[i]=p->action[(p->action_nb)-1];//dispose une carte de la pioche d'action dans la i eme case du tableau des cartes visibles (que 4 cases)
         p->action_nb--; //retire un du compteur des cartes actions
     }
 }
@@ -308,5 +323,14 @@ void initalisation_nb_skyjo(S_joueur jr[],int nb_jr)
     {
         jr[i].nb_skyjo_ligne=0; //I. les compteurs de skyjo a 0
         jr[i].nb_skyjo_colonne=0;//idem
+    }
+}
+
+void initialisation_deck_nb_action(S_joueur jr[],int nb_jr)
+{
+    int i;
+    for(i=0;i<nb_jr;i++)
+    {
+        jr[i].nb_action=0;
     }
 }

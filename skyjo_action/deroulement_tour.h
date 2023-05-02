@@ -8,6 +8,8 @@
 void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p,int x,int y);
 
 void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y);
+void piocher_carte_action(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y);
+
 
 
 void retourne_toutes_cartes(S_joueur jr[],int nb_jr);

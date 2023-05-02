@@ -19,9 +19,11 @@ void melanger_paquet_action(S_pioche*p);
 void initalisation_joueur_deck(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y); //initialise les decks des joueurs
 
 
+
 void creation_profil_joueur(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y); //j'ai choisi jr car "j" fout la merde dans les boucles
 void initalisation_nb_etoile(S_joueur jr[],int nb_jr);
 void initalisation_nb_skyjo(S_joueur jr[],int nb_jr);
+void initialisation_deck_nb_action(S_joueur jr[],int nb_jr);
 
 
 void initialisation_score(int nb_jr,S_joueur jr[]);

@@ -33,12 +33,12 @@ void Positionner_Curseur(int x, int y)
 
 int afficher_menu_bienvenue ()
 {
-        char menu[5][86]= {"      2 joueurs                                                                      ",
-                           "      3 joueurs                                                                      ",
-                           "      4 joueurs                                                                      ",
-                           "                                                                                     ",
-                           "      Quitter                                                                        ",
-                           };
+    char menu[5][86]= {"      2 joueurs                                                                      ",
+                       "      3 joueurs                                                                      ",
+                       "      4 joueurs                                                                      ",
+                       "                                                                                     ",
+                       "      Quitter                                                                        ",
+                      };
     int choix=0; // numéro de l'option choisie dans le menu
     int frappe=0; //permet de stocker le code de la touche clavier
     int i;
@@ -134,7 +134,8 @@ int afficher_menu_bienvenue ()
             break;
 
         }
-        choix=0;frappe=0;
+        choix=0;
+        frappe=0;
 
     }
 
@@ -144,28 +145,28 @@ int afficher_menu_bienvenue ()
 
 void afficher_boite_dialogue()
 {
-        Positionner_Curseur(0,21);
-        printf(" ___________________________      Boite de dialogue     _______________________________\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" ______________________________________________________________________________________\n");
-        Positionner_Curseur(3,23);
+    Positionner_Curseur(0,21);
+    printf(" ___________________________      Boite de dialogue     _______________________________\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" ______________________________________________________________________________________\n");
+    Positionner_Curseur(3,23);
 
 }
 
@@ -176,53 +177,53 @@ void afficher_boite_dialogue()
 
 void afficher_plateau_vide (int nb_jr)
 {
-        system("cls");
-        printf(" ________         Skyjo Action     ___________     Créé par les Boudet          _______\n");
+    system("cls");
+    printf(" ________         Skyjo Action     ___________     Créé par les Boudet          _______\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |  Tour de:                                                                          |\n");
+    printf(" |                                                                                    |\n");
+    if(nb_jr==2)
+    {
+        printf(" |                                                  Score: 1er-                       |\n");
+        printf(" |       Votre Jeu:                                        2nd-                       |\n");
         printf(" |                                                                                    |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
         printf(" |                                                                                    |\n");
-        printf(" |  Tour de:                                                                          |\n");
+    }
+    else if (nb_jr==3)
+    {
+        printf(" |                                                  Score: 1er-                       |\n");
+        printf(" |       Votre Jeu:                                        2nd-                       |\n");
+        printf(" |                                                         3me-                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
         printf(" |                                                                                    |\n");
-        if(nb_jr==2)
-        {
-            printf(" |                                                  Score: 1er-                       |\n");
-            printf(" |       Votre Jeu:                                        2nd-                       |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |                                                                                    |\n");
-        }
-        else if (nb_jr==3)
-        {
-            printf(" |                                                  Score: 1er-                       |\n");
-            printf(" |       Votre Jeu:                                        2nd-                       |\n");
-            printf(" |                                                         3me-                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |                                                                                    |\n");
-        }
-        else if (nb_jr==4)
-        {
-            printf(" |                                                  Score: 1er-                       |\n");
-            printf(" |       Votre Jeu:                                        2nd-                       |\n");
-            printf(" |                                                         3me-                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                            4me-                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |                                                                                    |\n");
+    }
+    else if (nb_jr==4)
+    {
+        printf(" |                                                  Score: 1er-                       |\n");
+        printf(" |       Votre Jeu:                                        2nd-                       |\n");
+        printf(" |                                                         3me-                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                            4me-                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |                                                                                    |\n");
 
 
-        }
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" | Défausse des cartes nombres: [  ]                                                  |\n");
-        printf(" |                                                                                    |\n");
-        printf(" | Cartes actions:[              ] [              ] [              ] [              ] |\n");
-        printf(" |                                                                                    |\n");
-        printf(" | Défausse des cartes actions: [              ]                                      |\n");
-        printf(" |                                                                                    |\n");
-        printf(" ______________________________________________________________________________________\n");
+    }
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" | Défausse des cartes nombres: [  ]                                                  |\n");
+    printf(" |                                                                                    |\n");
+    printf(" | Cartes actions:[              ] [              ] [              ] [              ] |\n");
+    printf(" |                                                                                    |\n");
+    printf(" | Défausse des cartes actions: [              ]                                      |\n");
+    printf(" |                                                                                    |\n");
+    printf(" ______________________________________________________________________________________\n");
 
 
 }
@@ -232,63 +233,63 @@ void afficher_plateau_des_autres(int nb_jr)
 {
     Positionner_Curseur(0,0);
     system("cls");
-        printf(" ________         Skyjo Action     ___________     Créé par les Boudet          _______\n");
+    printf(" ________         Skyjo Action     ___________     Créé par les Boudet          _______\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    if(nb_jr==2)
+    {
+        printf(" |                                                                                    |\n");
+        printf(" |        Jeu de:                                                                     |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
         printf(" |                                                                                    |\n");
         printf(" |                                                                                    |\n");
         printf(" |                                                                                    |\n");
         printf(" |                                                                                    |\n");
-        if(nb_jr==2)
-        {
-            printf(" |                                                                                    |\n");
-            printf(" |        Jeu de:                                                                     |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-        }
-        if(nb_jr==3)
-        {
-            printf(" |                                                                                    |\n");
-            printf(" |        Jeu de:                         Jeu de:                                     |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
-            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
-            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |                                                                                    |\n");
-        }
-        if(nb_jr==4)
-        {
-            printf(" |                                                                                    |\n");
-            printf(" |        Jeu de:                         Jeu de:                                     |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
-            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
-            printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |        Jeu de:                                                                     |\n");
-            printf(" |                                                                                    |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
-            printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+    }
+    if(nb_jr==3)
+    {
+        printf(" |                                                                                    |\n");
+        printf(" |        Jeu de:                         Jeu de:                                     |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+    }
+    if(nb_jr==4)
+    {
+        printf(" |                                                                                    |\n");
+        printf(" |        Jeu de:                         Jeu de:                                     |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |        Jeu de:                                                                     |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |                                                                                    |\n");
 
-        }
-        printf(" |                                                                                    |\n");
-        printf(" |                                                                                    |\n");
-        printf(" ______________________________________________________________________________________\n");
+    }
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" ______________________________________________________________________________________\n");
 
 }
 
@@ -301,30 +302,30 @@ void afficher_actualiser_joueur (S_joueur jr,int x,int y) //actualise les cartes
 {
 
 
-	int i;
-	int j;
+    int i;
+    int j;
 
-	Positionner_Curseur(x,y);
-	puts(jr.prenom); //affiche le prénom du joueur
+    Positionner_Curseur(x,y);
+    puts(jr.prenom); //affiche le prénom du joueur
 
-	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
+    for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
+    {
+        for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
         {
-            for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
+            Positionner_Curseur(x+j*5,y+i+5);
+            if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
             {
-                Positionner_Curseur(x+j*5,y+i+5);
-				if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
-                {
-                    if(jr.deck_nombre[i][j]==13)
-                        printf("[**] ");
-                    else
-                        printf("[%-2d] ",jr.deck_nombre[i][j]);
-                }
-                else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
-                    printf("[%-2s] ","X");
-                else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
-                    printf("     ");
+                if(jr.deck_nombre[i][j]==13)
+                    printf("[**] ");
+                else
+                    printf("[%-2d] ",jr.deck_nombre[i][j]);
             }
+            else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
+                printf("[%-2s] ","X");
+            else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
+                printf("     ");
         }
+    }
     surligner_etoile(jr,12,3);
 
 }
@@ -333,39 +334,38 @@ void afficher_actualiser_joueur_vision (S_joueur jr,int x,int y)
 {
     int i, j;
 
-	Positionner_Curseur(x,y);
-	puts(jr.prenom); //affiche le prénom du joueur
+    Positionner_Curseur(x,y);
+    puts(jr.prenom); //affiche le prénom du joueur
 
-	for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
+    for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
+    {
+        for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
         {
-            for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
+            Positionner_Curseur(x+j*5-5,y+i+2);
+            if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
             {
-                Positionner_Curseur(x+j*5-5,y+i+2);
-				if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
-                {
-                    if(jr.deck_nombre[i][j]==13)
-                        printf("[**] ");
-                    else
-                        printf("[%-2d] ",jr.deck_nombre[i][j]);
-                }
-                else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
-                    printf("[%-2s] ","X");
-                else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
-                    printf("     ");
-
-
-
+                if(jr.deck_nombre[i][j]==13)
+                    printf("[**] ");
+                else
+                    printf("[%-2d] ",jr.deck_nombre[i][j]);
             }
+            else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
+                printf("[%-2s] ","X");
+            else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
+                printf("     ");
+
+
 
         }
+
+    }
 }
 
 
 void afficher_actualiser_score (int nb_jr, S_joueur jr[])
 {
     int i;
-    //tri_score(nb_jr,jr);
-    for (i=0;i<nb_jr;i++)
+    for (i=0; i<nb_jr; i++)
     {
         Positionner_Curseur(64,5+i);
         puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
@@ -384,7 +384,7 @@ void afficher_actualiser_defausse_nombre (S_pioche p)
     else if (p.nombre_defausse[p.nombre_defausse_nb-1]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
         printf("    ");
     else if (p.nombre_defausse[p.nombre_defausse_nb-1]==13)
-        printf("[**]",p.nombre_defausse[p.nombre_defausse_nb-1]);
+        printf("[**]");
     else
         printf("[%-2d]",p.nombre_defausse[p.nombre_defausse_nb-1]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la dernière carte nombre dans la pioche
 }
@@ -392,26 +392,26 @@ void afficher_actualiser_defausse_nombre (S_pioche p)
 void afficher_actualiser_pioche_action (S_pioche p)
 {
     int i;
-    for(i=0;i<CARTE_PIOCHE_ACTION_FACE_VISIBLE;i++)
+    for(i=0; i<CARTE_PIOCHE_ACTION_FACE_VISIBLE; i++)
     {
         Positionner_Curseur(19+17*i,16);
         if(p.action_visible[i]==14)
             printf("Force à Jeter");
-        if(p.action_visible[i]==15)
+        else if(p.action_visible[i]==15)
             printf("Bouge tes C");
-        if(p.action_visible[i]==16)
+        else if(p.action_visible[i]==16)
             printf("2 Tours supp");
-        if(p.action_visible[i]==17)
+        else if(p.action_visible[i]==17)
             printf("Pioche 3 C.");
-        if(p.action_visible[i]==18)
+        else if(p.action_visible[i]==18)
             printf("Look 1 L ou C");
-        if(p.action_visible[i]==19)
+        else if(p.action_visible[i]==19)
             printf("Def + 1 tour");
-        if(p.action_visible[i]==20)
+        else if(p.action_visible[i]==20)
             printf("Rejoue la C.AC");
-        if(p.action_visible[i]==21)
+        else if(p.action_visible[i]==21)
             printf("Vole C.ACT");
-        if(p.action_visible[i]==22)
+        else if(p.action_visible[i]==22)
             printf("Echange de C.");
     }
 }
@@ -419,55 +419,69 @@ void afficher_actualiser_pioche_action (S_pioche p)
 
 void afficher_actualiser_defausse_action (S_pioche p)
 {
-    Positionner_Curseur(33,18);
-    if (p.action_defausse[p.nombre_defausse_nb]==0)//si il n'y a pas de carte dans la pioche, il n'affiche rien
+
+    if (p.action_defausse_nb==0)//si il n'y a pas de carte dans la pioche, il n'affiche rien
     {
         Positionner_Curseur(31,18);
-        printf("                  ");//n'imprime rien
+        printf("                               ");
     }
-    else if(p.action_defausse[p.nombre_defausse_nb]==14) //p.nombre_defausse_nb définit le rang de la dernière carte jouée
-        printf("Force à Jeter");
-    else if(p.action_defausse[p.nombre_defausse_nb]==15)
-        printf("Bouge tes C");
-    else if(p.action_defausse[p.nombre_defausse_nb]==16)
-        printf("2 Tours supp");
-    else if(p.action_defausse[p.nombre_defausse_nb]==17)
-        printf("Pioche 3 C.");
-    else if(p.action_defausse[p.nombre_defausse_nb]==18)
-        printf("Look 1 L ou C");
-    else if(p.action_defausse[p.nombre_defausse_nb]==19)
-        printf("Def + 1 tour");
-    else if(p.action_defausse[p.nombre_defausse_nb]==20)
-        printf("Rejoue la C.AC");
-    else if(p.action_defausse[p.nombre_defausse_nb]==21)
-        printf("Vole C.AC");
-    else if(p.action_defausse[p.nombre_defausse_nb]==22)
-        printf("Echange de C.");
+    Positionner_Curseur(33,18);
+    afficher_action(p.action_defausse[p.nombre_defausse_nb-1]);
 }
 
-
-
+void afficher_action(int nb)
+{
+    if (nb==0)//si il n'y a pas de carte dans la pioche, il n'affiche rien
+        printf("                  ");//n'imprime rien
+    else if(nb==14) //p.nombre_defausse_nb définit le rang de la dernière carte jouée
+        printf("Force à Jeter");
+    else if(nb==15)
+        printf("Bouge tes C");
+    else if(nb==16)
+        printf("2 Tours supp");
+    else if(nb==17)
+        printf("Pioche 3 C.");
+    else if(nb==18)
+        printf("Look 1 L ou C");
+    else if(nb==19)
+        printf("Def + 1 tour");
+    else if(nb==20)
+        printf("Rejoue la C.AC");
+    else if(nb==21)
+        printf("Vole C.AC");
+    else if(nb==22)
+        printf("Echange de C.");
+}
 
 void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_jr)
 {
     int i,cpt=0;
     afficher_plateau_des_autres(nb_jr);
 
-    for(i=0;i<nb_jr;i++)
+    for(i=0; i<nb_jr; i++)
     {
         if(i!=no_observateur-1)
         {
             cpt++;
             if(cpt==1)
+            {
                 afficher_actualiser_joueur_vision (jr[i],17,6);
                 surligner_etoile_des_autres(jr[i],17,6);
+            }
+
             if(cpt==2)
+            {
                 afficher_actualiser_joueur_vision (jr[i],49,6);
                 surligner_etoile_des_autres(jr[i],49,6);
+            }
+
 
             if(cpt==3)
+            {
                 afficher_actualiser_joueur_vision (jr[i],17,12);
                 surligner_etoile_des_autres(jr[i],17,12);
+            }
+
 
 
         }
@@ -477,7 +491,7 @@ void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_
 void surligner_etoile(S_joueur jr,int x,int y)
 {
     int i,ligne,colonne;
-    for(i=0;i<jr.nb_etoile;i++)
+    for(i=0; i<jr.nb_etoile; i++)
     {
         ligne=jr.pos_etoile[i].ligne;
         colonne=jr.pos_etoile[i].colonne;
@@ -497,7 +511,7 @@ void surligner_etoile(S_joueur jr,int x,int y)
 void surligner_etoile_des_autres(S_joueur jr,int x,int y)
 {
     int i,ligne,colonne;
-    for(i=0;i<jr.nb_etoile;i++)
+    for(i=0; i<jr.nb_etoile; i++)
     {
         ligne=jr.pos_etoile[i].ligne;
         colonne=jr.pos_etoile[i].colonne;
@@ -514,3 +528,150 @@ void surligner_etoile_des_autres(S_joueur jr,int x,int y)
 
 }
 
+void voir_deck_action(S_joueur jr,int x,int y,int parametre)
+{
+    int i,cpt=0,cpt2=0;
+    afficher_boite_dialogue();
+    if(jr.nb_action==0)
+    {
+        Positionner_Curseur(x,y);
+        printf("%s n'a pas de carte action",jr.prenom);
+        cpt+=2;
+    }
+    else
+    {
+        Positionner_Curseur(x,y+cpt);
+        printf("%s a %d cartes action:",jr.prenom,jr.nb_action);
+        cpt+=2;
+        if(jr.nb_action<12)
+        {
+            for(i=0; i<jr.nb_action; i++)
+            {
+                Positionner_Curseur(x,y+cpt);
+                printf("%d- ",i+1);
+                afficher_action(jr.deck_action[i]);
+                cpt++;
+            }
+        }
+        else if (jr.nb_action>=12)
+        {
+            for(i=0; i<12; i++)
+            {
+                Positionner_Curseur(x,y+cpt);
+                printf("%d- ",i+1);
+                afficher_action(jr.deck_action[i]);
+                cpt++;
+            }
+            for(i=12; i<jr.nb_action; i++)
+            {
+                Positionner_Curseur(x+25,y+cpt2+2);
+                printf("%d- ",i+1);
+                afficher_action(jr.deck_action[i]);
+                cpt2++;
+            }
+        }
+    }
+    if (parametre==1)
+    {
+        Positionner_Curseur(x,y+cpt);
+        system("pause");
+    }
+    else if (parametre==2)
+    {
+        Positionner_Curseur(x,y+cpt);
+        printf("Quelle carte voulez vous jouer? :");
+    }
+    else if (parametre==3)
+    {
+        Positionner_Curseur(x,y+cpt);
+        printf("Quelle carte voulez vous voler? :");
+    }
+
+
+}
+
+
+
+void afficher_coups(S_joueur jr)
+{
+    Positionner_Curseur(56,11);
+    printf("nb de coups: %d",jr.nb_coups);
+}
+void afficher_dernier_tour(S_joueur jr[],int nb_jr)
+{
+    int i;
+    for(i=0;i<nb_jr;i++)
+    if(jr[i].init_fin_manche==1)
+    {
+        Positionner_Curseur(56,10);
+        color(15,12);
+        printf("Dernier tour !");
+        color(15,0);
+    }
+}
+
+void afficher_jeu_duo (S_joueur jr1,S_joueur jr2)
+{
+    afficher_actualiser_joueur_vision (jr1,17,6);
+    surligner_etoile_des_autres(jr1,17,6);
+
+
+    afficher_actualiser_joueur_vision (jr2,49,6);
+    surligner_etoile_des_autres(jr2,49,6);
+}
+
+void afficher_haut_duo()
+{
+    Positionner_Curseur(0,0);
+    system("cls");
+    printf(" ________         Skyjo Action     ___________     Créé par les Boudet          _______\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |        Jeu de:                         Jeu de:                                     |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+    printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+    printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" |                                                                                    |\n");
+    printf(" ______________________________________________________________________________________\n");
+}
+
+
+void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
+{
+    int cpt=0;
+    S_joueur jr_vainqueur;
+    afficher_boite_dialogue();
+    if (parametre==1)
+    {
+        Positionner_Curseur(x,y);
+        printf("Résumé de la manche:");
+        Positionner_Curseur(x,y+cpt);
+        jr_vainqueur=test_init_jr(jr,nb_jr);
+        if(jr_vainqueur.init_fin_manche==1)//si deplus apres avoir initié la fin de la manche, il est le premier au score
+            printf("%s avait initié la fin de manche, et c'est lui qui a le moins de points.",jr_vainqueur.prenom);
+        else if (jr_vainqueur.init_fin_manche==-1)//si il a inititié la fin de partie mais qu'il n'est pas premier au score de la manche
+        {
+            printf("%s avait initié la fin de manche, mais il ne finit pas avec le plus bas score",jr_vainqueur.prenom);
+            cpt++;
+            Positionner_Curseur(x,y+cpt);
+            printf("le score qu'il fera a cette manche est donc doublé");
+        }
+    }
+    else if (parametre==2)
+    {
+
+    }
+
+}

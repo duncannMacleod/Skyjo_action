@@ -20,7 +20,7 @@ int main()
     srand(time(NULL));
     SetConsoleOutputCP(1252); //permet d'afficher les accents
     plein_ecran(); //passe la console en plein écran
-    int nb_joueurs,i,test;
+    int nb_joueurs,i;
     nb_joueurs= afficher_menu_bienvenue(); //le programme execute la fonction afficher_menu_bienvenue() , qui revoie de nombre de joueurs
     if (nb_joueurs==0)
         return 0;
@@ -42,9 +42,11 @@ int main()
         {
             for(i=1; i<nb_joueurs+1; i++) //!!!!!! attention compteur allant de 1 à nb_jr+1 !!!!!!
                 debut_tour (jr,i,nb_joueurs,&p,3,23);//engendre le début véritable de la partie
-            test=test_fin_manche(jr,nb_joueurs);
-        }
-        while((test)==0);
+        }while(test_fin_manche(jr,nb_joueurs)==0);
+
+        comptage_score(jr,nb_joueurs); //prend en compte les règles du skyjo pour compter les points de chaque participant
+        tri_score(nb_joueurs,jr);
+
     }
     while(test_fin_partie(jr,nb_joueurs)==0);
 

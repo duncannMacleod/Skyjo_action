@@ -30,10 +30,15 @@ struct joueur
                 int nb_action; //nombre de carte action dans le jeu du joueur.
                 char prenom [DIM_STR]; //nom du joueur
                 int score; //score du joueur
-                S_etoile pos_etoile[13]; //position des hypothétiques cartes étoiles dans le jeu.
+                S_etoile pos_etoile[12]; //position des hypothétiques cartes étoiles dans le jeu.
                 int nb_etoile; //nombres d'étoiles dont le joueur à atribué un chiffre
                 int nb_skyjo_ligne;
                 int nb_skyjo_colonne;
+
+                int nb_coups;
+
+                int init_fin_manche;
+
 
 };
 typedef struct joueur S_joueur;
@@ -55,8 +60,6 @@ struct pioche
                 int action_visible[CARTE_PIOCHE_ACTION_FACE_VISIBLE]; //les 4 cartes acrtions présentées
                 int action_defausse[CARTE_PIOCHE_ACTION_NB];
                 int action_defausse_nb;
-
-
 
 
 

@@ -168,7 +168,7 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
 
     }
     while (choix==0);
-    test_premier_fin_manche(jr[no_jr-1],nb_jr,p);
+    test_premier_fin_manche(&jr[no_jr-1],nb_jr,p);
 
 
 }

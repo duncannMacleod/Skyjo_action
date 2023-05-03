@@ -9,7 +9,7 @@ int test_fin_manche(S_joueur jr[],int nb_jr,S_pioche p); //renvoie le numéro du 
 int test_fin_partie(S_joueur jr[],int nb_jr); //renvoie le numéro du joueur qui a gagné
 void comptage_score(S_joueur jr[],int nb_jr);
 S_joueur test_init_jr(S_joueur jr[],int nb_jr,S_pioche p);//teste pour savoir si celui qui a initié le dernier tour est le gagnant de la manche
-void test_premier_fin_manche(S_joueur jr,int nb_jr,S_pioche *p);
+void test_premier_fin_manche(S_joueur *jr,int nb_jr,S_pioche *p);
 
 
 

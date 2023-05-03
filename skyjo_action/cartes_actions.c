@@ -4,6 +4,7 @@
 #include <string.h>
 #include <conio.h>
 #include <time.h>
+#include <ctype.h>
 
 #include "cartes_actions.h"
 #include "affichage.h"

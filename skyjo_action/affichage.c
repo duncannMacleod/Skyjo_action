@@ -650,9 +650,10 @@ void afficher_haut_duo()
 
 void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
 {
-    int cpt=0;
+    int i,cpt=0;
     S_joueur jr_vainqueur;
     afficher_boite_dialogue();
+
     if (parametre==1)
     {
         Positionner_Curseur(x,y);
@@ -671,7 +672,14 @@ void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
     }
     else if (parametre==2)
     {
-
+        cpt+=2; Positionner_Curseur(x,y+cpt);
+        printf("les scores de cette manche sont donc");
+        cpt+=2;
+        for(i=0;i<nb_jr;i++)
+        {
+            printf("le score de %s cette manche est %d",jr[i].prenom,jr[i].score_manche);
+            cpt++; Positionner_Curseur(x,y+cpt);
+        }
     }
 
 }

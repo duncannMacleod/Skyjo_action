@@ -42,7 +42,7 @@ int main()
         {
             for(i=1; i<nb_joueurs+1; i++) //!!!!!! attention compteur allant de 1 à nb_jr+1 !!!!!!
                 debut_tour (jr,i,nb_joueurs,&p,3,23);//engendre le début véritable de la partie
-        }while(test_fin_manche(jr,nb_joueurs)==0);
+        }while(test_fin_manche(jr,nb_joueurs,p)==0);//lecture
 
         comptage_score(jr,nb_joueurs); //prend en compte les règles du skyjo pour compter les points de chaque participant
         recap_manche(jr,p,nb_joueurs,3,23,1);

@@ -31,6 +31,8 @@ void initialisation_pioche_carte_action( S_pioche *p); //positionne les 4 cartes
 void initialisation_defausse_nombre(S_pioche *p);
 void initialisation_defausse_action(S_pioche *p);
 
+void premier_fin_manche(S_pioche *p);
+
 
 
 #endif // INITIALISATION_H_INCLUDED

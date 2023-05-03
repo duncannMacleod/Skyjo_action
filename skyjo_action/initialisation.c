@@ -54,6 +54,7 @@ void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
     initalisation_nb_etoile(jr,nb_jr);//I. de tous variables relatives aux étoiles
     initalisation_nb_skyjo(jr,nb_jr);//idem
     initialisation_deck_nb_action(jr,nb_jr);
+    premier_fin_manche(p);
 
 
 
@@ -333,4 +334,10 @@ void initialisation_deck_nb_action(S_joueur jr[],int nb_jr)
     {
         jr[i].nb_action=0;
     }
+
+}
+
+void premier_fin_manche(S_pioche *p)
+{
+    p->premier_fin_manche=0;
 }

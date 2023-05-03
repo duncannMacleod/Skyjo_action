@@ -47,13 +47,12 @@ void comptage_score(S_joueur jr[],int nb_jr) //prend en compte les règles du sky
 		somme-=(10*jr[i].nb_skyjo_colonne+15*jr[i].nb_skyjo_ligne); //on soustrait a la somme globlale les bonus de skyjo (-10 pour une colonne et -15 pour une linge)
 		somme+=(10*jr[i].nb_action); //incrémente 10 par nombre de carte action dans le jeu du joueur.
 		jr[i].score_manche=somme;
-		jr[i].score+=somme; //on incrémente la somme au score du joueur.
 
 
     }
 }
 
-int test_fin_manche(S_joueur jr[],int nb_jr) //renvoie le numéro du joueur qui a gagné la manche
+int test_fin_manche(S_joueur jr[],int nb_jr,S_pioche p) //renvoie le numéro du joueur qui a gagné la manche
 {
     int i,a,b,cpt;
     for(i=0;i<nb_jr;i++)
@@ -61,21 +60,32 @@ int test_fin_manche(S_joueur jr[],int nb_jr) //renvoie le numéro du joueur qui a
         cpt=0;
         for(a=0;a<CARTE_JOUEUR_NOMBRE_L;a++)
             for(b=0;b<CARTE_JOUEUR_NOMBRE_C;b++)
-                if(jr[i].deck_nombre_cache[a][b]==1)
+                if(jr[i].deck_nombre_cache[a][b]==1||jr[i].deck_nombre_cache[a][b]==-1)
                     cpt++;
-        if(cpt==12)
+        if(cpt==12||p.premier_fin_manche==i+1)
         return i+1;
     }
 
     return 0;
 }
 
-S_joueur test_init_jr(S_joueur jr[],int nb_jr)
+S_joueur test_init_jr(S_joueur jr[],int nb_jr,S_pioche p)
 {
-    int no_jr_init=test_fin_manche(jr,nb_jr),i;
+    int no_jr_init=test_fin_manche(jr,nb_jr,p),i;
     for(i=0;i<nb_jr;i++)//boucle pour tout les joueurs
         if(i!=no_jr_init) //sauf le joueur ayant initié la fin de tour
             if(jr[no_jr_init-1].score_manche>=jr[i].score_manche)//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
                 jr[no_jr_init-1].init_fin_manche=-1;
     return jr[no_jr_init-1];
+}
+
+void test_premier_fin_manche(S_joueur jr,int nb_jr,S_pioche *p)
+{
+        int a,b,cpt=0;
+        for(a=0;a<CARTE_JOUEUR_NOMBRE_L;a++)
+            for(b=0;b<CARTE_JOUEUR_NOMBRE_C;b++)
+                if(jr.deck_nombre_cache[a][b]==1||jr.deck_nombre_cache[a][b]==-1)
+                    cpt++;
+        if(cpt==12&&p->premier_fin_manche==-1)
+            p->premier_fin_manche=jr.joueur_no-1;
 }

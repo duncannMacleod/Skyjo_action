@@ -338,3 +338,134 @@
 	"deroulement_tour.h"
 	"deplacements_cartes.h"
 
+1683127902 source:d:\skyjo_action\affichage.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+
+1683105212 d:\skyjo_action\affichage.h
+	"declaration.h"
+
+1683125816 d:\skyjo_action\declaration.h
+
+1683129354 d:\skyjo_action\suivi_score.h
+	"declaration.h"
+
+1683105982 source:d:\skyjo_action\cartes_actions.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<ctype.h>
+	"cartes_actions.h"
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+	"initialisation.h"
+	"deroulement_tour.h"
+	"detection_skyjo.h"
+	"deplacements_cartes.h"
+
+1683105212 d:\skyjo_action\cartes_actions.h
+	"declaration.h"
+
+1683126038 d:\skyjo_action\initialisation.h
+	"declaration.h"
+
+1683109872 d:\skyjo_action\deroulement_tour.h
+	"declaration.h"
+
+1683105212 d:\skyjo_action\detection_skyjo.h
+
+1683105212 d:\skyjo_action\deplacements_cartes.h
+	"declaration.h"
+
+1683105982 source:d:\skyjo_action\deplacements_cartes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<ctype.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+	"initialisation.h"
+	"deroulement_tour.h"
+	"deplacements_cartes.h"
+
+1683129354 source:d:\skyjo_action\deroulement_tour.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	<time.h>
+	"deroulement_tour.h"
+	"declaration.h"
+	"affichage.h"
+	"deplacements_cartes.h"
+	"detection_skyjo.h"
+	"cartes_actions.h"
+	"suivi_score.h"
+
+1683105212 source:d:\skyjo_action\detection_skyjo.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+	"initialisation.h"
+	"deroulement_tour.h"
+	"detection_skyjo.h"
+
+1683127974 source:d:\skyjo_action\initialisation.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	"initialisation.h"
+	"declaration.h"
+	"affichage.h"
+	"suivi_score.h"
+
+1683126406 source:d:\skyjo_action\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+	"initialisation.h"
+	"deroulement_tour.h"
+	"detection_skyjo.h"
+
+1683129720 source:d:\skyjo_action\suivi_score.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<conio.h>
+	"affichage.h"
+	"declaration.h"
+	"suivi_score.h"
+

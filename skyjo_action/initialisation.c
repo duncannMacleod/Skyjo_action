@@ -66,7 +66,7 @@ void initialisation_carte_nombre(S_pioche*p) //crée le paquet de carte nombre no
     int i,cpt=0;
     for(i=0;i<3;i++)
     {
-        p->nombre[cpt]=13;cpt++; //-2
+        p->nombre[cpt]=13;cpt++;
     }
     for(i=0;i<11;i++)
     {

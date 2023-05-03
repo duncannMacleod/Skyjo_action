@@ -653,11 +653,8 @@ void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
     int i,cpt=0;
     S_joueur jr_vainqueur;
     afficher_boite_dialogue();
-
-    if (parametre==1)
-    {
-        Positionner_Curseur(x,y);
-        printf("Résumé de la manche:");
+        Positionner_Curseur(x,y+cpt);
+        cpt+=2;printf("Résumé de la manche:");
         Positionner_Curseur(x,y+cpt);
         jr_vainqueur=test_init_jr(jr,nb_jr);
         if(jr_vainqueur.init_fin_manche==1)//si deplus apres avoir initié la fin de la manche, il est le premier au score
@@ -668,18 +665,16 @@ void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
             cpt++;
             Positionner_Curseur(x,y+cpt);
             printf("le score qu'il fera a cette manche est donc doublé");
+            cpt++;
         }
-    }
-    else if (parametre==2)
-    {
         cpt+=2; Positionner_Curseur(x,y+cpt);
         printf("les scores de cette manche sont donc");
-        cpt+=2;
+        cpt+=2; Positionner_Curseur(x,y+cpt);
         for(i=0;i<nb_jr;i++)
         {
             printf("le score de %s cette manche est %d",jr[i].prenom,jr[i].score_manche);
             cpt++; Positionner_Curseur(x,y+cpt);
         }
-    }
-
+        cpt+=2;
+        Positionner_Curseur(x,y+cpt);
 }

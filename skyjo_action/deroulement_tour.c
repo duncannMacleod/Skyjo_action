@@ -5,6 +5,7 @@
 #include <string.h>
 #include <conio.h>
 #include <ctype.h>
+#include <time.h>
 
 
 #include "deroulement_tour.h"
@@ -141,7 +142,13 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         case 'S':
             retourne_toutes_cartes(jr,nb_jr);
             choix=0;
-            Positionner_Curseur(x,y);
+            Positionner_Curseur(x,y+cpt);
+            system("pause");
+            break;
+        case '&':
+            met_toutes_cartes_0(&jr[no_jr-1]);
+            choix=0;
+            Positionner_Curseur(x,y+cpt);
             system("pause");
             break;
         case 'T': //terminer son tour.
@@ -330,4 +337,18 @@ void retourne_toutes_cartes(S_joueur jr[],int nb_jr) //progamme utilisé pour le 
             jr[i].deck_nombre_cache[a][b]=1;
         }
     }
+}
+
+
+
+void met_toutes_cartes_0(S_joueur *jr)
+{
+    int a,b;
+
+
+        for(a=0;a<CARTE_JOUEUR_NOMBRE_L;a++)
+            for(b=0;b<CARTE_JOUEUR_NOMBRE_C;b++)
+        {
+            jr->deck_nombre[a][b]=rand()%2;
+        }
 }

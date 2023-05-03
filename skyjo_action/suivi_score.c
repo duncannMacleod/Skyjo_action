@@ -75,7 +75,7 @@ S_joueur test_init_jr(S_joueur jr[],int nb_jr)
     int no_jr_init=test_fin_manche(jr,nb_jr),i;
     for(i=0;i<nb_jr;i++)//boucle pour tout les joueurs
         if(i!=no_jr_init) //sauf le joueur ayant initié la fin de tour
-            if(jr[no_jr_init-1].score_manche<=jr[i].score_manche)//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
+            if(jr[no_jr_init-1].score_manche>=jr[i].score_manche)//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
                 jr[no_jr_init-1].init_fin_manche=-1;
     return jr[no_jr_init-1];
 }

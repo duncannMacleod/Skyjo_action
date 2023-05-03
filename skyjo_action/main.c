@@ -47,7 +47,6 @@ int main()
         comptage_score(jr,nb_joueurs); //prend en compte les règles du skyjo pour compter les points de chaque participant
         recap_manche(jr,p,nb_joueurs,3,23,1);
         tri_score(nb_joueurs,jr);
-        recap_manche(jr,p,nb_joueurs,3,23,2);
         system("pause");
 
 

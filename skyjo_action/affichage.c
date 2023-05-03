@@ -653,36 +653,38 @@ void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
     int i,cpt=0;
     S_joueur jr_vainqueur;
     afficher_boite_dialogue();
+    Positionner_Curseur(x,y+cpt);
+    cpt+=2;
+    printf("Résumé de la manche:");
+    Positionner_Curseur(x,y+cpt);
+    jr_vainqueur=test_init_jr(jr,nb_jr,p);
+    Positionner_Curseur(x,y+cpt);
+    if(jr_vainqueur.init_fin_manche==1&&p.premier_fin_manche-1==jr_vainqueur.joueur_no-1)//si deplus apres avoir initié la fin de la manche, il est le premier au score
+        printf("%s avait initié la fin de manche, et c'est lui qui a le moins de points.",jr_vainqueur.prenom);
+    else if (jr_vainqueur.init_fin_manche==-1)//si il a inititié la fin de partie mais qu'il n'est pas premier au score de la manche
+    {
+        printf("%s avait initié la fin de manche, mais il ne finit pas avec le plus bas score",jr_vainqueur.prenom);
+        cpt++;
         Positionner_Curseur(x,y+cpt);
-        cpt+=2;printf("Résumé de la manche:");
+        printf("le score qu'il fera a cette manche est donc doublé");
+        cpt++;
+        jr[jr_vainqueur.joueur_no-1].score_manche=(jr[jr_vainqueur.joueur_no-1].score_manche)*2;
+    }
+    cpt+=2;
+    Positionner_Curseur(x,y+cpt);
+    printf("les scores de cette manche sont donc");
+    cpt+=2;
+    Positionner_Curseur(x,y+cpt);
+    for(i=0; i<nb_jr; i++)
+    {
+        printf("le score de %s cette manche est %d",jr[i].prenom,jr[i].score_manche);
+        cpt++;
         Positionner_Curseur(x,y+cpt);
-        jr_vainqueur=test_init_jr(jr,nb_jr,p);
-        Positionner_Curseur(60,4);
-        printf("%d %d %d",jr_vainqueur.joueur_no-1,p.premier_fin_manche,jr_vainqueur.init_fin_manche);
-        Positionner_Curseur(x,y+cpt);
-        if(jr_vainqueur.init_fin_manche==1&&p.premier_fin_manche==jr_vainqueur.joueur_no)//si deplus apres avoir initié la fin de la manche, il est le premier au score
-            printf("%s avait initié la fin de manche, et c'est lui qui a le moins de points.",jr_vainqueur.prenom);
-        else if (jr_vainqueur.init_fin_manche==-1)//si il a inititié la fin de partie mais qu'il n'est pas premier au score de la manche
-        {
-            printf("%s avait initié la fin de manche, mais il ne finit pas avec le plus bas score",jr_vainqueur.prenom);
-            cpt++;
-            Positionner_Curseur(x,y+cpt);
-            printf("le score qu'il fera a cette manche est donc doublé");
-            cpt++;
-            jr[jr_vainqueur.joueur_no-1].score_manche=(jr[jr_vainqueur.joueur_no-1].score_manche)*2;
-        }
-        cpt+=2; Positionner_Curseur(x,y+cpt);
-        printf("les scores de cette manche sont donc");
-        cpt+=2; Positionner_Curseur(x,y+cpt);
-        for(i=0;i<nb_jr;i++)
-        {
-            printf("le score de %s cette manche est %d",jr[i].prenom,jr[i].score_manche);
-            cpt++; Positionner_Curseur(x,y+cpt);
-        }
-        for(i=0;i<nb_jr;i++)
-        {
-            jr[i].score+=jr[i].score_manche;
-        }
-        cpt+=2;
-        Positionner_Curseur(x,y+cpt);
+    }
+    for(i=0; i<nb_jr; i++)
+    {
+        jr[i].score+=jr[i].score_manche;
+    }
+    cpt+=2;
+    Positionner_Curseur(x,y+cpt);
 }

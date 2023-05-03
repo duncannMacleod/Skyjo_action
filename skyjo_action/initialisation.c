@@ -339,5 +339,5 @@ void initialisation_deck_nb_action(S_joueur jr[],int nb_jr)
 
 void premier_fin_manche(S_pioche *p)
 {
-    p->premier_fin_manche=0;
+    p->premier_fin_manche=-1;
 }

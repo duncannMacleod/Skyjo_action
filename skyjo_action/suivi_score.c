@@ -47,9 +47,6 @@ void comptage_score(S_joueur jr[],int nb_jr) //prend en compte les règles du sky
 		somme-=(10*jr[i].nb_skyjo_colonne+15*jr[i].nb_skyjo_ligne); //on soustrait a la somme globlale les bonus de skyjo (-10 pour une colonne et -15 pour une linge)
 		somme+=(10*jr[i].nb_action); //incrémente 10 par nombre de carte action dans le jeu du joueur.
 		jr[i].score_manche=somme;
-		Positionner_Curseur(100,1+i);
-		printf("%d %d", jr[i].score_manche, jr[i].score);
-
 
     }
 }
@@ -79,8 +76,6 @@ S_joueur test_init_jr(S_joueur jr[],int nb_jr,S_pioche p)
             if(jr[no_jr_init-1].score_manche>jr[i].score_manche)//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
                 {
                     jr[no_jr_init-1].init_fin_manche=-1;
-                    Positionner_Curseur(100,8);
-                    printf("%d %d double", jr[no_jr_init-1].score_manche,jr[i].score_manche );
                 }
 
     return jr[no_jr_init-1];
@@ -93,9 +88,9 @@ void test_premier_fin_manche(S_joueur *jr,int nb_jr,S_pioche *p)
             for(b=0;b<CARTE_JOUEUR_NOMBRE_C;b++)
                 if(jr->deck_nombre_cache[a][b]==1||jr->deck_nombre_cache[a][b]==-1)
                     cpt++;
-        if(cpt==12)
+        if(cpt==12&&p->premier_fin_manche==-1)
         {
-            p->premier_fin_manche=jr->joueur_no-1;
+            p->premier_fin_manche=jr->joueur_no;
             jr->init_fin_manche=1;
         }
 

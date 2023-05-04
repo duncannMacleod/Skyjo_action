@@ -688,3 +688,8 @@ void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
     cpt+=2;
     Positionner_Curseur(x,y+cpt);
 }
+
+void voir_deck_action_des_autres(S_joueur jr[],int x,int y)
+{
+
+}

@@ -286,35 +286,11 @@ void jouer_21(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y) //vol
     Positionner_Curseur(x,y+cpt);
     printf("Réponse: ");
     scanf("%d",&choix);
-    if(choix==1)//si le joueur a sélectionné le choix 1, alors il va voler une carte action du joueur numéro 1
-    {
-        voir_deck_action(jr[0],x,y,3);//affiche le deck des carte action du joueur i avec le paramètre 3, correspondant au paramètre d'affichge pour le vol
+        voir_deck_action(jr[choix-1],x,y,3);//affiche le deck des carte action du joueur i avec le paramètre 3, correspondant au paramètre d'affichge pour le vol
         scanf("%d",&carte_vol);
-        jr[no_jr-1].deck_action[jr[no_jr-1].nb_action]=recup_du_deck(&jr[1],choix,carte_vol);//récupère la carte choise du deck de l'adversaire et la place dans je jeu du joueur
+        jr[no_jr-1].deck_action[jr[no_jr-1].nb_action]=recup_du_deck(&jr[choix-1],choix,carte_vol);//récupère la carte choise du deck de l'adversaire et la place dans je jeu du joueur
         jr[no_jr-1].nb_action++;
-    }
-    if(choix==2)//idem
-    {
-        voir_deck_action(jr[1],x,y,3);
-        scanf("%d",&carte_vol);
-        jr[no_jr-1].deck_action[jr[no_jr-1].nb_action]=recup_du_deck(&jr[1],choix,carte_vol);
-        jr[no_jr-1].nb_action++;
-    }
-    if(choix==3)//idem
-    {
-        voir_deck_action(jr[2],x,y,3);
-        scanf("%d",&carte_vol);
-        recup_du_deck(&jr[2],choix,carte_vol);
-        jr[no_jr-1].deck_action[jr[no_jr-1].nb_action]=recup_du_deck(&jr[2],choix,carte_vol);
-        jr[no_jr-1].nb_action++;
-    }
-    if(choix==4)//idem
-    {
-        voir_deck_action(jr[3],x,y,3);
-        scanf("%d",&carte_vol);
-        jr[no_jr-1].deck_action[jr[no_jr-1].nb_action]=recup_du_deck(&jr[3],choix,carte_vol);
-        jr[no_jr-1].nb_action++;
-    }
+
     jr[no_jr-1].nb_coups++;//incrémente le nombre de coup pour permettre au joueur de jouer sa carte dirrectement
 
 }

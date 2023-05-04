@@ -34,6 +34,7 @@ void afficher_actualiser_defausse_nombre (S_pioche p);  ///attention jr et jr[] 
 void afficher_action(int nb);
 
 void voir_deck_action(S_joueur jr,int x,int y,int parametre);
+void voir_deck_action_des_autres(S_joueur jr[],int x,int y);
 
 
 void color (int couleurDuTexte, int couleurDuFond);

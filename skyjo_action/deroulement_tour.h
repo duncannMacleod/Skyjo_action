@@ -22,4 +22,5 @@ void regarder_jeu_des_autres(S_joueur jr[],int no_jr, int nb_jr, int x,int y);
 void atribuer_nbr_etoile(S_joueur *jr,S_pioche *p, int x, int y);
 
 
+
 #endif // DEROULEMENT_TOUR_H_INCLUDED

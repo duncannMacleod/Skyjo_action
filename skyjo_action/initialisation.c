@@ -341,3 +341,45 @@ void premier_fin_manche(S_pioche *p)
 {
     p->premier_fin_manche=-1;
 }
+
+void test_fin_pioche_n_et_a (S_pioche *p)
+{
+    if (p->nombre_nb==0)
+    {
+        remelange_carte_nombre(p);
+    }
+    if (p->action_nb==0)
+    {
+        remelange_carte_action(p);
+    }
+
+}
+
+void remelange_carte_nombre(S_pioche *p)
+{
+        int cpt=0,i;
+        for(i=0;i<p->nombre_defausse_dessous_nb;i++)
+            p->nombre[cpt]=p->nombre_defausse_dessous[i];
+
+
+        for(i=0;i<p->nombre_defausse_nb;i++)
+            p->nombre[cpt]=p->nombre_defausse[i];
+
+        p->nombre_nb=(p->nombre_defausse_dessous_nb+p->nombre_defausse_nb);
+        initialisation_defausse_nombre(p);
+        p->nombre_defausse_nb=0;
+        p->nombre_defausse_dessous_nb=0;
+}
+
+
+void remelange_carte_action(S_pioche *p)
+{
+    int i;
+    for(i=0;i<p->action_defausse_nb;i++)
+        p->action[i]=p->action_defausse[i];
+    p->action_nb=p->action_defausse_nb;
+    initialisation_defausse_action(p);
+    p->action_defausse_nb=0;
+
+}
+

@@ -169,6 +169,8 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
     }
     while (choix==0);
     test_premier_fin_manche(&jr[no_jr-1],nb_jr,p);
+    test_fin_pioche_n_et_a (p);
+
 
 
 }
@@ -353,6 +355,6 @@ void met_toutes_cartes_0(S_joueur *jr)
         for(a=0;a<CARTE_JOUEUR_NOMBRE_L;a++)
             for(b=0;b<CARTE_JOUEUR_NOMBRE_C;b++)
         {
-            jr->deck_nombre[a][b]=rand()%2;
+            jr->deck_nombre[a][b]=rand()%4;
         }
 }

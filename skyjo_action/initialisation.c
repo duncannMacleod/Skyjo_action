@@ -55,6 +55,8 @@ void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
     initalisation_nb_skyjo(jr,nb_jr);//idem
     initialisation_deck_nb_action(jr,nb_jr);
     premier_fin_manche(p);
+    initalisation_init_fin_manche(jr,nb_jr);
+
 
 
 
@@ -383,3 +385,11 @@ void remelange_carte_action(S_pioche *p)
 
 }
 
+void initalisation_init_fin_manche(S_joueur jr[],int nb_jr)
+{
+    int i;
+    for(i=0;i<nb_jr;i++)
+    {
+        jr[i].init_fin_manche=0;
+    }
+}

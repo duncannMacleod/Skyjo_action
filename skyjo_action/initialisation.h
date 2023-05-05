@@ -30,6 +30,7 @@ void initialisation_score(int nb_jr,S_joueur jr[]);
 void initialisation_pioche_carte_action( S_pioche *p); //positionne les 4 cartes actions
 void initialisation_defausse_nombre(S_pioche *p);
 void initialisation_defausse_action(S_pioche *p);
+void initalisation_init_fin_manche(S_joueur jr[],int nb_jr);
 
 void test_fin_pioche_n_et_a (S_pioche *p);
 

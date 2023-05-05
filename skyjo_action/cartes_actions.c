@@ -295,7 +295,7 @@ void jouer_21(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y) //vol
 
 }
 
-void jouer_22(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)
+void jouer_22(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//échanger 2 cartes avec un ou 2 joueurs
 {
     int cpt,a,i,reponse,ligne1,ligne2,colonne1,colonne2;
     for(a=1; a>=0; a--)//boucle gérant le nombre d'échange que le joueur peut faire

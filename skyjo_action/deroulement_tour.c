@@ -36,6 +36,7 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         afficher_actualiser_defausse_nombre(*p);//idem
         afficher_actualiser_pioche_action(*p); //réaffiche les cartes actions
         afficher_coups(jr[no_jr-1]);
+        afficher_dernier_tour(jr,nb_jr);
 
 
 
@@ -50,7 +51,7 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         cpt++;Positionner_Curseur(x,y+cpt);
         printf("Jouer d'une carte action J, Affecter un nbr à une étoile E, Terminer son tour T");
         cpt++;Positionner_Curseur(x,y+cpt);
-        printf("Voir son deck de carte Action D");
+        printf("Voir son deck de carte Action D ou voir le deck action des autres F.");
         cpt+=2;Positionner_Curseur(x,y+cpt);
         printf("Réponse:"); //fin conversationnel
         scanf("%c",&choix);
@@ -153,6 +154,11 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
             Positionner_Curseur(x,y+cpt);
             system("pause");
             break;
+        case 'F':
+            voir_deck_action_des_autres(jr,nb_jr,no_jr,x,y);
+            choix=0;
+            break;
+
         case 'T': //terminer son tour.
 
             break;

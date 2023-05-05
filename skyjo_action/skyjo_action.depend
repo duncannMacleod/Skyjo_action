@@ -76,7 +76,7 @@
 1680987403 c:\users\dunca\documents\github\skyjo_action\skyjo_action\suivi_score.h
 	"declaration.h"
 
-1683192411 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\affichage.c
+1683204094 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -86,7 +86,7 @@
 	"declaration.h"
 	"suivi_score.h"
 
-1683192411 c:\users\5862700\documents\github\skyjo_action\skyjo_action\affichage.h
+1683201726 c:\users\5862700\documents\github\skyjo_action\skyjo_action\affichage.h
 	"declaration.h"
 
 1683192411 c:\users\5862700\documents\github\skyjo_action\skyjo_action\declaration.h
@@ -94,7 +94,7 @@
 1683192411 c:\users\5862700\documents\github\skyjo_action\skyjo_action\suivi_score.h
 	"declaration.h"
 
-1683192411 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\cartes_actions.c
+1683200241 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\cartes_actions.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -111,7 +111,7 @@
 	"detection_skyjo.h"
 	"deplacements_cartes.h"
 
-1683193713 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
+1683201868 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -141,7 +141,7 @@
 	"deroulement_tour.h"
 	"detection_skyjo.h"
 
-1683192411 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\main.c
+1683204192 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -155,7 +155,7 @@
 	"deroulement_tour.h"
 	"detection_skyjo.h"
 
-1683193653 c:\users\5862700\documents\github\skyjo_action\skyjo_action\initialisation.h
+1683203071 c:\users\5862700\documents\github\skyjo_action\skyjo_action\initialisation.h
 	"declaration.h"
 
 1683192411 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\suivi_score.c
@@ -168,7 +168,7 @@
 	"declaration.h"
 	"suivi_score.h"
 
-1683193850 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\initialisation.c
+1683203071 source:c:\users\5862700\documents\github\skyjo_action\skyjo_action\initialisation.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

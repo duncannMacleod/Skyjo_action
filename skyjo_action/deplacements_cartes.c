@@ -231,7 +231,7 @@ void retourne_carte(S_joueur *jr,S_pioche *p,int x,int y,int parametre,int carte
         p->nombre_defausse_nb++;
         p->nombre_defausse[p->nombre_defausse_nb-1]=carte_pioche1; //écrit la valeur de la carte pioché dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
     }
-    else if(parametre==2) //on retourne 2 cartes dans la pioche
+    else if(parametre==2) //on retourne 2 cartes dans la pioche (cette option n'est jamais utilisé dans le jeu)
     {
         p->nombre_defausse_nb++;
         p->nombre_defausse[p->nombre_defausse_nb-1]=carte_pioche1;
@@ -326,10 +326,10 @@ void supprimer_pos_etoile (S_joueur *jr,int ligne,int colonne)//si une carte est
 {
     int i,j;
     for(i=0; i<jr->nb_etoile; i++)
-        if(jr->pos_etoile[i].ligne==ligne||jr->pos_etoile[i].colonne==colonne)
+        if(jr->pos_etoile[i].ligne==ligne||jr->pos_etoile[i].colonne==colonne)//si les ligne et colonne entrées correspondent à une étoile parmis le tableau pos_etoile;
             for(j=i; i<jr->nb_etoile; j++)
             {
-                jr->pos_etoile[j]=jr->pos_etoile[j+1];
+                jr->pos_etoile[j]=jr->pos_etoile[j+1];//alors cette donnée est "supprimé" en écrivant les suivantes dessus
             }
-    jr->nb_etoile--;
+    jr->nb_etoile--;//on enlève 1 au nombre d'étoile présent dans le jeu du joueur
 }

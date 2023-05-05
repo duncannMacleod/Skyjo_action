@@ -221,15 +221,10 @@ void jouer_18(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//rega
     cpt+=2;
     Positionner_Curseur(x,y+cpt);
     printf("Réponse: ");
-    scanf("%d",&choix);
-    if(choix==1)
-        voir_l_ou_c(jr[0],x,y); //montre la ligne ou la colonne du joueur numéro 1 (soit la case 0 du tableau)
-    if(choix==2)
-        voir_l_ou_c(jr[1],x,y);
-    if(choix==3)
-        voir_l_ou_c(jr[2],x,y);
-    if(choix==4)
-        voir_l_ou_c(jr[3],x,y);
+    do{
+	scanf("%d",&choix);
+	}while(choix<1||choix>nb_jr);
+    voir_l_ou_c(jr[choix-1],x,y); //montre la ligne ou la colonne du joueur numéro 1 (soit la case 0 du tableau)
 
 }
 
@@ -340,7 +335,7 @@ void jouer_22(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//écha
 }
 
 
-void voir_l_ou_c(S_joueur jr,int x,int y)
+void voir_l_ou_c(S_joueur jr,int x,int y)//permet de voir une ligne ou une colonne d'un joueur en particulier
 {
     int cpt=0,li,cl;
     char choix,c;
@@ -421,7 +416,7 @@ void voir_l_ou_c(S_joueur jr,int x,int y)
 }
 
 
-int verif_carte_def(S_joueur jr)//vérifie si le joueur qu'on a donné en paramètre d'entrée possède une carte défense
+int verif_carte_def(S_joueur jr)//vérifie qu'un joueur posède une carte défense, et ci cela est le cas renvoie sa postion dans le tableau des cartes actions du joueur, sinon elle renvoie 0.
 {
     int i;
     for(i=0;i<jr.nb_action;i++)

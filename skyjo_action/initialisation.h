@@ -17,6 +17,7 @@ void melanger_paquet_action(S_pioche*p);
 
 
 void initalisation_joueur_deck(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y); //initialise les decks des joueurs
+void initalisation_tour_restant(S_pioche *p);//initialise le nb de tours restant a une valeur inoffensive
 
 
 

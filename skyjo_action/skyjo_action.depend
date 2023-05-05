@@ -186,7 +186,7 @@
 
 1681392538 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
 
-1682976479 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.c
+1683306344 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -196,21 +196,22 @@
 	"declaration.h"
 	"suivi_score.h"
 
-1682976096 c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.h
+1683306361 c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.h
 	"declaration.h"
 
-1683048694 c:\users\duncan\documents\github\skyjo_action\skyjo_action\declaration.h
+1683304780 c:\users\duncan\documents\github\skyjo_action\skyjo_action\declaration.h
 
-1683048778 c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.h
+1683300505 c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.h
 	"declaration.h"
 
-1682699450 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\cartes_actions.c
+1683300505 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\cartes_actions.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<string.h>
 	<conio.h>
 	<time.h>
+	<ctype.h>
 	"cartes_actions.h"
 	"affichage.h"
 	"declaration.h"
@@ -220,13 +221,14 @@
 	"detection_skyjo.h"
 	"deplacements_cartes.h"
 
-1682972651 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
+1683300505 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<string.h>
 	<conio.h>
 	<time.h>
+	<ctype.h>
 	"affichage.h"
 	"declaration.h"
 	"suivi_score.h"
@@ -234,21 +236,25 @@
 	"deroulement_tour.h"
 	"deplacements_cartes.h"
 
-1682587445 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
+1683306379 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 	<string.h>
 	<conio.h>
+	<ctype.h>
+	<time.h>
 	"deroulement_tour.h"
 	"declaration.h"
 	"affichage.h"
 	"deplacements_cartes.h"
 	"detection_skyjo.h"
 	"cartes_actions.h"
+	"suivi_score.h"
+	"initialisation.h"
 
-1682442045 c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.h
+1683287345 c:\users\duncan\documents\github\skyjo_action\skyjo_action\deroulement_tour.h
 	"declaration.h"
 
 1682515991 c:\users\duncan\documents\github\skyjo_action\skyjo_action\deplacements_cartes.h
@@ -267,7 +273,7 @@
 	"deroulement_tour.h"
 	"detection_skyjo.h"
 
-1682972818 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.c
+1683305411 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -280,10 +286,10 @@
 	"affichage.h"
 	"suivi_score.h"
 
-1682441109 c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.h
+1683305397 c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.h
 	"declaration.h"
 
-1682540281 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\main.c
+1683305852 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -297,7 +303,7 @@
 	"deroulement_tour.h"
 	"detection_skyjo.h"
 
-1682597004 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.c
+1683306073 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\suivi_score.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

@@ -24,11 +24,11 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 void Positionner_Curseur(int x, int y)
 {
-    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);//permet de dÃ©clarer la variable "hstdout" qui fait rÃ©fÃ©rÃ©nce Ã© la console
-    COORD pos; // COORD est un type structurÃ© dÃ©fini dans la bibliothÃ©que windows.h
-    pos.X=x;// numÃ©ro de la colonne
-    pos.Y=y;// numÃ©ro de la ligne
-    SetConsoleCursorPosition(hStdout, pos); //on positionne le curseur aux coordonnÃ©es "pos"
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);//permet de déclarer la variable "hstdout" qui fait référénce é la console
+    COORD pos; // COORD est un type structuré défini dans la bibliothéque windows.h
+    pos.X=x;// numéro de la colonne
+    pos.Y=y;// numéro de la ligne
+    SetConsoleCursorPosition(hStdout, pos); //on positionne le curseur aux coordonnées "pos"
 }
 
 int afficher_menu_bienvenue ()
@@ -39,7 +39,7 @@ int afficher_menu_bienvenue ()
                        "                                                                                     ",
                        "      Quitter                                                                        ",
                       };
-    int choix=0; // numÃ©ro de l'option choisie dans le menu
+    int choix=0; // numéro de l'option choisie dans le menu
     int frappe=0; //permet de stocker le code de la touche clavier
     int i;
 
@@ -48,9 +48,9 @@ int afficher_menu_bienvenue ()
 
 
         system("cls");
-        printf(" ________         Skyjo Action     ___________     CrÃ©Ã© par les Boudet          _______\n");
+        printf(" ________         Skyjo Action     ___________     Créé par les Boudets         _______\n");
         printf("|                                                                                     |\n");
-        printf("|   Bienvenue dans le jeu Skyjo Action, veuillez sÃ©lectionner le nombre de joueurs    |\n");
+        printf("|   Bienvenue dans le jeu Skyjo Action, veuillez sélectionner le nombre de joueurs    |\n");
         printf("|                                                                                     |\n");
 
 
@@ -76,23 +76,23 @@ int afficher_menu_bienvenue ()
             {
 
 
-                frappe=getch(); // on rÃ©cupÃ©re le code de la touche sur laquelle on a appuyÃ©e
+                frappe=getch(); // on récupére le code de la touche sur laquelle on a appuyée
 
 
-                if(frappe==72) //75 est le code de la flÃ©che directionnelle vers le haut
+                if(frappe==72) //75 est le code de la fléche directionnelle vers le haut
                 {
 
                     Positionner_Curseur(0,choix+4); // positionne le curseur au choix courant
                     color(15,0); // met la couleur du texte en blanc et celle du fond en noir
-                    printf("|%s|",menu[choix]); // On rÃ©affiche le choix courant avec les couleurs prÃ©alablement choisies, une maniÃ©re de le dÃ©sÃ©lectionner
-                    choix--; // on dÃ©crÃ©mebte le numÃ©ro de l'option
-                    if (choix ==-1) choix =4; // les options sont numÃ©rotÃ©es de 0 Ã© 11
-                    Positionner_Curseur(0,choix+4);// positionne le curseur au choix juste dessus du prÃ©cÃ©dent
+                    printf("|%s|",menu[choix]); // On réaffiche le choix courant avec les couleurs préalablement choisies, une maniére de le désélectionner
+                    choix--; // on décrémebte le numéro de l'option
+                    if (choix ==-1) choix =4; // les options sont numérotées de 0 é 11
+                    Positionner_Curseur(0,choix+4);// positionne le curseur au choix juste dessus du précédent
                     color(0,15);// met la couleur du texte en noir et celle du fond en blanc
-                    printf("|%s|\n",menu[choix]);// On rÃ©affiche le nouveau choix  avec les couleurs prÃ©alablement choisies, une maniÃ©re de le sÃ©lÃ©ctionner
+                    printf("|%s|\n",menu[choix]);// On réaffiche le nouveau choix  avec les couleurs préalablement choisies, une maniére de le séléctionner
                     color(15,0);
                 }
-                if(frappe==80) //80 est le code de la flÃ©che directionnelle vers le bas
+                if(frappe==80) //80 est le code de la fléche directionnelle vers le bas
                 {
 
                     Positionner_Curseur(0,choix+4);
@@ -179,7 +179,7 @@ void afficher_boite_dialogue()
 void afficher_plateau_vide (int nb_jr)
 {
     system("cls");
-    printf(" ________         Skyjo Action     ___________     CrÃ©Ã© par les Boudet          _______\n");
+    printf(" ________         Skyjo Action     ___________     Créé par les Boudets         _______\n");
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
     printf(" |  Tour de:                                                                          |\n");
@@ -218,11 +218,11 @@ void afficher_plateau_vide (int nb_jr)
     }
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
-    printf(" | DÃ©fausse des cartes nombres: [  ]                                                  |\n");
+    printf(" | Défausse des cartes nombres: [  ]                                                  |\n");
     printf(" |                                                                                    |\n");
     printf(" | Cartes actions:[              ] [              ] [              ] [              ] |\n");
     printf(" |                                                                                    |\n");
-    printf(" | DÃ©fausse des cartes actions: [              ]                                      |\n");
+    printf(" | Défausse des cartes actions: [              ]                                      |\n");
     printf(" |                                                                                    |\n");
     printf(" ______________________________________________________________________________________\n");
 
@@ -234,7 +234,7 @@ void afficher_plateau_des_autres(int nb_jr)
 {
     Positionner_Curseur(0,0);
     system("cls");
-    printf(" ________         Skyjo Action     ___________     CrÃ©Ã© par les Boudet          _______\n");
+    printf(" ________         Skyjo Action     ___________     Créé par les Boudets         _______\n");
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
@@ -299,7 +299,7 @@ void afficher_plateau_des_autres(int nb_jr)
 
 
 
-void afficher_actualiser_joueur (S_joueur jr,int x,int y) //actualise les cartes du joueur, Ã© faire Ã© chaque modif de son jeu, ou bien Ã© chaque changement de joueur
+void afficher_actualiser_joueur (S_joueur jr,int x,int y) //actualise les cartes du joueur, é faire é chaque modif de son jeu, ou bien é chaque changement de joueur
 {
 
 
@@ -307,21 +307,21 @@ void afficher_actualiser_joueur (S_joueur jr,int x,int y) //actualise les cartes
     int j;
 
     Positionner_Curseur(x,y);
-    puts(jr.prenom); //affiche le prÃ©nom du joueur
+    puts(jr.prenom); //affiche le prénom du joueur
 
     for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
     {
         for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
         {
             Positionner_Curseur(x+j*5,y+i+5);
-            if (jr.deck_nombre_cache[i][j]==1)          //carte face dÃ©couverte
+            if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
             {
                 if(jr.deck_nombre[i][j]==13)
                     printf("[**] ");
                 else
                     printf("[%-2d] ",jr.deck_nombre[i][j]);
             }
-            else if (jr.deck_nombre_cache[i][j]==0)     //carte face cachÃ©
+            else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
                 printf("[%-2s] ","X");
             else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
                 printf("     ");
@@ -336,21 +336,21 @@ void afficher_actualiser_joueur_vision (S_joueur jr,int x,int y)
     int i, j;
 
     Positionner_Curseur(x,y);
-    puts(jr.prenom); //affiche le prÃ©nom du joueur
+    puts(jr.prenom); //affiche le prénom du joueur
 
     for(i=0; i<CARTE_JOUEUR_NOMBRE_L; i++)
     {
         for(j=0; j<CARTE_JOUEUR_NOMBRE_C; j++)
         {
             Positionner_Curseur(x+j*5-5,y+i+2);
-            if (jr.deck_nombre_cache[i][j]==1)          //carte face dÃ©couverte
+            if (jr.deck_nombre_cache[i][j]==1)          //carte face découverte
             {
                 if(jr.deck_nombre[i][j]==13)
                     printf("[**] ");
                 else
                     printf("[%-2d] ",jr.deck_nombre[i][j]);
             }
-            else if (jr.deck_nombre_cache[i][j]==0)     //carte face cachÃ©
+            else if (jr.deck_nombre_cache[i][j]==0)     //carte face caché
                 printf("[%-2s] ","X");
             else if (jr.deck_nombre_cache[i][j]==-1) //plus de carte
                 printf("     ");
@@ -369,7 +369,7 @@ void afficher_actualiser_score (int nb_jr, S_joueur jr[])
     for (i=0; i<nb_jr; i++)
     {
         Positionner_Curseur(64,5+i);
-        puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr prÃ©alablement triÃ©)
+        puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
         Positionner_Curseur(65+strlen(jr[i].prenom),5+i);
         printf("avec %d pts",jr[i].score); //affiche le score
 
@@ -382,12 +382,12 @@ void afficher_actualiser_defausse_nombre (S_pioche p)
     Positionner_Curseur(32,14);
     if(p.nombre_defausse[0]==30||p.nombre_defausse_nb==0)
         printf("    ");
-    else if (p.nombre_defausse[p.nombre_defausse_nb-1]==30)//ne numÃ©ro 30 signifie pas de carte, la defausse est actualisÃ© comme cela
+    else if (p.nombre_defausse[p.nombre_defausse_nb-1]==30)//ne numéro 30 signifie pas de carte, la defausse est actualisé comme cela
         printf("    ");
     else if (p.nombre_defausse[p.nombre_defausse_nb-1]==13)
         printf("[**]");
     else
-        printf("[%-2d]",p.nombre_defausse[p.nombre_defausse_nb-1]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la derniÃ¨re carte nombre dans la pioche
+        printf("[%-2d]",p.nombre_defausse[p.nombre_defausse_nb-1]); //CARTE_PIOCHE_NOMBRE_NB-p.nombre_nb correspond au rang de la dernière carte nombre dans la pioche
 }
 
 void afficher_actualiser_pioche_action (S_pioche p)
@@ -397,7 +397,7 @@ void afficher_actualiser_pioche_action (S_pioche p)
     {
         Positionner_Curseur(19+17*i,16);
         if(p.action_visible[i]==14)
-            printf("Force Ã  Jeter");
+            printf("Force à Jeter");
         else if(p.action_visible[i]==15)
             printf("Bouge tes C");
         else if(p.action_visible[i]==16)
@@ -434,8 +434,8 @@ void afficher_action(int nb)
 {
     if (nb==0)//si il n'y a pas de carte dans la pioche, il n'affiche rien
         printf("                  ");//n'imprime rien
-    else if(nb==14) //p.nombre_defausse_nb dÃ©finit le rang de la derniÃ©re carte jouÃ©e
-        printf("Force Ã  Jeter");
+    else if(nb==14) //p.nombre_defausse_nb définit le rang de la derniére carte jouée
+        printf("Force à Jeter");
     else if(nb==15)
         printf("Bouge tes C");
     else if(nb==16)
@@ -598,15 +598,15 @@ void afficher_coups(S_joueur jr)
     Positionner_Curseur(56,11);
     printf("nb de coups: %d",jr.nb_coups);
 }
-void afficher_dernier_tour(S_joueur jr[],int nb_jr)
+void afficher_dernier_tour(S_pioche p,int nb_jr)
 {
     int i;
     for(i=0;i<nb_jr;i++)
-    if(jr[i].init_fin_manche==1)
+    if(p.tour_restant!=10)
     {
-        Positionner_Curseur(56,9);
+        Positionner_Curseur(56,19);
         color(15,12);
-        printf("Dernier tour !");
+        printf("Dernier tour de plateau");
         color(15,0);
     }
 }
@@ -625,7 +625,7 @@ void afficher_haut_duo()
 {
     Positionner_Curseur(0,0);
     system("cls");
-    printf(" ________         Skyjo Action     ___________     CrÃ©Ã© par les Boudet          _______\n");
+    printf(" ________         Skyjo Action     ___________     Créé par les Boudets         _______\n");
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
@@ -649,29 +649,27 @@ void afficher_haut_duo()
 }
 
 
-void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)//affiche un rÃ©capitulatif et permet de mettre a jour le score
+void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)//affiche un récapitulatif et permet de mettre a jour le score
 {
     int i,cpt=0;
-    S_joueur jr_vainqueur;//on crÃ©e un S_joueur
     afficher_boite_dialogue();//initalisation de l'affichagedu bas
     Positionner_Curseur(x,y+cpt);
     cpt+=2;
-    printf("RÃ©sumÃ© de la manche:");
+    printf("Résumé de la manche:");
     Positionner_Curseur(x,y+cpt);
-    jr_vainqueur=test_init_jr(jr,nb_jr,p);
-    Positionner_Curseur(x,y+cpt);
-    if(jr_vainqueur.init_fin_manche==1&&p.premier_fin_manche-1==jr_vainqueur.joueur_no-1)//si deplus apres avoir initiÃ© la fin de la manche, il est le premier au score
-        printf("%s avait initiÃ© la fin de manche, et c'est lui qui a le moins de points.",jr_vainqueur.prenom);
-    else if (jr_vainqueur.init_fin_manche==-1)//si il a inititiÃ© la fin de partie mais qu'il n'est pas premier au score de la manche
+    test_init_jr(jr,nb_jr,p);
+    if(jr[p.premier_fin_manche-1].init_fin_manche==1)//si deplus apres avoir initié la fin de la manche, il est le premier au score
+        printf("%s avait initié la fin de manche, et c'est lui qui a le moins de points.",jr[p.premier_fin_manche-1].prenom);
+    else if (jr[p.premier_fin_manche-1].init_fin_manche==-1)//si il a inititié la fin de partie mais qu'il n'est pas premier au score de la manche
     {
-        printf("%s avait initiÃ© la fin de manche, mais il ne finit pas avec le plus bas score",jr_vainqueur.prenom);
+        printf("%s avait initié la fin de manche, mais il ne finit pas avec le plus bas score",jr[p.premier_fin_manche-1].prenom);
         cpt++;
         Positionner_Curseur(x,y+cpt);
-        printf("le score qu'il fera a cette manche est donc doublÃ©");
+        printf("le score qu'il fera a cette manche est donc doublé");
         cpt++;
-        jr[jr_vainqueur.joueur_no-1].score_manche=(jr[jr_vainqueur.joueur_no-1].score_manche)*2;//double le score de la manche du joueur ayant initiÃ©
+        jr[p.premier_fin_manche-1].score_manche=(jr[p.premier_fin_manche-1].score_manche)*2;//double le score de la manche du joueur ayant initié
     }
-    cpt+=2;
+    cpt++;
     Positionner_Curseur(x,y+cpt);
     printf("les scores de cette manche sont donc");
     cpt+=2;
@@ -681,38 +679,39 @@ void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)
         printf("le score de %s cette manche est %d",jr[i].prenom,jr[i].score_manche);
         cpt++;
         Positionner_Curseur(x,y+cpt);
-        cpt+=2;
     }
     for(i=0; i<nb_jr; i++)
     {
-        jr[i].score+=jr[i].score_manche;//permet d'incrÃ©menter le score de la manche des joueurs Ã© leur score global
+        jr[i].score+=jr[i].score_manche;//permet d'incrémenter le score de la manche des joueurs é leur score global
     }
+    cpt++;
+    Positionner_Curseur(x,y+cpt);
 }
 
 void recap_fin_partie(S_joueur jr[],int nb_jr,int x,int y)
 {
     int no_jr_de_fin=test_fin_partie(jr,nb_jr),cpt=0,i;
     afficher_boite_dialogue();
-    printf("%s Ã© dÃ©passÃ© les 100 pts, la partie est teminÃ©!", jr[no_jr_de_fin-1].prenom);
+    printf("%s à dépassé les 100 pts, la partie est teminé!", jr[no_jr_de_fin-1].prenom);
     cpt+=2;
     Positionner_Curseur(x,y+cpt);
     printf("les scores finaux  sont donc:");
     for(i=0; i<nb_jr; i++)
     {
-        jr[i].score+=jr[i].score_manche;//permet d'incrÃ©menter le score de la manche des joueurs Ã© leur score global
+        jr[i].score+=jr[i].score_manche;//permet d'incrémenter le score de la manche des joueurs à leur score global
     }
     for(i=0; i<nb_jr; i++)
     {
         cpt+=2;
         Positionner_Curseur(x,y+cpt);
-        printf("le score de %s cette manche est %d",jr[i].prenom,jr[i].score);
+        printf("le score final de %s est %d",jr[i].prenom,jr[i].score);
     }
     cpt+=2;
     Positionner_Curseur(x,y+cpt);
-    printf("Merci d'avoir jouÃ©!");
+    printf("Merci d'avoir joué!");
 }
 
-void voir_deck_action_des_autres(S_joueur jr[],int nb_jr,int no_jr, int x,int y)//permet de sÃ©lectionner un autre deck que le sien et de l'afficher
+void voir_deck_action_des_autres(S_joueur jr[],int nb_jr,int no_jr, int x,int y)//permet de sélectionner un autre deck que le sien et de l'afficher
 {
     int i,choix,cpt=0;
     afficher_boite_dialogue();
@@ -727,8 +726,8 @@ void voir_deck_action_des_autres(S_joueur jr[],int nb_jr,int no_jr, int x,int y)
         }
     }
     Positionner_Curseur(x,y+cpt);
-    printf("RÃ©ponse: ");
+    printf("Réponse: ");
     scanf("%d",&choix);
-    voir_deck_action(jr[choix-1],x,y,1);//affiche le deck des carte action du joueur i avec le paramÃ©tre 1, correspondant au paramÃ©tre d'affichge classique
+    voir_deck_action(jr[choix-1],x,y,1);//affiche le deck des carte action du joueur i avec le paramétre 1, correspondant au paramétre d'affichge classique
 
 }

@@ -20,7 +20,7 @@ void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_
 void afficher_coups(S_joueur jr);
 
 void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre);
-void afficher_dernier_tour(S_joueur jr[],int nb_jr);
+void afficher_dernier_tour(S_pioche p,int nb_jr);
 void recap_fin_partie(S_joueur jr[],int nb_jr,int x,int y);
 
 

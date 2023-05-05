@@ -68,20 +68,18 @@ int test_fin_manche(S_joueur jr[],int nb_jr,S_pioche p) //renvoie le numéro du j
     return 0;
 }
 
-S_joueur test_init_jr(S_joueur jr[],int nb_jr,S_pioche p)
+void test_init_jr(S_joueur jr[],int nb_jr,S_pioche p) //savoir si il a été le premier joueur de la
 {
-    int no_jr_init=test_fin_manche(jr,nb_jr,p),i;
+    int i;
     for(i=0;i<nb_jr;i++)//boucle pour tout les joueurs
-        if(i!=no_jr_init) //sauf le joueur ayant initié la fin de tour
-            if(jr[no_jr_init-1].score_manche>jr[i].score_manche)//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
+        if(i!=(p.premier_fin_manche-1)) //sauf le joueur ayant initié la fin de tour
+            if(jr[p.premier_fin_manche-1].score_manche>jr[i].score_manche)//si le score du joueur i est supérieur a celui ayant lancé le dernier tour,
                 {
-                    jr[no_jr_init-1].init_fin_manche=-1;
+                    jr[p.premier_fin_manche-1].init_fin_manche=-1;//n'a pas réussi à avoir le moins de pts
                 }
-
-    return jr[no_jr_init-1];
 }
 
-void test_premier_fin_manche(S_joueur *jr,int nb_jr,S_pioche *p)
+void test_premier_fin_manche(S_joueur *jr,int nb_jr,S_pioche *p) //a chaque fin de manche
 {
         int a,b,cpt=0;
         for(a=0;a<CARTE_JOUEUR_NOMBRE_L;a++)
@@ -92,6 +90,7 @@ void test_premier_fin_manche(S_joueur *jr,int nb_jr,S_pioche *p)
         {
             p->premier_fin_manche=jr->joueur_no;
             jr->init_fin_manche=1;
+            p->tour_restant=nb_jr-1;
         }
 
 }

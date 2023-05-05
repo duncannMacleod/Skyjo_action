@@ -15,6 +15,7 @@
 #include "detection_skyjo.h"
 #include "cartes_actions.h"
 #include "suivi_score.h"
+#include "initialisation.h"
 
 
 void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
@@ -36,7 +37,7 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         afficher_actualiser_defausse_nombre(*p);//idem
         afficher_actualiser_pioche_action(*p); //réaffiche les cartes actions
         afficher_coups(jr[no_jr-1]);
-        afficher_dernier_tour(jr,nb_jr);
+        afficher_dernier_tour(*p,nb_jr);
 
 
 
@@ -174,8 +175,10 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
 
     }
     while (choix==0);
-    test_premier_fin_manche(&jr[no_jr-1],nb_jr,p);
+    test_premier_fin_manche(&jr[no_jr-1],nb_jr,p);//le sens a un sens avec p->tour_restant
     test_fin_pioche_n_et_a (p);
+    if (p->tour_restant<=nb_jr)
+        p->tour_restant--;
 
 
 

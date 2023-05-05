@@ -47,7 +47,6 @@ void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
 
     initalisation_joueur_deck(nb_jr,jr,p,x,y); //les cartes nombres et actions sont distribuées aux joueurs
 
-    //initialisation_carte_action(p);
     initialisation_pioche_carte_action(p); // les 4 cartes actions sont présentés
     initialisation_defausse_action(p);//la defausse des cartes action est initialisé (pour rendre l'affichage plus joli)
     initialisation_defausse_nombre(p);//on place une carte face montrée pour faire la défausse des cartes nombre
@@ -56,6 +55,7 @@ void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
     initialisation_deck_nb_action(jr,nb_jr);
     premier_fin_manche(p);
     initalisation_init_fin_manche(jr,nb_jr);
+    initalisation_tour_restant(p);
 
 
 
@@ -392,4 +392,9 @@ void initalisation_init_fin_manche(S_joueur jr[],int nb_jr)
     {
         jr[i].init_fin_manche=0;
     }
+}
+
+void initalisation_tour_restant(S_pioche *p)
+{
+    p->tour_restant=10; //il ne restera jamais 10 tours mais cela permet d'initialiser la variable sans activer les programmes de décompte de tours restant
 }

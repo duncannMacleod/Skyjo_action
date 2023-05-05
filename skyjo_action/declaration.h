@@ -63,6 +63,7 @@ struct pioche
                 int action_defausse_nb;
 
                 int premier_fin_manche;
+                int tour_restant;
 
                 //après chaque manche, les pioches sont réinitialisées
                 //c-a-d, nombre retrouve sa config initiale, et les defausses sont mises à zéro

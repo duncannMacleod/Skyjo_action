@@ -165,6 +165,8 @@ void recup_carte_nombre_defausse(S_joueur *jr,S_pioche *p,int x,int y)//gestion 
         jr->pos_etoile[jr->nb_etoile-1].ligne=ligne;
         jr->pos_etoile[jr->nb_etoile-1].colonne=colonne;
     }
+    cpt+=4; Positionner_Curseur(x,y+cpt);
+
 
 
 }
@@ -191,7 +193,7 @@ int tirer_carte(S_pioche *p)
 }
 void retourne_carte(S_joueur *jr,S_pioche *p,int x,int y,int parametre,int carte_pioche1,int carte_pioche2,int carte_pioche3)
 {
-    int cpt=0,ligne,colonne,reponse;
+    int cpt=0,ligne,colonne,reponse; //conversationnel
     afficher_boite_dialogue();
     printf("vous devez tout de même rerourner une carte. entrez les coordonées pour la carte");
     cpt+=1;
@@ -204,6 +206,8 @@ void retourne_carte(S_joueur *jr,S_pioche *p,int x,int y,int parametre,int carte
         scanf("%d %d",&ligne,&colonne);
         ligne--;
         colonne--;
+        if(ligne>3||ligne<0||colonne>4||colonne<0)//si les valeurs ne sont pas bonne on vide la mémoire tampon pour pouvoir recomencer
+            getchar();
     }
     while(ligne>3||ligne<0||colonne>4||colonne<0);//tant que les valeurs des cordonnées sont corectes
     if(jr->deck_nombre[ligne][colonne]==13)
@@ -219,10 +223,10 @@ void retourne_carte(S_joueur *jr,S_pioche *p,int x,int y,int parametre,int carte
         Positionner_Curseur(x,y+cpt);
         printf("Réponse:");
         scanf("%d",&reponse);
-        jr->deck_nombre[ligne][colonne]=reponse;
-        jr->nb_etoile++;
-        jr->pos_etoile[jr->nb_etoile-1].ligne=ligne;
-        jr->pos_etoile[jr->nb_etoile-1].colonne=colonne;
+        jr->deck_nombre[ligne][colonne]=reponse;//on écrit la nouvelle valeur de la carte sur l'ancienne valeur
+        jr->nb_etoile++;//on incrémene le nombre d'étoiles présentes dans le jeu
+        jr->pos_etoile[jr->nb_etoile-1].ligne=ligne;//on enregiste la position de l'étoile dans le registe pos_etoile
+        jr->pos_etoile[jr->nb_etoile-1].colonne=colonne;//suite
     }
     jr->deck_nombre_cache[ligne][colonne]=1;
 
@@ -255,10 +259,10 @@ void retourne_carte(S_joueur *jr,S_pioche *p,int x,int y,int parametre,int carte
 void recup_carte_action_presente(S_joueur *jr,S_pioche *p,int x,int y)//gère la récupération de carte action face visible
 {
     int cpt,c_choisi;
-
     do
     {
         cpt=0;
+        c_choisi=0;
         afficher_boite_dialogue();
         Positionner_Curseur(x,y);
         printf("quelle carte voulez vous piocher (1à4)");
@@ -266,12 +270,13 @@ void recup_carte_action_presente(S_joueur *jr,S_pioche *p,int x,int y)//gère la 
         Positionner_Curseur(x,y+cpt);
         printf("Réponse: ");
         scanf("%d",&c_choisi);
-    }
-    while(c_choisi<1||c_choisi>4);
-    jr->nb_action++;
-    jr->deck_action[jr->nb_action-1]=p->action_visible[c_choisi-1];
-    p->action_visible[c_choisi-1]=p->action[p->action_nb-1];
-    p->action_nb--;
+        if(c_choisi<1||c_choisi>4) //si le nombre est inorrect, on supprime la mémoire tampon pour ne pas coincer le programme
+            getchar();
+    }while(c_choisi<1||c_choisi>4);
+    jr->nb_action++; //on incrémente le nombre de carte action du joueur
+    jr->deck_action[jr->nb_action-1]=p->action_visible[c_choisi-1];//on place la carte action choisie par le joueur dans son jeu
+    p->action_visible[c_choisi-1]=p->action[p->action_nb-1];//on remet une carte action à la place de celle qui a été pioché
+    p->action_nb--;//on décrémente le nombre de carte action (pioche)
 
 
 }
@@ -279,26 +284,26 @@ void recup_carte_action_pioche(S_joueur *jr,S_pioche *p,int x,int y)//gère la ré
 {
     int carte_pioche;
 
-    carte_pioche=p->action[p->action_nb-1];
-    p->action_nb--;
+    carte_pioche=p->action[p->action_nb-1];//carte_pioche prend la valeur de la carte action du haut de la pioche
+    p->action_nb--;//décrémentation du nombre de carte action
 
     afficher_boite_dialogue();
     Positionner_Curseur(x,y);
     printf("Vous venez de piocher la carte ");
-    afficher_action(carte_pioche);
+    afficher_action(carte_pioche);//affichage ergonomique de la carte action
     printf("!");
-    jr->nb_action++;
-    jr->deck_action[jr->nb_action-1]=carte_pioche;
+    jr->nb_action++;//on incrémente le nombre de carte action du joueur
+    jr->deck_action[jr->nb_action-1]=carte_pioche;//on inscit cette nouvelle carte dans le deck des cartes action du joueur à la bonne place
 
 }
 
 
 void placer_carte_piochee(S_joueur *jr,S_pioche *p,int ligne, int colonne,int parametre)
 {
-    int carte_pioche=tirer_carte(p);
+    int carte_pioche=tirer_carte(p);//tire la carte de la pioche des cartes nombres
     jr->deck_nombre[ligne][colonne]=carte_pioche;//pose la carte de la pioche dans le jeu
-    jr->deck_nombre_cache[ligne][colonne]=1;
-    if(parametre==1)
+    jr->deck_nombre_cache[ligne][colonne]=1;//retourne la carte
+    if(parametre==1)//si le parametre est 1, la carte va dans la défausse "normale" pour etre possiblement repioché
     {
         p->nombre_defausse_nb++;
         p->nombre_defausse[p->nombre_defausse_nb-1]=carte_pioche; //écrit la valeur de la carte pioché dans la n-ième case de la défausse ici elles sont ajoutées de 0 à 120
@@ -313,11 +318,11 @@ void placer_carte_piochee(S_joueur *jr,S_pioche *p,int ligne, int colonne,int pa
 void deplacer_carte_jeu(S_joueur *j1,S_joueur *j2,int x1,int y1,int x2,int y2)//déplace deux cartes entre deux jeu (les jeux peuvent etre les memes)
 {
     int tampon_carte, tampon_carte_cachee;
-    tampon_carte=j1->deck_nombre[y1][x1];
+    tampon_carte=j1->deck_nombre[y1][x1];//stocke dans tampon_carte pour qu'en suite puisse écrire des nouvelles données sans perdre les anciennes
     tampon_carte_cachee=j1->deck_nombre_cache[y1][x1];
-    j1->deck_nombre[y1][x1]=j2->deck_nombre[y2][x2];
+    j1->deck_nombre[y1][x1]=j2->deck_nombre[y2][x2];//copie des infos de j2 àj1
     j1->deck_nombre_cache[y1][x1]=j2->deck_nombre_cache[y2][x2];
-    j2->deck_nombre[y2][x2]=tampon_carte;
+    j2->deck_nombre[y2][x2]=tampon_carte;//copie des infos des variables tampons à j2
     j2->deck_nombre_cache[y2][x2]=tampon_carte_cachee;
 
 }

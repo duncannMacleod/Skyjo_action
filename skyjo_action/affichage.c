@@ -652,7 +652,7 @@ void afficher_haut_duo()
 void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre)//affiche un récapitulatif et permet de mettre a jour le score
 {
     int i,cpt=0;
-    afficher_boite_dialogue();//initalisation de l'affichagedu bas
+    afficher_boite_dialogue();//initialisation de l'affichagedu bas
     Positionner_Curseur(x,y+cpt);
     cpt+=2;
     printf("Résumé de la manche:");
@@ -730,4 +730,13 @@ void voir_deck_action_des_autres(S_joueur jr[],int nb_jr,int no_jr, int x,int y)
     scanf("%d",&choix);
     voir_deck_action(jr[choix-1],x,y,1);//affiche le deck des carte action du joueur i avec le paramétre 1, correspondant au paramétre d'affichge classique
 
+}
+
+void afficher_prochain_joueur(S_joueur jr[],int no_jr,int nb_jr)
+{
+    Positionner_Curseur(52,3);
+    if(no_jr==nb_jr)
+        printf("prochain joueur : %s",jr[0].prenom);//si c'est le dernier joueur du tour, il affiche le nom du premier joueur en tant que prochain
+    else
+    printf("prochain joueur : %s",jr[no_jr].prenom);//affiche le nom du prochain joueu
 }

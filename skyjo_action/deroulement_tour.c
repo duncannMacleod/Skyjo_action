@@ -38,6 +38,7 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         afficher_actualiser_pioche_action(*p); //réaffiche les cartes actions
         afficher_coups(jr[no_jr-1]);
         afficher_dernier_tour(*p,nb_jr);
+        afficher_prochain_joueur(jr,no_jr,nb_jr);
 
 
 
@@ -97,7 +98,7 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
             if (jr[no_jr-1].nb_coups>0)
             {
                 piocher_carte_action(jr,no_jr,nb_jr,p,x,y);
-                //jr[no_jr-1].nb_coups--; //permet de ne pas rejouer
+                jr[no_jr-1].nb_coups--; //permet de ne pas rejouer
             }
 
             else if (jr[no_jr-1].nb_coups==0)
@@ -157,11 +158,21 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
             break;
         case 'F':
             voir_deck_action_des_autres(jr,nb_jr,no_jr,x,y);
+            getchar();
             choix=0;
             break;
 
         case 'T': //terminer son tour.
-
+            if(jr[no_jr-1].nb_coups!=0)//si il il reste encore des coups au joueur
+            {
+                cpt++;
+                Positionner_Curseur(x,y+cpt);
+                printf("Vous n'avez pas fini de jouer!");
+                cpt++;
+                Positionner_Curseur(x,y+cpt);
+                choix=0;
+                system("pause");
+            }
             break;
 
         default:
@@ -187,10 +198,11 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
 void regarder_jeu_des_autres(S_joueur jr[],int no_jr,int nb_jr, int x,int y)
 {
     afficher_actualiser_jeu_des_autres(jr,no_jr,nb_jr); //affiche le jeu des autres joueurs
+    afficher_prochain_joueur(jr,no_jr,nb_jr); //affiche le prochain joueur
     afficher_boite_dialogue(); //réinitilise la boite de dialogue
-    Positionner_Curseur(x,y);
-    printf("Voici le jeu des autres joureurs");
-    Positionner_Curseur(x,y+2);
+    Positionner_Curseur(x,y);//conversationnel
+    printf("Voici le jeu des autres joureurs");//
+    Positionner_Curseur(x,y+2);//
 
 
 
@@ -341,7 +353,7 @@ void atribuer_nbr_etoile(S_joueur *jr,S_pioche *p, int x, int y)
 
 }
 
-void retourne_toutes_cartes(S_joueur jr[],int nb_jr) //progamme utilisé pour le décompte des points.
+void retourne_toutes_cartes(S_joueur jr[],int nb_jr) //progamme utilisé pour le debug
 {
     int i,a,b;
     for(i=0;i<nb_jr;i++)
@@ -356,7 +368,7 @@ void retourne_toutes_cartes(S_joueur jr[],int nb_jr) //progamme utilisé pour le 
 
 
 
-void met_toutes_cartes_0(S_joueur *jr)
+void met_toutes_cartes_0(S_joueur *jr) //progamme utilisé pour le debug
 {
     int a,b;
 

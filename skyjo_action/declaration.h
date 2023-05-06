@@ -32,13 +32,14 @@ struct joueur
                 int score; //score du joueur
                 S_etoile pos_etoile[12]; //position des hypothétiques cartes étoiles dans le jeu.
                 int nb_etoile; //nombres d'étoiles dont le joueur à atribué un chiffre
-                int nb_skyjo_ligne;//indique le nombre de skyjo en ligne que le joueur a fait 
-                int nb_skyjo_colonne;//indique le nombre de skyjo en colonne que le joueur a fait 
+                int nb_skyjo_ligne;//indique le nombre de skyjo en ligne que le joueur a fait
+                int nb_skyjo_colonne;//indique le nombre de skyjo en colonne que le joueur a fait
 
                 int nb_coups;//stocke le nombre de coups du joueur (par défaut 1 par tour)
 
                 int init_fin_manche; //si c'est le premier joueur qui a fini la manche cette variable est à 1, mais qu'il n'est pas le premier au score alors cette valeur est de -1. Finalement si il n'est pas premier a terminer la manche, cette variable est a 0.
                 int score_manche;//score du joueur dans la manche actuelle
+                int classement;
 
 
 };
@@ -69,6 +70,11 @@ struct pioche
                 //c-a-d, nombre retrouve sa config initiale, et les defausses sont mises à zéro
 };
 
-
+struct classemt
+{
+    int classement;
+    int score;
+};
+typedef struct classemt S_class;
 
 #endif // DECLARATION_H_INCLUDED

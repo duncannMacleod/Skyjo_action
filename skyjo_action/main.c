@@ -19,9 +19,9 @@ int main()
 {
     srand(time(NULL));
     SetConsoleOutputCP(1252); //permet d'afficher les accents
-    //plein_ecran(); //passe la console en plein écran
+    plein_ecran(); //passe la console en plein écran
     int nb_joueurs,i;
-    nb_joueurs= afficher_menu_bienvenue(); //le programme execute la fonction afficher_menu_bienvenue() , qui revoie de nombre de joueurs
+    nb_joueurs=afficher_menu_bienvenue(); //le programme execute la fonction afficher_menu_bienvenue() , qui revoie de nombre de joueurs
     if (nb_joueurs==0)
         return 0;
 

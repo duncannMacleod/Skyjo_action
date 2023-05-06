@@ -18,6 +18,7 @@ void afficher_actualiser_score (int nb_jr, S_joueur jr[]);       //à acctualiser
 void afficher_actualiser_pioche_action (S_pioche p); //affiche la pioche des cartes actions
 void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_jr);//affiche le jeu des autres (en appuyant sur v)
 void afficher_coups(S_joueur jr);//affiche les coups restants au joueur
+void afficher_prochain_joueur(S_joueur jr[],int no_jr,int nb_jr); //affiche le nom du joueur qui joue apprès soi
 
 void recap_manche(S_joueur jr[], S_pioche p,int nb_jr,int x,int y,int parametre); //permet d'afficher les principales informations de fin de manche et permet d'actualistion des profils des joueurs
 void afficher_dernier_tour(S_pioche p,int nb_jr);//affiche un en surbrillance le fait qu'il ne reste d'un seul tour de plateau
@@ -31,7 +32,7 @@ void afficher_jeu_duo (S_joueur jr1,S_joueur jr2);//affiche le jeu d'un joueur(j
 
 
 void afficher_actualiser_defausse_action (S_pioche p); 	//affiche le défausse des cartes actions
-void afficher_actualiser_defausse_nombre (S_pioche p);  //affiche le défausse des cartes nombre ///attention jr et jr[] pas la m chose 
+void afficher_actualiser_defausse_nombre (S_pioche p);  //affiche le défausse des cartes nombre ///attention jr et jr[] pas la m chose
 
 void afficher_action(int nb);//permet de convertir le numéro de la carte action en texte (l'affiche directement)
 

@@ -5,21 +5,21 @@
 
 #include "declaration.h"
 
-void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p,int x,int y);
+void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p,int x,int y);//initilalise le tour et propose les différents choix de jeu au joueur
 
-void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y);
-void piocher_carte_action(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y);
-
-
-
-void retourne_toutes_cartes(S_joueur jr[],int nb_jr);
-void met_toutes_cartes_0(S_joueur *jr);
+void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y);//programme débutant les actions pour piocher une carte nombre
+void piocher_carte_action(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y);//programme débutant les actions pour piocher une carte nombre
 
 
-void regarder_jeu_des_autres(S_joueur jr[],int no_jr, int nb_jr, int x,int y);
+
+void retourne_toutes_cartes(S_joueur jr[],int nb_jr);//progamme utilisé pour le debug
+void met_toutes_cartes_0(S_joueur *jr);//progamme utilisé pour le debug
 
 
-void atribuer_nbr_etoile(S_joueur *jr,S_pioche *p, int x, int y);
+void regarder_jeu_des_autres(S_joueur jr[],int no_jr, int nb_jr, int x,int y);//permet de voir un autre jeu que le sien
+
+
+void atribuer_nbr_etoile(S_joueur *jr,S_pioche *p, int x, int y);//permet de modifier la valeur d'une carte etoile
 
 
 

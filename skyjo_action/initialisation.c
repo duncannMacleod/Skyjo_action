@@ -34,7 +34,7 @@ void regularisation(S_pioche *p)
 void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) //ces variables doivent etre initialisés à chaque debut de manche
 {
 
-    initalisation_nb_cartes(p); //I. des variables références des paquets ex: nombre_nb
+    initialisation_nb_cartes(p); //I. des variables références des paquets ex: nombre_nb
 
     initialisation_carte_nombre(p); //I. les valeurs des cartes dans le paquet des nombres
     melanger_paquet_nombre(p);//mélange le paquet des nombres
@@ -42,20 +42,20 @@ void initialisation_manche (S_joueur jr[], S_pioche *p, int nb_jr,int x,int y) /
     initialisation_carte_action(p); //I. les valeurs des cartes dans le paquet des cartes actions
     melanger_paquet_action(p);//melange les cartes actions
 
-    initalisation_nb_cartes(p);//pour éviter des bugs, les valeurs de référence sont de nouveau initialsées
+    initialisation_nb_cartes(p);//pour éviter des bugs, les valeurs de référence sont de nouveau initialsées
     regularisation(p);
 
-    initalisation_joueur_deck(nb_jr,jr,p,x,y); //les cartes nombres et actions sont distribuées aux joueurs
+    initialisation_joueur_deck(nb_jr,jr,p,x,y); //les cartes nombres et actions sont distribuées aux joueurs
 
     initialisation_pioche_carte_action(p); // les 4 cartes actions sont présentés
     initialisation_defausse_action(p);//la defausse des cartes action est initialisé (pour rendre l'affichage plus joli)
     initialisation_defausse_nombre(p);//on place une carte face montrée pour faire la défausse des cartes nombre
-    initalisation_nb_etoile(jr,nb_jr);//I. de tous variables relatives aux étoiles
-    initalisation_nb_skyjo(jr,nb_jr);//idem
+    initialisation_nb_etoile(jr,nb_jr);//I. de tous variables relatives aux étoiles
+    initialisation_nb_skyjo(jr,nb_jr);//idem
     initialisation_deck_nb_action(jr,nb_jr);
     premier_fin_manche(p);
-    initalisation_init_fin_manche(jr,nb_jr);
-    initalisation_tour_restant(p);
+    initialisation_init_fin_manche(jr,nb_jr);
+    initialisation_tour_restant(p);
 
 
 
@@ -227,7 +227,7 @@ void creation_profil_joueur(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y) 
 
 }
 
-void initalisation_joueur_deck(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y)
+void initialisation_joueur_deck(int nb_jr, S_joueur jr[], S_pioche *p,int x, int y)
 {
    int n,j,i;
    for(n=0; n<nb_jr; n++)
@@ -273,7 +273,7 @@ void initalisation_joueur_deck(int nb_jr, S_joueur jr[], S_pioche *p,int x, int 
     }
 }
 
-void initalisation_nb_cartes(S_pioche *p) //initialise le nombre de cartes dans les paquets
+void initialisation_nb_cartes(S_pioche *p) //initialise le nombre de cartes dans les paquets
 {
     p->nombre_nb=CARTE_PIOCHE_NOMBRE_NB; //120
     p->nombre_defausse_nb=0;
@@ -282,7 +282,7 @@ void initalisation_nb_cartes(S_pioche *p) //initialise le nombre de cartes dans 
     p->action_defausse_nb=0;
 }
 
-void initalisation_nb_etoile(S_joueur jr[],int nb_jr)
+void initialisation_nb_etoile(S_joueur jr[],int nb_jr)
 {
     int i;
     for(i=0;i<nb_jr;i++)
@@ -319,7 +319,7 @@ void initialisation_score(int nb_jr,S_joueur jr[])
        jr[i].score=0; //initialise les scores des joueurs à 0
 }
 
-void initalisation_nb_skyjo(S_joueur jr[],int nb_jr)
+void initialisation_nb_skyjo(S_joueur jr[],int nb_jr)
 {
     int i;
     for(i=0;i<nb_jr;i++)
@@ -385,7 +385,7 @@ void remelange_carte_action(S_pioche *p)
 
 }
 
-void initalisation_init_fin_manche(S_joueur jr[],int nb_jr)
+void initialisation_init_fin_manche(S_joueur jr[],int nb_jr)
 {
     int i;
     for(i=0;i<nb_jr;i++)
@@ -394,7 +394,7 @@ void initalisation_init_fin_manche(S_joueur jr[],int nb_jr)
     }
 }
 
-void initalisation_tour_restant(S_pioche *p)
+void initialisation_tour_restant(S_pioche *p)
 {
     p->tour_restant=10; //il ne restera jamais 10 tours mais cela permet d'initialiser la variable sans activer les programmes de décompte de tours restant
 }

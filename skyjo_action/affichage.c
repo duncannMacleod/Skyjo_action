@@ -393,7 +393,7 @@ void afficher_actualiser_defausse_nombre (S_pioche p)
 void afficher_actualiser_pioche_action (S_pioche p)
 {
     int i;
-    for(i=0; i<CARTE_PIOCHE_ACTION_FACE_VISIBLE; i++)
+    for(i=0; i<CARTE_PIOCHE_ACTION_FACE_VISIBLE; i++)//parcours les 4 cartes actions de la pioche visible. affiche le texte approprié en fonction tu type de numéro présent 14=Force à jeter
     {
         Positionner_Curseur(19+17*i,16);
         if(p.action_visible[i]==14)
@@ -542,7 +542,7 @@ void voir_deck_action(S_joueur jr,int x,int y,int parametre)
     else
     {
         Positionner_Curseur(x,y+cpt);
-        printf("%s a %d cartes action:",jr.prenom,jr.nb_action);
+        printf("%s à %d cartes action:",jr.prenom,jr.nb_action);
         cpt+=2;
         if(jr.nb_action<12)
         {
@@ -725,11 +725,17 @@ void voir_deck_action_des_autres(S_joueur jr[],int nb_jr,int no_jr, int x,int y)
             cpt++;
         }
     }
-    Positionner_Curseur(x,y+cpt);
-    printf("Réponse: ");
-    scanf("%d",&choix);
+    do
+    {
+        Positionner_Curseur(x,y+cpt);
+        printf("Réponse:    ");
+        Positionner_Curseur(x+8,y+cpt);
+        scanf("%d",&choix);
+        if(choix>nb_jr||choix<1||choix==no_jr)
+            getchar();
+    }
+    while(choix>nb_jr||choix<1||choix==no_jr);
     voir_deck_action(jr[choix-1],x,y,1);//affiche le deck des carte action du joueur i avec le paramétre 1, correspondant au paramétre d'affichge classique
-
 }
 
 void afficher_prochain_joueur(S_joueur jr[],int no_jr,int nb_jr)

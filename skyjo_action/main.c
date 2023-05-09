@@ -22,14 +22,9 @@ int main()
     plein_ecran(); //passe la console en plein écran
     int nb_joueurs,i;
     nb_joueurs=afficher_menu_bienvenue(); //le programme execute la fonction afficher_menu_bienvenue() , qui revoie de nombre de joueurs
-    if (nb_joueurs==0)
-        return 0;
-
 
     S_joueur jr[nb_joueurs]; //le nombre de case du tableau en fonction du nombre de joueurs
     S_pioche p; //la variable gérant toutes les données des pioches est crée
-
-
 
 
     afficher_plateau_vide(nb_joueurs); //permet a l'utilisateur de visulaliser son environement de jeu pendant l'initialisation des profils
@@ -49,18 +44,11 @@ int main()
         recap_manche(jr,p,nb_joueurs,3,23,1); //affiche le récapitulatif de la manche
         tri_score(nb_joueurs,jr);//tri les joueurs en fonction de leur score
         system("pause");
-
-
     }
     while(test_fin_partie(jr,nb_joueurs)==0);//tant que le test de fin de partie n'est pas positif
     recap_fin_partie(jr,nb_joueurs,3,23);
 
-
-
-
     system("PAUSE");
-
-
     return 0;
 }
 

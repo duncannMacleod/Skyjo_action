@@ -186,7 +186,7 @@
 
 1681392538 source:c:\users\dunca\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
 
-1683364509 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.c
+1683652779 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -221,7 +221,7 @@
 	"detection_skyjo.h"
 	"deplacements_cartes.h"
 
-1683364364 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
+1683652507 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\deplacements_cartes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -289,7 +289,7 @@
 1683321242 c:\users\duncan\documents\github\skyjo_action\skyjo_action\initialisation.h
 	"declaration.h"
 
-1683320579 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\main.c
+1683652507 source:c:\users\duncan\documents\github\skyjo_action\skyjo_action\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

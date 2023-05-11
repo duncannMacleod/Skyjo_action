@@ -51,17 +51,18 @@ void choix_carte_a_jouer(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr,int x,int
         break;
     case 20:
         jouer_20(jr,p,no_jr,nb_jr,x,y);//idem
-		break;
+        break;
     case 21:
         jouer_21(jr,p,no_jr,nb_jr,x,y);//idem
-		break;
+        break;
     case 22:
         jouer_22(jr,p,no_jr,nb_jr,x,y);//idem
         break;
     }
     p->action_defausse[p->action_defausse_nb]=carte_a_jouer; //déplace la carte qui a été joué dans dans la défausse des cartes actions
     p->action_defausse_nb++;//incrémente le nombre de carte action dans la défausse
-    getchar(); //permet de vider la mémoire tampon
+    if(carte_a_jouer!=19||carte_a_jouer!=16||carte_a_jouer!=20)
+        getchar(); //permet de vider la mémoire tampon
 
 
 }
@@ -84,12 +85,20 @@ int recup_du_deck(S_joueur jr[],int no_jr,int choix) //supprime la carte du deck
 void jouer_14(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y) //retire des cartes dans le jeu des autres
 {
     int cpt=2,ligne,colonne,i;
-    regarder_jeu_des_autres(jr,no_jr,nb_jr,x,y); //affiche le jeu des autres
+    //regarder_jeu_des_autres(jr,no_jr,nb_jr,x,y,1); //affiche le jeu des autres
+
     for(i=0; i<nb_jr; i++)
     {
+
+        if(i<4)
+            afficher_actualiser_jeu_des_autres(jr,no_jr,1,4);
+        else if(4<=i)
+            afficher_actualiser_jeu_des_autres(jr,no_jr,5,nb_jr);
         if(i!=(no_jr-1)&&verif_carte_def(jr[i])==0)
         {
 
+            afficher_boite_dialogue();
+            cpt=0;
             Positionner_Curseur(x,y+cpt); 							//conversationnel
             printf("quelle carte voulez vous enlever de jeu de ");
             puts(jr[i].prenom);
@@ -102,7 +111,7 @@ void jouer_14(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y) //ret
             placer_carte_piochee(&jr[i],p,ligne,colonne,2);//place une carte qui a été pioché a la place de celle sélectionné par l'utilisateur
             if(etoile_presente(jr[i],ligne,colonne)) //si avant le changement il y avait une carte étoile,
                 supprimer_pos_etoile(&jr[i],ligne,colonne);//alors on la supprime du tableau de localisation des postions des étoiles du joueur
-            cpt+=2;
+            cpt+=1;
         }
         if(i!=(no_jr-1)&&verif_carte_def(jr[i])!=0) //si le joueur i avait une carte défense dans son jeu
         {
@@ -113,7 +122,8 @@ void jouer_14(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y) //ret
             printf("car il possédait une carte défense (celle ci vient d'etre consommé)");
             recup_du_deck(&jr[i],no_jr,verif_carte_def(jr[i])); //et on supprime la carte défense dans le jeu du jr i.
             cpt+=1;
-            Positionner_Curseur(x,y+cpt);system("pause");//pour permettre au joueur de lire cela puisque on ne lui demande rien.
+            Positionner_Curseur(x,y+cpt);
+            system("pause");//pour permettre au joueur de lire cela puisque on ne lui demande rien.
         }
 
 
@@ -154,23 +164,24 @@ void jouer_17(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//pioc
     afficher_boite_dialogue();
     Positionner_Curseur(x,y);
 
-	printf("Voici les 3 cartes que vous avez pioché:");
+    printf("Voici les 3 cartes que vous avez pioché:");
     if(carte_pioche1==13) //affichage ergonomique en fonction de la carte pioché, notamment la carte étoile
         printf(" ** ");
-	else
-		printf(" %d ",carte_pioche1);
+    else
+        printf(" %d ",carte_pioche1);
 
-	if(carte_pioche2==13) //affichage ergonomique en fonction de la carte pioché, notamment la carte étoile
+    if(carte_pioche2==13) //affichage ergonomique en fonction de la carte pioché, notamment la carte étoile
         printf(" ** ");
-	else
-		printf(" %d ",carte_pioche2);
+    else
+        printf(" %d ",carte_pioche2);
 
-	if(carte_pioche3==13) //affichage ergonomique en fonction de la carte pioché, notamment la carte étoile
+    if(carte_pioche3==13) //affichage ergonomique en fonction de la carte pioché, notamment la carte étoile
         printf(" ** ");
-	else
-		printf(" %d ",carte_pioche3);
+    else
+        printf(" %d ",carte_pioche3);
 
-    cpt+=2; Positionner_Curseur(x,y+cpt);
+    cpt+=2;
+    Positionner_Curseur(x,y+cpt);
     printf("Quelle carte voulez vous garder 1à3 ou 0 si aucune: "); //conversationnel
     scanf("%d",&reponse);
     if(reponse==0)//si le joueur veut se débarasser de toute les cartes
@@ -211,6 +222,8 @@ void jouer_18(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//rega
 {
     int cpt=0,choix,i;
     afficher_boite_dialogue();
+    regarder_jeu_des_autres(jr,no_jr,nb_jr,x,y,1); //affiche le jeu des autres
+    afficher_boite_dialogue();
     Positionner_Curseur(x,y);
     for(i=0; i<nb_jr; i++)
     {
@@ -221,9 +234,11 @@ void jouer_18(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//rega
     cpt+=2;
     Positionner_Curseur(x,y+cpt);
     printf("Réponse: ");
-    do{
-	scanf("%d",&choix);
-	}while(choix<1||choix>nb_jr);
+    do
+    {
+        scanf("%d",&choix);
+    }
+    while(choix<1||choix>nb_jr);
     voir_l_ou_c(jr[choix-1],x,y); //montre la ligne ou la colonne du joueur numéro 1 (soit la case 0 du tableau)
 
 }
@@ -253,40 +268,53 @@ void jouer_20(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//récu
 
 void jouer_21(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y) //voler une carte action
 {
-    int cpt=0
-    ,carte_vol,choix,i;
+    int cpt,carte_vol,choix,i;
     afficher_boite_dialogue();
     Positionner_Curseur(x,y);
-    for(i=0; i<nb_jr; i++)//affiche tout les joueurs sauf soi meme
+    do
     {
-        if(i!=no_jr-1&&verif_carte_def(jr[i])==0)//si ce n'est pas nous meme ou bien si le joueur i n'a pas de carte défense
+        afficher_boite_dialogue();
+        Positionner_Curseur(x,y);
+        cpt=0;
+        for(i=0; i<nb_jr; i++)//affiche tout les joueurs sauf soi meme
         {
+            if(i!=no_jr-1&&verif_carte_def(jr[i])==0)//si ce n'est pas nous meme ou bien si le joueur i n'a pas de carte défense
+            {
 
-            Positionner_Curseur(x,y+cpt);
-            printf("Voulez vous voler une carte action du jeu de %s (choix %d )",jr[i].prenom,i+1);
-            cpt++;
+                Positionner_Curseur(x,y+cpt);
+                printf("Voulez vous voler une carte action du jeu de %s (choix %d )",jr[i].prenom,i+1);
+                cpt++;
+            }
+            if(i!=no_jr-1&&verif_carte_def(jr[i])!=0)//si il possède une carte défense
+            {
+                Positionner_Curseur(x,y+cpt);
+                printf("vous ne pouvez pas piocher dans le jeu de %s car,",jr[i].prenom);
+                cpt++;
+                Positionner_Curseur(x,y+cpt);
+                printf("car il possédait une carte défense (celle ci vient d'etre consommé)");
+                recup_du_deck(&jr[i],no_jr,verif_carte_def(jr[i]));
+                cpt+=2;
+
+            }
+
         }
-        if(i!=no_jr-1&&verif_carte_def(jr[i])!=0)//si il possède une carte défense
+        Positionner_Curseur(x,y+cpt);
+        printf("Si vous voulez voir les cartes actions des autres joueurs entrez %d", nb_jr+1);
+        cpt++;
+        Positionner_Curseur(x,y+cpt);
+        printf("Réponse: ");
+        scanf("%d",&choix);
+        if(choix==nb_jr+1)
+            voir_deck_action_des_autres(jr,nb_jr,no_jr,x,y);
+        else
         {
-            Positionner_Curseur(x,y+cpt);
-            printf("vous ne pouvez pas piocher dans le jeu de %s car,",jr[i].prenom);
-            cpt++;
-            Positionner_Curseur(x,y+cpt);
-            printf("car il possédait une carte défense (celle ci vient d'etre consommé)");
-            recup_du_deck(&jr[i],no_jr,verif_carte_def(jr[i]));
-            cpt+=2;
-
+            voir_deck_action(jr[choix-1],x,y,3);//affiche le deck des carte action du joueur i avec le paramètre 3, correspondant au paramètre d'affichge pour le vol
+            scanf("%d",&carte_vol);
+            jr[no_jr-1].deck_action[jr[no_jr-1].nb_action]=recup_du_deck(&jr[choix-1],choix,carte_vol);//récupère la carte choise du deck de l'adversaire et la place dans je jeu du joueur
+            jr[no_jr-1].nb_action++;
+            jr[no_jr-1].nb_coups++;//incrémente le nombre de coup pour permettre au joueur de jouer sa carte dirrectement
         }
-    }
-    Positionner_Curseur(x,y+cpt);
-    printf("Réponse: ");
-    scanf("%d",&choix);
-        voir_deck_action(jr[choix-1],x,y,3);//affiche le deck des carte action du joueur i avec le paramètre 3, correspondant au paramètre d'affichge pour le vol
-        scanf("%d",&carte_vol);
-        jr[no_jr-1].deck_action[jr[no_jr-1].nb_action]=recup_du_deck(&jr[choix-1],choix,carte_vol);//récupère la carte choise du deck de l'adversaire et la place dans je jeu du joueur
-        jr[no_jr-1].nb_action++;
-
-    jr[no_jr-1].nb_coups++;//incrémente le nombre de coup pour permettre au joueur de jouer sa carte dirrectement
+    }while(choix==nb_jr+1);
 
 }
 
@@ -296,7 +324,7 @@ void jouer_22(S_joueur jr[],S_pioche *p,int no_jr,int nb_jr, int x, int y)//écha
     for(a=1; a>=0; a--)//boucle gérant le nombre d'échange que le joueur peut faire
     {
         cpt=0;
-        afficher_actualiser_jeu_des_autres(jr,no_jr,nb_jr);
+        regarder_jeu_des_autres(jr,no_jr,nb_jr,x,y,1);
         Positionner_Curseur(50,15);
         printf("nombres d'échanges restant: %d",a);//affiche le nombre d'échange restant au joueur
         afficher_boite_dialogue();
@@ -419,7 +447,7 @@ void voir_l_ou_c(S_joueur jr,int x,int y)//permet de voir une ligne ou une colon
 int verif_carte_def(S_joueur jr)//vérifie qu'un joueur posède une carte défense, et ci cela est le cas renvoie sa postion dans le tableau des cartes actions du joueur, sinon elle renvoie 0.
 {
     int i;
-    for(i=0;i<jr.nb_action;i++)
+    for(i=0; i<jr.nb_action; i++)
     {
         if(jr.deck_action[i]==19) //carte défense
             return i;

@@ -22,7 +22,8 @@ int main()
     plein_ecran(); //passe la console en plein écran
     int nb_joueurs,i;
     nb_joueurs=afficher_menu_bienvenue(); //le programme execute la fonction afficher_menu_bienvenue() , qui revoie de nombre de joueurs
-
+    if (nb_joueurs==0)
+        return 0;
     S_joueur jr[nb_joueurs]; //le nombre de case du tableau en fonction du nombre de joueurs
     S_pioche p; //la variable gérant toutes les données des pioches est crée
 

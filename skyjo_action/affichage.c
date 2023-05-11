@@ -33,9 +33,13 @@ void Positionner_Curseur(int x, int y)
 
 int afficher_menu_bienvenue ()
 {
-    char menu[5][86]= {"      2 joueurs                                                                      ",
+    char menu[9][86]= {"      2 joueurs                                                                      ",
                        "      3 joueurs                                                                      ",
                        "      4 joueurs                                                                      ",
+                       "      5 joueurs                                                                      ",
+                       "      6 joueurs                                                                      ",
+                       "      7 joueurs                                                                      ",
+                       "      8 joueurs                                                                      ",
                        "                                                                                     ",
                        "      Quitter                                                                        ",
                       };
@@ -54,7 +58,7 @@ int afficher_menu_bienvenue ()
         printf("|                                                                                     |\n");
 
 
-        for(i=0; i<5; i++)
+        for(i=0; i<9; i++)
         {
             printf("|%s|\n",menu[i]);
         }
@@ -86,7 +90,7 @@ int afficher_menu_bienvenue ()
                     color(15,0); // met la couleur du texte en blanc et celle du fond en noir
                     printf("|%s|",menu[choix]); // On réaffiche le choix courant avec les couleurs préalablement choisies, une maniére de le désélectionner
                     choix--; // on décrémebte le numéro de l'option
-                    if (choix ==-1) choix =4; // les options sont numérotées de 0 é 11
+                    if (choix ==-1) choix =8; // les options sont numérotées de 0 à 9
                     Positionner_Curseur(0,choix+4);// positionne le curseur au choix juste dessus du précédent
                     color(0,15);// met la couleur du texte en noir et celle du fond en blanc
                     printf("|%s|\n",menu[choix]);// On réaffiche le nouveau choix  avec les couleurs préalablement choisies, une maniére de le séléctionner
@@ -99,7 +103,7 @@ int afficher_menu_bienvenue ()
                     color(15,0);
                     printf("|%s|",menu[choix]);
                     choix++;
-                    if (choix ==5) choix =0;
+                    if (choix ==9) choix =0;
                     Positionner_Curseur(0,choix+4);
                     color(0,15);
                     printf("|%s|",menu[choix]);
@@ -107,7 +111,7 @@ int afficher_menu_bienvenue ()
                 }
 
             }
-            Positionner_Curseur(0,12);
+            Positionner_Curseur(0,15);
 
         }
         choix++;
@@ -125,12 +129,27 @@ int afficher_menu_bienvenue ()
             return 4;
             break;
 
-        case 4:// case tampon
+        case 4://5 joueurs
+            return 5;
+            break;
+
+        case 5://6 joueurs
+            return 6;
+            break;
+        case 6://7 joueurs
+            return 7;
+            break;
+
+        case 7://8 joueurs
+            return 8;
+            break;
+
+        case 8://9 case tampon
 
             break;
 
-        case 5 : //Quiter
-            printf("\n\n\n ******************    Au revoir    ******************\n\n");
+        case 9 : //Quiter
+            printf("\n\n\n ***********************    Au revoir    ***********************\n\n");
             return 0;
             break;
 
@@ -213,8 +232,16 @@ void afficher_plateau_vide (int nb_jr)
         printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
         printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
         printf(" |                                                                                    |\n");
-
-
+    }
+    else if (nb_jr>4)
+    {
+        printf(" |                                                  Score: 1er-                       |\n");
+        printf(" |       Votre Jeu:                                        2nd-                       |\n");
+        printf(" |                                                         3me-                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                            4me-                       |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                            et plus...                 |\n");
+        printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |                                                                                    |\n");
     }
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
@@ -239,6 +266,22 @@ void afficher_plateau_des_autres(int nb_jr)
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
     printf(" |                                                                                    |\n");
+    if(nb_jr==1)
+    {
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |                                                                                    |\n");
+    }
     if(nb_jr==2)
     {
         printf(" |                                                                                    |\n");
@@ -285,6 +328,23 @@ void afficher_plateau_des_autres(int nb_jr)
         printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
         printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
         printf(" |          [  ] [  ] [  ] [  ]                                                       |\n");
+        printf(" |                                                                                    |\n");
+
+    }
+    if(nb_jr==5)
+    {
+        printf(" |                                                                                    |\n");
+        printf(" |        Jeu de:                         Jeu de:                                     |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |        Jeu de:                         Jeu de:                                     |\n");
+        printf(" |                                                                                    |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
+        printf(" |          [  ] [  ] [  ] [  ]              [  ] [  ] [  ] [  ]                      |\n");
         printf(" |                                                                                    |\n");
 
     }
@@ -366,15 +426,29 @@ void afficher_actualiser_joueur_vision (S_joueur jr,int x,int y)
 void afficher_actualiser_score (int nb_jr, S_joueur jr[])
 {
     int i;
-    for (i=0; i<nb_jr; i++)
+    if(nb_jr<=4)
+        for (i=0; i<nb_jr; i++)
+        {
+            Positionner_Curseur(64,5+i);
+            puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
+            Positionner_Curseur(65+strlen(jr[i].prenom),5+i);
+            printf("avec %d pts",jr[i].score); //affiche le score
+
+
+        }
+    else if(nb_jr>4)
     {
-        Positionner_Curseur(64,5+i);
-        puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
-        Positionner_Curseur(65+strlen(jr[i].prenom),5+i);
-        printf("avec %d pts",jr[i].score); //affiche le score
+        for (i=0; i<4; i++)
+        {
+            Positionner_Curseur(64,5+i);
+            puts(jr[i].prenom); //affiche le prenom du joueur (tableau jr préalablement trié)
+            Positionner_Curseur(65+strlen(jr[i].prenom),5+i);
+            printf("avec %d pts",jr[i].score); //affiche le score
 
 
+        }
     }
+
 }
 
 void afficher_actualiser_defausse_nombre (S_pioche p)
@@ -454,12 +528,14 @@ void afficher_action(int nb)
         printf("Echange de C.");
 }
 
-void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_jr)
+void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int jr_no_debut,int jr_no_fin)
 {
-    int i,cpt=0;
-    afficher_plateau_des_autres(nb_jr);
+    int i,cpt=0,cpt2=0;
+    if(jr_no_debut>no_observateur||jr_no_fin<no_observateur)
+        cpt2++;
+    afficher_plateau_des_autres(jr_no_fin-jr_no_debut+1+cpt2);
 
-    for(i=0; i<nb_jr; i++)
+    for(i=jr_no_debut-1; i<jr_no_fin; i++)
     {
         if(i!=no_observateur-1)
         {
@@ -481,6 +557,11 @@ void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_
             {
                 afficher_actualiser_joueur_vision (jr[i],17,12);
                 surligner_etoile_des_autres(jr[i],17,12);
+            }
+            if(cpt==4)
+            {
+                afficher_actualiser_joueur_vision (jr[i],49,12);
+                surligner_etoile_des_autres(jr[i],49,12);
             }
 
 

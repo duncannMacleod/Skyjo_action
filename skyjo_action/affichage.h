@@ -16,7 +16,7 @@ void surligner_etoile_des_autres(S_joueur jr,int x,int y);
 void afficher_actualiser_joueur_vision (S_joueur jr,int x,int y); //quasiment la même mais l'affichage est adapté pour "voir le jeu des autres"
 void afficher_actualiser_score (int nb_jr, S_joueur jr[]);       //à acctualiser quand le score change ou que tour change
 void afficher_actualiser_pioche_action (S_pioche p); //affiche la pioche des cartes actions
-void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int nb_jr);//affiche le jeu des autres (en appuyant sur v)
+void afficher_actualiser_jeu_des_autres(S_joueur jr[],int no_observateur,int jr_no_debut,int jr_no_fin);//affiche le jeu des autres (en appuyant sur v)
 void afficher_coups(S_joueur jr);//affiche les coups restants au joueur
 void afficher_prochain_joueur(S_joueur jr[],int no_jr,int nb_jr); //affiche le nom du joueur qui joue apprès soi
 

@@ -118,7 +118,7 @@ void demande_l_c (int *ligne,int *colonne,int x,int y)
     {
         Positionner_Curseur(x,y+cpt);
         printf("Attention, ligne de 1 à 3 \"espace\" colonne de 1 à 4:              ");
-        Positionner_Curseur(x+46,y+cpt);
+        Positionner_Curseur(x+52,y+cpt);
         scanf("%d %d",ligne,colonne);
         (*ligne)--;
         (*colonne)--;

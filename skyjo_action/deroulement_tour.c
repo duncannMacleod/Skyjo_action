@@ -62,9 +62,8 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         switch(toupper(choix)) //toupper permet de metre le caractère en majuscule
         {
         case 'V':
-                regarder_jeu_des_autres(jr,no_jr,nb_jr,x,y); //programme affiche le jeu des autres joueurs, il est donc impératif de savoir quel joueur execute le code pour ne pas l'afficher
+                regarder_jeu_des_autres(jr,no_jr,nb_jr,x,y,0); //programme affiche le jeu des autres joueurs, il est donc impératif de savoir quel joueur execute le code pour ne pas l'afficher
                 choix=0;
-                system("pause");
             break;
 
 
@@ -192,21 +191,93 @@ void debut_tour (S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
         p->tour_restant--;
 
 
-
 }
 
-void regarder_jeu_des_autres(S_joueur jr[],int no_jr,int nb_jr, int x,int y)
+void regarder_jeu_des_autres(S_joueur jr[],int no_jr,int nb_jr, int x,int y,int parametre)
 {
-    afficher_actualiser_jeu_des_autres(jr,no_jr,nb_jr); //affiche le jeu des autres joueurs
-    afficher_prochain_joueur(jr,no_jr,nb_jr); //affiche le prochain joueur
-    afficher_boite_dialogue(); //réinitilise la boite de dialogue
-    Positionner_Curseur(x,y);//conversationnel
-    printf("Voici le jeu des autres joureurs");//
-    Positionner_Curseur(x,y+2);//
+    if (4>=nb_jr)
+    {
+        afficher_actualiser_jeu_des_autres(jr,no_jr,1,nb_jr); //affiche le jeu des autres joueurs
+        afficher_prochain_joueur(jr,no_jr,nb_jr); //affiche le prochain joueur
+        afficher_boite_dialogue(); //réinitilise la boite de dialogue
+        Positionner_Curseur(x,y);//conversationnel
+        printf("Voici le jeu des autres joureurs");//
+        Positionner_Curseur(x,y+2);
+        system("pause");
+    }
+    else if(4<nb_jr)
+    {
+        int choix;
+        do
+        {
 
+            afficher_actualiser_jeu_des_autres(jr,no_jr,1,4); //affiche le jeu des autres joueurs
+            afficher_prochain_joueur(jr,no_jr,nb_jr); //affiche le prochain joueur
+            afficher_boite_dialogue(); //réinitilise la boite de dialogue
+            Positionner_Curseur(x,y);//conversationnel
+            printf("Voici le jeu des autres joureurs Page 1/2");//
+            Positionner_Curseur(x,y+2);
+            if(parametre==1)
+            {
+                printf("Les cartes des autres joueurs vous sont montrés dans le contexte des cartes actions");
+                Positionner_Curseur(x,y+3);
+                printf("Pour plus de facilité, veuillez rester sur la page correspondante  ");
+                Positionner_Curseur(x,y+4);
+                printf("au joueur que vous voulez attaquer");
+                Positionner_Curseur(x,y+6);
+            }
+            if(parametre==0)
+                printf("Voulez passer à la prochaine page (1) ou quiter? (0) : ");
+            if(parametre==1)
+                printf("Voulez passer à la prochaine page (1) ou rester sur celle ci? (0) : ");
+            do
+            {
+                scanf("%d",&choix);
+                if(choix<0||choix>1)
+                    getchar();
+            }
+            while (choix<0||choix>1);
+            if(choix==1)
+            {
+                afficher_actualiser_jeu_des_autres(jr,no_jr,5,nb_jr); //affiche le jeu des autres joueurs
+                afficher_prochain_joueur(jr,no_jr,nb_jr); //affiche le prochain joueur
+                afficher_boite_dialogue(); //réinitilise la boite de dialogue
+                Positionner_Curseur(x,y);
+                printf("Voici le jeu des autres joureurs Page 2/2");//
+                Positionner_Curseur(x,y+2);
+                if(parametre==1)
+                {
+                    printf("Les cartes des autres joueurs vous sont montrés  dans le contexte des cartes actions");
+                    Positionner_Curseur(x,y+3);
+                    printf("Pour plus de facilité, veuillez rester sur la page correspondante  ");
+                    Positionner_Curseur(x,y+4);
+                    printf("au joueur que vous voulez attaquer");
+                    Positionner_Curseur(x,y+6);
+                }
 
+                printf("Voulez vous revenir à la première page? (1/0): ");
+                do
+                {
+                    scanf("%d",&choix);
+                    if(choix<0||choix>1)
+                        getchar();
+                }
+                while (choix<0||choix>1);
+            }
+
+        }while(choix==1);
+            getchar();
+
+    }
 
 }
+
+
+
+
+
+
+
 void piocher_carte_nombre(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x, int y)
 {
     char choix,c;
@@ -263,7 +334,7 @@ void piocher_carte_action(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x,
         afficher_boite_dialogue(); //réinitilise la boite de dialogue
         printf("Piocher une carte action: ");
         cpt+=2;Positionner_Curseur(x,y+cpt);
-        printf("Piocher une carte des 4 présentés P, ou piocher une carte de la défausse D.");
+        printf("Piocher une carte des 4 présentés T, ou piocher une carte de la pioche P.");
         cpt+=2;Positionner_Curseur(x,y+cpt);
         printf("Réponse:");
         scanf("%c",&choix);
@@ -271,11 +342,11 @@ void piocher_carte_action(S_joueur jr[],int no_jr,int nb_jr, S_pioche *p, int x,
         Positionner_Curseur(x,y+cpt);
         switch(toupper(choix)) //met le caractère donnée en majuscule
         {
-        case 'P'://piocher une carte parmis les 4 présentés
+        case 'T'://piocher une carte parmis les 4 présentés
             recup_carte_action_presente(&jr[no_jr-1],p,x,y);
             choix=1;
             break;
-        case 'D'://piocher une carte de la défausse
+        case 'P'://piocher une carte de la pioche
             recup_carte_action_pioche(&jr[no_jr-1],p,x,y);
             choix=1;
             break;

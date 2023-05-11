@@ -16,7 +16,7 @@ void retourne_toutes_cartes(S_joueur jr[],int nb_jr);//progamme utilisé pour le
 void met_toutes_cartes_0(S_joueur *jr);//progamme utilisé pour le debug
 
 
-void regarder_jeu_des_autres(S_joueur jr[],int no_jr, int nb_jr, int x,int y);//permet de voir un autre jeu que le sien
+void regarder_jeu_des_autres(S_joueur jr[],int no_jr, int nb_jr, int x,int y,int parametre);//permet de voir un autre jeu que le sien
 
 
 void atribuer_nbr_etoile(S_joueur *jr,S_pioche *p, int x, int y);//permet de modifier la valeur d'une carte etoile
